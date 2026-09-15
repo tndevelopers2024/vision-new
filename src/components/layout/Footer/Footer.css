@@ -8,16 +8,83 @@
    ========================================================================== */
 
 .luxuryFooter {
+  /* Mirror of the header. The header's navy fades out over the hero photo;
+     the footer opens on a band of Dubai skyline (tinted like the hero) with
+     navy rising up over it, solid by the time the CTA card starts, then
+     deepening to its darkest at the very bottom of the page.
+     `--footer-band` = footer top padding + container top padding, i.e. where
+     the CTA card begins. */
+  --footer-pad: clamp(120px, 13vw, 190px);
+  --footer-band: calc(var(--footer-pad) + clamp(36px, 4vw, 56px));
+  padding-top: var(--footer-pad);
   background-color: #1c3b5f;
+  background-image: linear-gradient(
+    to bottom,
+    #1c3b5f 0%,
+    #1c3b5f 40%,
+    #132a45 100%
+  );
   color: #ffffff;
   font-family: var(--font-base);
   width: 100%;
   position: relative;
   overflow: hidden;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Photo band, three layers (top layer first):
+   1. The section above melts into the photo — starts in that section's
+      colour (`--footer-from`, set per page below) and goes transparent, so
+      there is no hard edge where the page meets the footer.
+   2. Navy rises over the photo and is solid just behind the CTA card.
+   3. The lit skyline under a light navy tint. */
+.luxuryFooter::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: calc(var(--footer-band) + 40px);
+  background:
+    linear-gradient(
+      to bottom,
+      var(--footer-from, #ffffff) 0%,
+      transparent 38%
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(19, 42, 69, 0.2) 0%,
+      rgba(28, 59, 95, 0.25) 45%,
+      rgba(28, 59, 95, 0.75) 70%,
+      #1c3b5f 88%
+    ),
+    url('../../../assets/images/banner-night.jpg') center 55% / cover no-repeat;
+  pointer-events: none;
+}
+
+/* The top fade starts from whatever ends the page above the footer. White
+   is the default (About, Mainland / Offshore closing CTA). */
+.btPageWrap:has(.minimalContact) .luxuryFooter {
+  --footer-from: #f5f5f5; /* Home — grey callback section */
+}
+
+.btPageWrap:has(.contactMap) .luxuryFooter {
+  --footer-from: #e5e7eb; /* Contact — map */
+}
+
+.btPageWrap:has(.jurApproach:last-child) .luxuryFooter {
+  --footer-from: #1c3b5f; /* Free Zone — ends on the navy Approach band */
+}
+
+@media (max-width: 560px) {
+  /* Contact: the navy office card stacks under the map and ends the page. */
+  .btPageWrap:has(.contactMap) .luxuryFooter {
+    --footer-from: #1c3b5f;
+  }
 }
 
 .luxuryFooter__container {
+  position: relative;
+  z-index: 1; /* above the photo band */
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;

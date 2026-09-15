@@ -24,7 +24,16 @@
   width: 100%;
   z-index: 1020;
   font-family: var(--font-base);
-  background-color: #1c3b5f;
+  /* Brand navy at the top, fading to transparent so it melts into the hero
+     like a shadow. The navy holds through the middle so the white links and
+     button stay readable. */
+  background-image: linear-gradient(
+    to bottom,
+    #1c3b5f 0%,
+    #1c3b5f 40%,
+    rgba(28, 59, 95, 0.6) 70%,
+    rgba(28, 59, 95, 0) 100%
+  );
   border: none;
 }
 

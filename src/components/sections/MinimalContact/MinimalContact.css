@@ -10,7 +10,8 @@
   background-color: #f5f5f5;
   padding: clamp(38px, 4vw, 54px) 20px;
   border-top: 1px solid rgba(0, 0, 0, 0.06);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  /* No bottom border: this section ends the page and the footer's top fade
+     starts from its grey — a hairline would show as a seam there. */
 }
 
 .minimalContact__container {
