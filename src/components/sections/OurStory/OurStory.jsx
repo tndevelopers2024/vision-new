@@ -1,6 +1,6 @@
 import { ourStory } from '../../../data/home.js'
 import SmartLink from '../../ui/SmartLink.jsx'
-import imgAboutUs from '../../../assets/images/our-story-advisory.jpg'
+import imgAboutUs from '../../../assets/images/about/AI-Powered Image Generation.avif'
 import './OurStory.css'
 
 /**
