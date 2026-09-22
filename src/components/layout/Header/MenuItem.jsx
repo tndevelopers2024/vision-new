@@ -21,6 +21,7 @@ export default function MenuItem({
   isOpen,
   onMenuEnter,
   onMenuLeave,
+  onItemHover,
   onCloseAll,
   onNavigate,
 }) {
@@ -92,19 +93,29 @@ export default function MenuItem({
 
   const handleMouseEnter = () => {
     if (isMobile) return
-    if (onMenuEnter) {
-      onMenuEnter()
-    } else if (hasChildren) {
-      setOpen(true)
+    if (hasChildren) {
+      if (onMenuEnter) {
+        onMenuEnter()
+      } else {
+        setOpen(true)
+      }
+    } else {
+      if (onItemHover) {
+        onItemHover()
+      } else if (onCloseAll) {
+        onCloseAll()
+      }
     }
   }
 
   const handleMouseLeave = () => {
     if (isMobile) return
-    if (onMenuLeave) {
-      onMenuLeave()
-    } else if (hasChildren) {
-      setOpen(false)
+    if (hasChildren) {
+      if (onMenuLeave) {
+        onMenuLeave()
+      } else {
+        setOpen(false)
+      }
     }
   }
 
@@ -113,10 +124,15 @@ export default function MenuItem({
       className={classes}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      onFocus={() => {
+      onKeyDown={(e) => {
         if (!isMobile && hasChildren) {
-          if (onMenuEnter) onMenuEnter()
-          else setOpen(true)
+          if (e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' ') {
+            if (!open) {
+              e.preventDefault()
+              if (onMenuEnter) onMenuEnter()
+              else setOpen(true)
+            }
+          }
         }
       }}
       onBlur={(e) => {
@@ -210,8 +226,6 @@ export default function MenuItem({
               className="navMegaPanel"
               role="region"
               aria-label={`${item.label} categories`}
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
             >
               <div className="navMegaPanel__grid">
                 {item.children.map((group) => (
@@ -270,8 +284,6 @@ export default function MenuItem({
             <ul
               id={id}
               className="sub-menu"
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
             >
               {item.children.map((child) => (
                 <MenuItem

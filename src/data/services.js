@@ -18,6 +18,7 @@ import heroLicenseFreezing from '../assets/images/license-freezing-hero.jpg'
 import overviewLicenseRenewal from '../assets/images/license-renewal-overview.jpg'
 import overviewLicenseModification from '../assets/images/license-modification-overview.jpg'
 import overviewLicenseCancellation from '../assets/images/license-cancellation-overview.jpg'
+import overviewLicenseFreezing from '../assets/images/license-freezing-overview.jpg'
 import heroDependentVisa from '../assets/images/dependent-visa-hero.jpg'
 import heroResidenceVisa from '../assets/images/residence-visa-hero.jpg'
 import heroRemoteWorkVisa from '../assets/images/remote-work-visa-hero.jpg'
@@ -340,6 +341,7 @@ export const serviceCategories = [
         id: 'license-freezing',
         title: 'License Freezing',
         heroImage: heroLicenseFreezing,
+        overviewImage: overviewLicenseFreezing,
         authority: 'DET (Department of Economy and Tourism) & UAE Free Zones',
         timeframe: '3 – 5 Working Days',
         badge: 'Cost Protection (Up to 3 Years)',

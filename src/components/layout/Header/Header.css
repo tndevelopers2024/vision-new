@@ -138,7 +138,6 @@
   opacity: 0.7;
 }
 
-.navCenter ul.menu > li:hover .navChevron,
 .navCenter ul.menu > li.on .navChevron {
   transform: rotate(180deg);
   opacity: 1;
@@ -157,7 +156,6 @@
   pointer-events: none;
 }
 
-.navCenter ul.menu > li.menu-item-has-children:hover::after,
 .navCenter ul.menu > li.menu-item-has-children.on::after {
   pointer-events: auto;
 }
@@ -202,7 +200,6 @@
   background: transparent;
 }
 
-.navCenter ul.menu li:hover > ul.sub-menu,
 .navCenter ul.menu li.on > ul.sub-menu {
   opacity: 1;
   pointer-events: auto;
@@ -269,7 +266,6 @@
   background: transparent;
 }
 
-.navCenter ul.menu li:hover > .navMegaPanel,
 .navCenter ul.menu li.on > .navMegaPanel {
   opacity: 1;
   pointer-events: auto;

@@ -18,53 +18,143 @@ export default function MainNav({ onOpenMobile, mobile, isLight = false }) {
   const location = useLocation()
   const logo = isLight ? logoDark : logoLight
   const [activeMenu, setActiveMenu] = useState(null)
+  const openTimerRef = useRef(null)
   const closeTimerRef = useRef(null)
+  const activeMenuRef = useRef(null)
 
-  const handleMenuEnter = useCallback((label) => {
+  const updateActiveMenu = useCallback((val) => {
+    activeMenuRef.current = val
+    setActiveMenu(val)
+  }, [])
+
+  const isScrollingRef = useRef(false)
+  const scrollTimeoutRef = useRef(null)
+
+  const handleImmediateClose = useCallback(() => {
+    if (openTimerRef.current) {
+      clearTimeout(openTimerRef.current)
+      openTimerRef.current = null
+    }
     if (closeTimerRef.current) {
       clearTimeout(closeTimerRef.current)
       closeTimerRef.current = null
     }
-    setActiveMenu(label)
-  }, [])
+    updateActiveMenu(null)
+  }, [updateActiveMenu])
+
+  const handleMenuEnter = useCallback((label) => {
+    if (isScrollingRef.current) return
+
+    if (closeTimerRef.current) {
+      clearTimeout(closeTimerRef.current)
+      closeTimerRef.current = null
+    }
+
+    // If another menu is already open, switch immediately
+    if (activeMenuRef.current) {
+      if (openTimerRef.current) {
+        clearTimeout(openTimerRef.current)
+        openTimerRef.current = null
+      }
+      updateActiveMenu(label)
+      return
+    }
+
+    // If opening from closed state, apply a 110ms intent delay
+    if (openTimerRef.current) {
+      clearTimeout(openTimerRef.current)
+    }
+    openTimerRef.current = setTimeout(() => {
+      updateActiveMenu(label)
+      openTimerRef.current = null
+    }, 110)
+  }, [updateActiveMenu])
 
   const handleMenuLeave = useCallback(() => {
+    if (openTimerRef.current) {
+      clearTimeout(openTimerRef.current)
+      openTimerRef.current = null
+    }
     if (closeTimerRef.current) {
       clearTimeout(closeTimerRef.current)
     }
     closeTimerRef.current = setTimeout(() => {
-      setActiveMenu(null)
-    }, 160)
-  }, [])
-
-  const handleImmediateClose = useCallback(() => {
-    if (closeTimerRef.current) {
-      clearTimeout(closeTimerRef.current)
+      updateActiveMenu(null)
       closeTimerRef.current = null
-    }
-    setActiveMenu(null)
-  }, [])
+    }, 150)
+  }, [updateActiveMenu])
 
-  const currentPathKey = location.pathname + location.hash
-  const [prevPathKey, setPrevPathKey] = useState(currentPathKey)
-  if (prevPathKey !== currentPathKey) {
-    setPrevPathKey(currentPathKey)
-    setActiveMenu(null)
-  }
+  useEffect(() => {
+    const onPopState = () => handleImmediateClose()
+    window.addEventListener('popstate', onPopState)
+    return () => window.removeEventListener('popstate', onPopState)
+  }, [handleImmediateClose])
 
   useEffect(() => {
     return () => {
-      if (closeTimerRef.current) {
-        clearTimeout(closeTimerRef.current)
-      }
+      if (openTimerRef.current) clearTimeout(openTimerRef.current)
+      if (closeTimerRef.current) clearTimeout(closeTimerRef.current)
+      if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current)
     }
   }, [])
+
+  // Close menus immediately on scroll, outside click, escape key, or window blur
+  useEffect(() => {
+    const handleScroll = () => {
+      isScrollingRef.current = true
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current)
+      }
+      scrollTimeoutRef.current = setTimeout(() => {
+        isScrollingRef.current = false
+        scrollTimeoutRef.current = null
+      }, 150)
+
+      handleImmediateClose()
+    }
+
+    const onPointerDown = (e) => {
+      if (!e.target.closest('.mainNavPort')) {
+        handleImmediateClose()
+      }
+    }
+
+    const onKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        handleImmediateClose()
+      }
+    }
+
+    const onVisibilityChange = () => {
+      if (document.hidden) {
+        handleImmediateClose()
+      }
+    }
+
+    const onWindowBlur = () => {
+      handleImmediateClose()
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    document.addEventListener('pointerdown', onPointerDown)
+    document.addEventListener('keydown', onKeyDown)
+    document.addEventListener('visibilitychange', onVisibilityChange)
+    window.addEventListener('blur', onWindowBlur)
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      document.removeEventListener('pointerdown', onPointerDown)
+      document.removeEventListener('keydown', onKeyDown)
+      document.removeEventListener('visibilitychange', onVisibilityChange)
+      window.removeEventListener('blur', onWindowBlur)
+    }
+  }, [handleImmediateClose])
 
   return (
     <div className="mainNavHolder">
       <div className="mainNavPort">
         {/* Left: Brand Logo */}
-        <div className="navBrand">
+        <div className="navBrand" onMouseEnter={handleImmediateClose}>
           <Link to="/" aria-label="Vision Business Setup — home">
             <img className="navLogo" src={logo} alt="Vision Business Setup" />
           </Link>
@@ -81,6 +171,7 @@ export default function MainNav({ onOpenMobile, mobile, isLight = false }) {
                   (item.href !== '/' && !item.href.startsWith('/#') && location.pathname.startsWith(item.href)) ||
                   Boolean(item.children?.some((c) => c.href === location.pathname))
 
+                const hasChildren = Boolean(item.children?.length)
                 const isOpen = activeMenu === item.label
 
                 return (
@@ -89,8 +180,9 @@ export default function MainNav({ onOpenMobile, mobile, isLight = false }) {
                     item={item}
                     current={isCurrent}
                     isOpen={isOpen}
-                    onMenuEnter={() => handleMenuEnter(item.label)}
-                    onMenuLeave={handleMenuLeave}
+                    onMenuEnter={hasChildren ? () => handleMenuEnter(item.label) : undefined}
+                    onMenuLeave={hasChildren ? handleMenuLeave : undefined}
+                    onItemHover={!hasChildren ? handleImmediateClose : undefined}
                     onCloseAll={handleImmediateClose}
                     isMobile={false}
                   />
@@ -101,7 +193,7 @@ export default function MainNav({ onOpenMobile, mobile, isLight = false }) {
         )}
 
         {/* Right: Enquiry Action Button + Mobile hamburger trigger */}
-        <div className="navRight">
+        <div className="navRight" onMouseEnter={handleImmediateClose}>
           <Link
             to="/contact"
             className="navCtaBtn"
