@@ -31,7 +31,7 @@ export const contact = {
   email: 'admin@visionbusinesssetup.ae',
   addressLines: ['IDS Business Center, Office no. 107', 'Karama, Dubai'],
 
-  hours: '09.30 AM – 6.30 PM, Sunday Closed',
+  hours: '09:00 AM – 07:00 PM, Sunday Closed',
 
   // Get in Touch map. Leave `mapEmbedUrl` empty to show the styled placeholder;
   // paste a Google Maps / OpenStreetMap "embed" src URL once the office
