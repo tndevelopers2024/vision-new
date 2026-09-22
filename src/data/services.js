@@ -660,12 +660,6 @@ export const serviceCategories = [
               'If you just need a licence or an offshore structure, you may never travel. If you want residency, a short visit is usually part of it. Either way, Vision Business Setup handles the paperwork so your presence is only needed where it truly has to be.',
             ],
           },
-          {
-            question: 'Has the AED 1 million cash down payment requirement for property investors been removed?',
-            answer: [
-              'Yes. Under the updated UAE Golden Visa rules, investors purchasing property valued at AED 2 million or more qualify for the 10-year Golden Visa regardless of whether the property is mortgaged or off-plan, with no minimum initial down payment required.',
-            ],
-          },
         ],
       },
       {
