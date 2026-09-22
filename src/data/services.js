@@ -11,7 +11,7 @@
 import heroLicence from '../assets/images/banner-night.jpg'
 import heroVisa from '../assets/images/banner-burj-khalifa.jpg'
 import heroFinance from '../assets/images/banner-palm-jumeirah.jpg'
-import heroLicenseRenewal from '../assets/images/license-renewal-hero.png'
+import heroLicenseRenewal from '../assets/images/license-renewal-hero.jpg'
 import heroLicenseModification from '../assets/images/license-modification-hero.jpg'
 
 export const servicesHero = {
