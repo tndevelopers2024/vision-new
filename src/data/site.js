@@ -49,7 +49,6 @@ export const mainMenu = [
       m('Remote Work Visa', '/services/remote-work-visa'),
       m('Golden Visa', '/services/golden-visa'),
       m('Freelance Visa', '/services/freelance-visa'),
-      m('Domestic Worker Visa', '/services/domestic-worker-visa'),
     ]),
     m('Finance & Banking', '/services#finance-banking', [
       m('Bank Account Opening', '/services/bank-account-opening'),

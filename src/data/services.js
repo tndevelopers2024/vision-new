@@ -4,7 +4,7 @@
  * Sourced directly from Decisive Zone (https://www.decisivezone.ae/)
  * tailored for Vision Business Setup:
  *   1. Licence Services (Renewal, Modification, Cancellation, Freezing)
- *   2. Visa Solutions (Residence, Golden, Dependent, Remote Work, Freelance, Domestic Worker)
+ *   2. Visa Solutions (Residence, Golden, Dependent, Remote Work, Freelance)
  *   3. Finance & Banking (Bank Account Opening, Corporate Tax Guide, Bookkeeping & VAT)
  */
 
@@ -935,117 +935,67 @@ export const serviceCategories = [
         faqs: [
           {
             question: 'What is a UAE freelance visa and who can apply for it?',
-            answer:
-              'A UAE freelance visa is a residence visa that lets you live in the UAE and work independently as a self-employed professional, tied to a freelance permit rather than to an employer. It is built for professionals in eligible sectors such as media, technology, education, design, marketing, and consulting. Anyone in a permitted activity can apply, including those already on a dependent visa, who may only need the freelance permit rather than a new residence visa. The permit lets you operate in your own name as a sole practitioner.',
+            answer: [
+              'A UAE freelance visa is a residence visa that lets you live in the UAE and work independently as a self-employed professional, tied to a freelance permit rather than to an employer. It\'s built for professionals in eligible sectors such as media, technology, education, design, marketing, and consulting.',
+              'Anyone in a permitted activity can apply, including those already on a dependent visa, who may only need the freelance permit rather than a new residence visa. The permit lets you operate in your own name as a sole practitioner. Vision Business Setup can advise the right route for your profession.',
+            ],
           },
           {
             question: 'What are the requirements to apply for a freelance visa?',
-            answer:
-              'The typical requirements include: a CV or resume and a recent photograph; a passport copy valid for at least six to eight months; a bank reference letter; a No Objection Certificate from your current sponsor if you hold an existing UAE employment visa; and valid health insurance. Some free zones also ask for a portfolio or proof of qualifications in your field. Once approved, the residence visa steps follow: entry permit, medical test, Emirates ID, and stamping.',
+            answer: [
+              'The typical requirements include:',
+              '• A CV or resume and a recent photograph\n• A passport copy valid for at least six to eight months\n• A bank reference letter\n• A No Objection Certificate from your current sponsor, if you hold an existing UAE visa\n• Valid health insurance',
+              'Some free zones also ask for a portfolio or proof of qualifications in your field. Once approved, the residence visa steps follow: entry permit, medical test, Emirates ID, and stamping. Vision Business Setup provides a precise checklist for your chosen free zone.',
+            ],
           },
           {
             question: 'Do freelancers need a work permit before applying for a freelance visa in UAE?',
-            answer:
-              'The freelance permit itself is your work authorisation, so it comes first. You obtain a freelance permit from a free zone, or a self-employment permit from the Ministry of Human Resources and Emiratisation (MOHRE), and the residence visa is then issued against it. If you already hold a UAE residence visa through family sponsorship, a Golden Visa, or a Green Visa, a MOHRE freelance permit alone can authorise you to work legally without a new visa.',
+            answer: [
+              'The freelance permit itself is your work authorisation, so it comes first. You obtain a freelance permit from a free zone, or a self-employment permit from the Ministry of Human Resources and Emiratisation (MOHRE), and the residence visa is then issued against it.',
+              'If you already hold a UAE residence visa through family sponsorship, a Golden Visa, or a Green Visa, a MOHRE freelance permit alone can authorise you to work legally without a new visa. Vision Business Setup can advise which combination fits your situation.',
+            ],
           },
           {
             question: 'Is a freelance license required to work independently in UAE?',
-            answer:
-              'Yes. To work legally as a freelancer in the UAE, you need a freelance permit or licence from a free zone or MOHRE. Working independently without one is not permitted. The permit is what lets you invoice clients in your own name and operate as a recognised sole practitioner. It also underpins your residence visa and family sponsorship.',
+            answer: [
+              'Yes. To work legally as a freelancer in the UAE, you need a freelance permit or licence from a free zone or MOHRE. Working independently without one is not permitted.',
+              'The permit is what lets you invoice clients in your own name and operate as a recognised sole practitioner. It also underpins your residence visa and, later, family sponsorship. Vision Business Setup can set up the permit and visa together.',
+            ],
           },
           {
             question: 'How long does it take to get a freelance visa approved in Dubai?',
-            answer:
-              'A freelance permit and visa are usually processed within about 10 to 12 working days, and up to two to three weeks end to end once the medical test and Emirates ID steps are included. The permit itself is approved quickly; the residence visa stages add most of the time. Matching your activity correctly to the free zone permitted list is the best way to avoid delays.',
+            answer: [
+              'A freelance permit and visa are usually processed within about 10 to 12 working days, and up to two to four weeks end to end once the medical test and Emirates ID steps are included.',
+              'The permit itself is approved quickly; the residence visa stages add most of the time. Matching your activity correctly to the free zone\'s permitted list is the single best way to avoid delays. Vision Business Setup handles the paperwork to keep it moving.',
+            ],
           },
           {
             question: 'Can freelancers sponsor their family members after obtaining a freelance visa?',
-            answer:
-              'Yes. Once you hold a freelance residence visa, you can sponsor your spouse and children, subject to standard conditions: a minimum monthly income (typically from around AED 4,000), a registered Ejari tenancy contract, and valid health insurance for each dependent. Each dependent needs their own entry permit, medical test, and Emirates ID.',
+            answer: [
+              'Yes. Once you hold a freelance residence visa, you can sponsor your spouse and children, subject to the standard conditions: a minimum monthly income (typically from around AED 4,000, varying by free zone), a registered Ejari tenancy contract, and valid health insurance for each dependent.',
+              'Each dependent needs their own entry permit, medical test, and Emirates ID, with separate fees. Vision Business Setup can handle your dependents\' visas alongside your own.',
+            ],
           },
           {
             question: 'How long is the freelance visa in Dubai valid after approval?',
-            answer:
-              'A freelance residence visa is typically valid for 1, 2, or 3 years, depending on the free zone and package you choose, while the freelance permit is usually renewed annually. Established freelancers earning at least AED 360,000 a year can instead opt for the 5-year Green Visa, a self-sponsored route that removes the shorter renewal cycle.',
+            answer: [
+              'A freelance residence visa is typically valid for 1, 2, or 3 years, depending on the free zone and package you choose, while the freelance permit is usually renewed annually.',
+              'Established freelancers earning at least AED 360,000 a year can instead opt for the 5-year Green Visa, a self-sponsored route that removes the shorter renewal cycle. Vision Business Setup can advise which duration suits your plans.',
+            ],
           },
           {
             question: 'Can freelancers work with multiple clients under this visa?',
-            answer:
-              'Yes, and it is the core advantage of the freelance visa. You can work with multiple clients at once, both in the UAE and internationally, invoicing each in your own name without needing separate sponsorship or approvals. The one condition is that the work falls within the activity your permit covers.',
+            answer: [
+              'Yes, and it\'s the core advantage of the freelance visa. You can work with multiple clients at once, both in the UAE and internationally, invoicing each in your own name without needing separate sponsorship or approvals.',
+              'The one condition is that the work falls within the activity your permit covers. If your work spans more than one field, Vision Business Setup can check whether your permit covers it or needs adjusting.',
+            ],
           },
           {
             question: 'Can a freelance visa in UAE be renewed after it expires?',
-            answer:
-              'Yes. The freelance permit and residence visa are renewable, as long as the permit stays active and you remain compliant with UAE regulations. The permit renews annually and the residence visa per its term. Renewing before expiry avoids overstay fines, and a consistent renewal record strengthens your UAE immigration history.',
-          },
-        ],
-      },
-      {
-        id: 'domestic-worker-visa',
-        title: 'Domestic Worker Visa',
-        authority: 'MOHRE & Tadbeer Licensing Authority',
-        timeframe: '7 – 10 Working Days',
-        badge: 'Household Support',
-        icon: 'handshake-heart',
-        summary:
-          'Compliant legal sponsorship for housemaids, nannies, private chauffeurs, and household staff under MOHRE regulations.',
-        description:
-          'Sponsoring domestic staff in the UAE is governed strictly by the Ministry of Human Resources and Emiratisation (MOHRE) and authorized Tadbeer service centers under the UAE Domestic Labour Law. Whether you are sponsoring a housemaid, private nanny, cook, or private chauffeur, the law requires standard government-approved employment contracts, mandatory medical fitness testing, medical insurance coverage, and timely visa issuance. Vision Business Setup manages the entire procedure — from quota approvals and contract drafting to medical screening and Emirates ID delivery.',
-        requirements: [
-          'Sponsor original passport, residence visa copy, and Emirates ID',
-          'Proof of sponsor income: Salary certificate (min. AED 25,000/month) or company trade license + 3 months bank statements',
-          'Registered Ejari tenancy contract (min. 2-bedroom accommodation demonstrating adequate private room for the worker)',
-          'Domestic worker original passport (minimum 6 months validity) and recent passport photographs',
-          'Standard MOHRE-approved domestic labour contract signed through Tadbeer',
-          'Medical fitness clearance certificate (blood test, pregnancy test, and chest X-ray)',
-          'Mandatory comprehensive health insurance policy covering domestic staff',
-        ],
-        process: [
-          'Application for MOHRE domestic worker quota approval and sponsor eligibility verification',
-          'Drafting and signing of standardized Tadbeer domestic worker employment contract',
-          'Entry permit processing for domestic worker arrival or in-country status change',
-          'Expedited VIP medical fitness screening at approved government health centers',
-          'Emirates ID biometric capture (fingerprints and photo registration)',
-          'Issuance of official domestic worker residence visa and delivery of Emirates ID',
-        ],
-        deliverables: [
-          'MOHRE quota approval and legal sponsorship file opening',
-          'Bilingual Tadbeer domestic employment contract preparation',
-          'Entry permit issuance and in-country change of status management',
-          'VIP medical screening appointment and health clearance certificate',
-          '1 or 2-year renewable domestic worker residence visa & Emirates ID',
-          'Annual renewal tracking and end-of-service departure clearance assistance',
-        ],
-        faqs: [
-          {
-            question: 'What occupations fall under the UAE domestic worker visa category?',
-            answer:
-              'Recognized domestic staff categories under MOHRE include housemaids, private nannies, private chauffeurs/drivers, cooks, housekeepers, gardeners, private tutors, security guards, and home healthcare nurses.',
-          },
-          {
-            question: 'What is the minimum sponsor income required to sponsor domestic workers in Dubai?',
-            answer:
-              'Under MOHRE regulations, expatriate sponsors generally require a minimum monthly income of AED 25,000, verified through an official salary certificate or bank statements, along with an Ejari tenancy contract showing suitable living accommodations (typically a 2-bedroom home or larger with a dedicated private room).',
-          },
-          {
-            question: 'Are employers legally required to provide medical insurance for domestic staff?',
-            answer:
-              'Yes. Under UAE federal labour regulations, sponsors are legally mandated to provide comprehensive health insurance covering the full duration of the domestic worker residency.',
-          },
-          {
-            question: 'How long is a UAE domestic worker visa valid for?',
-            answer:
-              'Domestic worker residence visas are typically issued for 1 or 2 years, renewable annually subject to continued employment, valid medical fitness clearance, and health insurance policy renewal.',
-          },
-          {
-            question: 'Can I sponsor a domestic worker who is already inside the UAE?',
-            answer:
-              'Yes. If the domestic worker is already inside the country on a visit visa or following a cancelled previous contract, we can complete an in-country change of status without requiring them to exit the UAE.',
-          },
-          {
-            question: 'What is the role of Tadbeer in sponsoring domestic staff?',
-            answer:
-              'Tadbeer centers are regulated by MOHRE to oversee the transparent, legal recruitment and visa processing of domestic workers. All contracts and visa applications must be processed through accredited Tadbeer channels to ensure full legal protection for both employers and workers.',
+            answer: [
+              'Yes. The freelance permit and residence visa are renewable, as long as the permit stays active and you remain compliant with UAE regulations. The permit renews annually and the residence visa per its term.',
+              'Renewing before expiry avoids overstay fines, and a consistent renewal record strengthens your UAE immigration history for future applications like family sponsorship or a long-term visa. Vision Business Setup can manage your renewals so nothing lapses.',
+            ],
           },
         ],
       },

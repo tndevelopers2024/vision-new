@@ -331,7 +331,7 @@ export const ourServices = {
       icon: 'passport',
       title: 'Visa',
       slug: 'visa',
-      items: ['Residence Visa', 'Dependent Visa', 'Remote Work Visa', 'Golden Visa', 'Freelance Visa', 'Domestic Worker Visa'],
+      items: ['Residence Visa', 'Dependent Visa', 'Remote Work Visa', 'Golden Visa', 'Freelance Visa'],
     },
     {
       icon: 'bank',
