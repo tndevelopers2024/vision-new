@@ -52,13 +52,13 @@
 
 .whatSets__super {
   display: block;
-  font-family: var(--font-base);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: var(--fw-normal);
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: #000000;
-  margin-bottom: 1.4em;
+  color: var(--c-muted);
+  margin-bottom: 0.9em;
 }
 
 .whatSets__title {
@@ -132,7 +132,7 @@
 .wsItem {
   position: relative;
   display: grid;
-  grid-template-columns: auto auto minmax(0, 1fr);
+  grid-template-columns: auto minmax(0, 1fr);
   align-items: start;
   gap: 0 1.5em;
   padding: 2.15em 1.5em;
@@ -163,21 +163,6 @@
 
 .wsItem:hover::before {
   width: 100%;
-}
-
-.wsItem__index {
-  font-family: var(--font-base);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  line-height: 5.4;
-  color: rgba(0, 0, 0, 0.55);
-  font-variant-numeric: tabular-nums;
-  transition: color 320ms ease;
-}
-
-.wsItem:hover .wsItem__index {
-  color: #000000;
 }
 
 .wsItem__icon {
@@ -290,28 +275,18 @@
 
   .wsItem {
     grid-template-columns: auto minmax(0, 1fr);
-    gap: 0 1.1em;
-    padding: 1.9em 0.2em;
-  }
-
-  /* Numeral sits beside the icon, body drops to a full-width second row. */
-  .wsItem__body {
-    grid-column: 1 / -1;
-    margin-top: 1.05em;
+    gap: 0 1.25em;
+    padding: 1.8em 0.5em;
   }
 
   .wsItem__icon {
-    width: 50px;
-    height: 50px;
+    width: 48px;
+    height: 48px;
   }
 
   .wsItem__icon .btIcon {
-    width: 24px;
-    height: 24px;
-  }
-
-  .wsItem__index {
-    line-height: 4.7;
+    width: 22px;
+    height: 22px;
   }
 
   .wsItem:hover {

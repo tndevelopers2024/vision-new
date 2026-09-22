@@ -34,20 +34,29 @@ export default function CoreValues() {
   const [canScrollLeft, setCanScrollLeft] = useState(false)
   const [canScrollRight, setCanScrollRight] = useState(true)
   const [activeIndex, setActiveIndex] = useState(0)
+  const [progress, setProgress] = useState((1 / items.length) * 100)
 
   const checkScroll = useCallback(() => {
     const el = trackRef.current
     if (!el) return
     const { scrollLeft, scrollWidth, clientWidth } = el
+    const maxScroll = scrollWidth - clientWidth
     setCanScrollLeft(scrollLeft > 6)
-    setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 6)
+    setCanScrollRight(scrollLeft < maxScroll - 6)
 
-    const card = el.querySelector('.cvSlide')
-    if (card) {
-      const cardWidth = card.offsetWidth + 24
-      const idx = Math.round(scrollLeft / cardWidth)
-      setActiveIndex(Math.min(Math.max(0, idx), items.length - 1))
+    if (maxScroll <= 0) {
+      setActiveIndex(0)
+      setProgress(100)
+      return
     }
+
+    const ratio = Math.min(1, Math.max(0, scrollLeft / maxScroll))
+    const idx = Math.min(items.length - 1, Math.max(0, Math.round(ratio * (items.length - 1))))
+    setActiveIndex(idx)
+
+    const minPercent = (1 / items.length) * 100
+    const progressWidth = minPercent + ratio * (100 - minPercent)
+    setProgress(progressWidth)
   }, [items.length])
 
   useEffect(() => {
@@ -69,6 +78,45 @@ export default function CoreValues() {
     const gap = 24
     const amount = card ? (card.offsetWidth + gap) * direction : 380 * direction
     el.scrollBy({ left: amount, behavior: 'smooth' })
+  }
+
+  const handleTrackPointerDown = (e) => {
+    const track = e.currentTarget
+    track.setPointerCapture(e.pointerId)
+
+    const seek = (clientX, smooth = false) => {
+      const el = trackRef.current
+      if (!el) return
+      const rect = track.getBoundingClientRect()
+      const ratio = Math.min(1, Math.max(0, (clientX - rect.left) / rect.width))
+      const maxScroll = el.scrollWidth - el.clientWidth
+      if (smooth) {
+        el.scrollTo({ left: ratio * maxScroll, behavior: 'smooth' })
+      } else {
+        el.scrollLeft = ratio * maxScroll
+      }
+    }
+
+    seek(e.clientX, true)
+
+    const onPointerMove = (evt) => {
+      seek(evt.clientX, false)
+    }
+
+    const onPointerUp = (evt) => {
+      try {
+        track.releasePointerCapture(evt.pointerId)
+      } catch {
+        // ignore
+      }
+      track.removeEventListener('pointermove', onPointerMove)
+      track.removeEventListener('pointerup', onPointerUp)
+      track.removeEventListener('pointercancel', onPointerUp)
+    }
+
+    track.addEventListener('pointermove', onPointerMove)
+    track.addEventListener('pointerup', onPointerUp)
+    track.addEventListener('pointercancel', onPointerUp)
   }
 
   return (
@@ -110,7 +158,7 @@ export default function CoreValues() {
         {/* Carousel Slider Track */}
         <div className="coreValues__sliderWrap">
           <div className="coreValues__track" ref={trackRef}>
-            {items.map((item, idx) => {
+            {items.map((item) => {
               const imgSrc = VALUE_IMAGES[item.image] || imgTrust
 
               return (
@@ -123,9 +171,6 @@ export default function CoreValues() {
                       loading="lazy"
                     />
                     <div className="cvSlide__overlay" />
-                    <span className="cvSlide__badge">
-                      {item.num || `0${idx + 1}`}
-                    </span>
                   </div>
 
                   <div className="cvSlide__content">
@@ -145,11 +190,19 @@ export default function CoreValues() {
 
         {/* Bottom Progress Bar & Counter */}
         <div className="coreValues__pagination">
-          <div className="coreValues__progressTrack">
+          <div
+            className="coreValues__progressTrack"
+            role="scrollbar"
+            aria-label="Core values carousel scrollbar"
+            aria-valuenow={Math.round(progress)}
+            aria-valuemin={0}
+            aria-valuemax={100}
+            onPointerDown={handleTrackPointerDown}
+          >
             <div
               className="coreValues__progressBar"
               style={{
-                width: `${((activeIndex + 1) / items.length) * 100}%`,
+                width: `${progress}%`,
               }}
             />
           </div>

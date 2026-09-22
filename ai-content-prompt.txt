@@ -1,0 +1,84 @@
+AI MASTER PROMPT FOR EXTRACTING SEPARATE CONTENT FROM DECISIVE ZONE
+====================================================================
+
+You are an expert UAE corporate services content specialist and data formatter for Vision Business Setup (https://visionbusinesssetup.com).
+
+### YOUR TASK:
+Extract the full service text from the provided Decisive Zone (https://www.decisivezone.ae/) service page and format it as a clean JavaScript object ready for our website codebase.
+
+### CRITICAL FORMATTING RULES (SEPARATE CONTENT):
+1. SEPARATE PARAGRAPHS IN FAQs:
+   - NEVER merge multiple paragraphs into one single block of text.
+   - If an FAQ answer contains 2 or more paragraphs on Decisive Zone, output them as an ARRAY of separate paragraph strings:
+     answer: [
+       "Paragraph 1 text here...",
+       "Paragraph 2 text here..."
+     ]
+2. SEPARATE BULLET POINTS & LISTS:
+   - Keep all document checklists (requirements), step-by-step procedures (process), and deliverables as clean, separate array strings.
+3. DO NOT TRUNCATE OR CUT CONTENT:
+   - Preserve every single sentence, concluding remark, authority detail, fee mention, and threshold (e.g., AED 2M property rule, AED 30,000 salary, 45-day notice, etc.).
+4. BRAND REPLACEMENT:
+   - Replace any mention of "Decisive Zone" with "Vision Business Setup".
+   - Keep government authority names exact (DET, GDRFA, ICP, FTA, MOHRE, Tadbeer).
+
+---
+
+### REQUIRED OUTPUT SCHEMA:
+Provide the output formatted exactly like this JavaScript object:
+
+```javascript
+{
+  id: 'service-slug', // e.g. 'license-renewal', 'golden-visa', 'dependent-visa'
+  title: 'Service Title',
+  authority: 'Government Authority (e.g. DET & UAE Free Zones)',
+  timeframe: 'Turnaround Time (e.g. 24 – 48 Hours)',
+  badge: 'Category Badge (e.g. Annual Mandatory)',
+  icon: 'icon-name', // e.g. sync, passport, star, users, bank, shield
+  summary: 'Concise 1-sentence teaser overview.',
+  description: 'Detailed introductory overview paragraph.',
+
+  // Specific feature arrays where applicable (e.g. applicableAmendments, eligibilityCriteria, salaryAndHousing, keyRules):
+  // [FEATURE_NAME]: [
+  //   'Item 1...',
+  //   'Item 2...'
+  // ],
+
+  requirements: [
+    'Required document 1...',
+    'Required document 2...',
+    'Required document 3...'
+  ],
+  process: [
+    'Stage 1 procedure...',
+    'Stage 2 procedure...',
+    'Stage 3 procedure...'
+  ],
+  deliverables: [
+    'Deliverable 1...',
+    'Deliverable 2...'
+  ],
+  faqs: [
+    {
+      question: 'What is the process for licence renewal for businesses?',
+      answer: [
+        'To renew a Dubai trade licence, you renew your tenancy contract (Ejari for mainland companies), clear any outstanding fines, submit the renewal application through the Department of Economy and Tourism (DET) or your free zone authority, pay the fees, and receive the renewed licence.',
+        "It's best to start 30 days to two months before expiry, which leaves time to renew the lease, update Ejari, and secure any regulator approvals. Free zone companies apply through their zone portal, and some zones also require audited financial statements at renewal."
+      ]
+    },
+    {
+      question: 'What documents are required for trade license renewal in Dubai?',
+      answer: [
+        'For a mainland renewal, you typically need: your current trade licence copy, a valid Ejari-registered tenancy contract (valid for at least a month beyond the new licence period), passport and Emirates ID copies of shareholders/partners, the renewal application form, and any third-party approvals for regulated activities (such as DHA, KHDA, or RTA).',
+        'Your tenancy should remain valid for at least a month beyond the new licence period. Free zone companies submit their licence copy and workspace lease, and some zones request audited financial statements at renewal.'
+      ]
+    }
+    // Include ALL FAQs found on the page with separate paragraph arrays
+  ]
+}
+```
+
+---
+
+### SERVICE INPUT:
+https://www.decisivezone.ae/freeze-trade-license/

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { ourServices } from '../../../data/home.js'
 import Icon from '../../ui/Icon.jsx'
 import './OurServices.css'
@@ -5,18 +6,14 @@ import './OurServices.css'
 /**
  * Section 6 — Our Services.
  *
- * Four corporate-support categories (Licence / Visa / Finance & Banking /
- * Other) presented as a joined hairline matrix rather than four loose cards:
- * the columns share one grid rule, so unequal list lengths no longer leave
- * ragged card bottoms. Each column carries an index numeral, the category
- * icon, its documented sub-services and a pinned footer (count + enquiry
- * link), and inverts to black on hover / keyboard focus in the site's
- * monochrome language.
+ * Three corporate-support categories (Licence / Visa / Finance & Banking)
+ * presented as a joined hairline matrix: the columns share one grid rule,
+ * so unequal list lengths no longer leave ragged card bottoms. Each column
+ * carries an index numeral, the category icon, its documented sub-services
+ * and a pinned footer (count + enquiry link), and inverts on hover / keyboard focus.
  */
 export default function OurServices() {
   const { super: eyebrow, title, accent, intro, cta, ctaHref, groups } = ourServices
-
-  const totalServices = groups.reduce((sum, group) => sum + group.items.length, 0)
 
   return (
     <section className="ourServices" id="services">
@@ -32,26 +29,17 @@ export default function OurServices() {
           </div>
 
           <div className="svcHead__aside">
-            <p className="svcHead__meta">
-              <span className="svcHead__count">{totalServices}</span>
-              <span className="svcHead__metaLabel">
-                services across {groups.length} categories
-              </span>
-            </p>
-            <a href={ctaHref} className="ourServices__button">
+            <Link to={ctaHref} className="ourServices__button">
               <span>{cta}</span>
               <Icon name="arrow-right" size="small" />
-            </a>
+            </Link>
           </div>
         </header>
 
         <ol className="svcMatrix">
-          {groups.map((group, index) => (
+          {groups.map((group) => (
             <li className="svcCol" key={group.title}>
               <div className="svcCol__top">
-                <span className="svcCol__index" aria-hidden="true">
-                  {String(index + 1).padStart(2, '0')}
-                </span>
                 <span className="svcCol__icon">
                   <Icon name={group.icon} />
                 </span>
@@ -60,25 +48,49 @@ export default function OurServices() {
               <h3 className="svcCol__title">{group.title}</h3>
 
               <ul className="svcCol__list">
-                {group.items.map((item) => (
-                  <li className="svcCol__item" key={item}>
-                    <span className="svcCol__bullet" aria-hidden="true" />
-                    <span className="svcCol__itemText">{item}</span>
-                  </li>
-                ))}
+                {group.items.map((item) => {
+                  const serviceSlugMap = {
+                    'License Renewal': '/services/license-renewal',
+                    'License Modification': '/services/license-modification',
+                    'License Cancellation': '/services/license-cancellation',
+                    'License Freezing': '/services/license-freezing',
+                    'Residence Visa': '/services/residence-visa',
+                    'Dependent Visa': '/services/dependent-visa',
+                    'Remote Work Visa': '/services/remote-work-visa',
+                    'Golden Visa': '/services/golden-visa',
+                    'Freelance Visa': '/services/freelance-visa',
+                    'Domestic Worker Visa': '/services/domestic-worker-visa',
+                    'Bank Account Opening': '/services/bank-account-opening',
+                    'Corporate Tax Guide': '/services/corporate-tax-guide',
+                    'Bookkeeping & VAT Registration': '/services/bookkeeping-vat',
+                  }
+                  const href = serviceSlugMap[item]
+                  return (
+                    <li className="svcCol__item" key={item}>
+                      <span className="svcCol__bullet" aria-hidden="true" />
+                      {href ? (
+                        <Link to={href} className="svcCol__itemLink">
+                          {item}
+                        </Link>
+                      ) : (
+                        <span className="svcCol__itemText">{item}</span>
+                      )}
+                    </li>
+                  )
+                })}
               </ul>
 
               <div className="svcCol__foot">
                 <span className="svcCol__tally">
                   {String(group.items.length).padStart(2, '0')} services
                 </span>
-                <a className="svcCol__link" href={ctaHref}>
-                  <span>Enquire</span>
+                <Link className="svcCol__link" to={`/services#${group.slug || 'licence'}`}>
+                  <span>Explore</span>
                   <Icon name="arrow-right" size="small" />
                   <span className="svcCol__linkLabel">
                     {' '}about {group.title}
                   </span>
-                </a>
+                </Link>
               </div>
             </li>
           ))}

@@ -30,10 +30,6 @@ function WsItem({ item, index }) {
       className={`wsItem wsReveal${inView ? ' is-inView' : ''}`}
       style={{ '--reveal-delay': `${index * 70}ms` }}
     >
-      <span className="wsItem__index" aria-hidden="true">
-        {String(index + 1).padStart(2, '0')}
-      </span>
-
       <span className="wsItem__icon">
         <Icon name={item.icon} />
       </span>

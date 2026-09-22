@@ -11,14 +11,33 @@ import { Link } from 'react-router-dom'
  * An empty/missing href renders a <span>, so a link never sits on the page
  * pointing at nothing.
  */
-export default function SmartLink({ href, children, target, rel, ...rest }) {
+export default function SmartLink({ href, children, target, rel, onClick, ...rest }) {
   if (!href) {
     return <span {...rest}>{children}</span>
   }
 
   if (href.startsWith('/')) {
     return (
-      <Link to={href} target={target} rel={rel} {...rest}>
+      <Link
+        to={href}
+        target={target}
+        rel={rel}
+        onClick={(e) => {
+          if (onClick) onClick(e)
+          if (href.includes('#')) {
+            const [path, hashId] = href.split('#')
+            const currentPath = window.location.pathname.replace(/\/$/, '') || '/'
+            const targetPath = path.replace(/\/$/, '') || '/'
+            if (currentPath === targetPath && hashId) {
+              const el = document.getElementById(hashId) || document.querySelector(`#${hashId}`)
+              if (el) {
+                el.scrollIntoView({ behavior: 'smooth' })
+              }
+            }
+          }
+        }}
+        {...rest}
+      >
         {children}
       </Link>
     )

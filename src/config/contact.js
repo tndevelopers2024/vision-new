@@ -10,7 +10,7 @@
  * `whatsappNumber` must be digits only in full international format (no "+",
  * spaces or dashes) so it can be dropped straight into a wa.me link.
  */
-const whatsappNumber = '971542887888'
+const whatsappNumber = '971551612342'
 const whatsappMessage =
   'Hi Vision Business Setup, I would like to know more about setting up my business in the UAE.'
 
@@ -20,20 +20,16 @@ export const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURICom
 )}`
 
 export const contact = {
-  // Public phone line is hidden site-wide until the number is confirmed.
-  // Leave both values empty to hide every "call us" display and link; set
-  // them together to bring the phone line back everywhere at once.
-  phoneDisplay: '',
-  phoneHref: '',
+  // Public phone line is configured site-wide.
+  phoneDisplay: '+971 55 161 2342',
+  phoneHref: 'tel:+971551612342',
 
   whatsappNumber,
-  whatsappDisplay: '+971 54 288 7888',
+  whatsappDisplay: '+971 55 161 2342',
   whatsappMessage,
 
   email: 'admin@visionbusinesssetup.ae',
-  // City-level only for now — the full street address is withheld until the
-  // office details are confirmed.
-  addressLines: ['Dubai, UAE'],
+  addressLines: ['IDS Business Center, Office no. 107', 'Karama, Dubai'],
 
   hours: '09.30 AM – 6.30 PM, Sunday Closed',
 

@@ -102,8 +102,9 @@ international format.
   third-level flyout of sub-services)
 - **Contact Us**
 
-**Business Setup** links to the three jurisdiction pages; the remaining items
-are on-page anchors (`#services`, `#request-callback`, …).
+**Business Setup** links to the three jurisdiction pages; **Our Services** links to
+the dedicated `/services` page with deep-anchor support for all categories and
+individual services; the remaining items are on-page anchors or routes (`/about`, `/contact`).
 
 ## Pages
 
@@ -111,6 +112,8 @@ are on-page anchors (`#services`, `#request-callback`, …).
 |---|---|---|
 | `/` | `pages/Home.jsx` | homepage sections, table above |
 | `/about` | `pages/AboutUs.jsx` | doc "About Us" + Founder / Core Values / Commitment |
+| `/services` | `pages/Services.jsx` | All 4 categories & 19 UAE corporate services + inquiry form |
+| `/services/:slug` | `pages/ServiceDetail.jsx` | Dedicated separate page for each of the 19 UAE corporate services |
 | `/contact` | `pages/Contact.jsx` | `CallbackForm` + `GetInTouch` |
 | `/business-setup/uae-mainland` | `pages/Jurisdiction.jsx` | doc "UAE Mainland" |
 | `/business-setup/uae-free-zone` | `pages/Jurisdiction.jsx` | doc "UAE Free Zone" |

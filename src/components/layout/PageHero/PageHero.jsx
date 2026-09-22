@@ -22,7 +22,7 @@ export default function PageHero({ crumbs = [], eyebrow, title, intro, image }) 
     <header className="pageHero">
       {image && (
         <div className="pageHero__media" aria-hidden="true">
-          <img className="pageHero__img" src={image} alt="" fetchpriority="high" />
+          <img className="pageHero__img" src={image} alt="" fetchPriority="high" />
         </div>
       )}
 

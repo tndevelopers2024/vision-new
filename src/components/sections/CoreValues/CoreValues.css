@@ -40,18 +40,14 @@
 }
 
 .coreValues__badge {
-  display: inline-block;
-  padding: 5px 14px;
-  font-family: var(--font-superheadline);
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: rgba(0, 0, 0, 0.7);
-  background-color: rgba(0, 0, 0, 0.04);
-  border: 1px solid rgba(0, 0, 0, 0.16);
-  border-radius: 2px;
-  margin-bottom: 1.25rem;
-  letter-spacing: 0.12em;
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: var(--fw-normal);
+  letter-spacing: 0.06em;
   text-transform: uppercase;
+  color: var(--c-muted);
+  margin-bottom: 0.9em;
 }
 
 .coreValues__title {
@@ -285,16 +281,27 @@
 
 .coreValues__progressTrack {
   flex: 1;
-  height: 2px;
-  background: rgba(0, 0, 0, 0.12);
+  height: 6px;
+  background: rgba(0, 0, 0, 0.09);
   position: relative;
   overflow: hidden;
+  border-radius: 3px;
+  cursor: pointer;
+  touch-action: none;
+  user-select: none;
+  transition: background-color 200ms ease;
+}
+
+.coreValues__progressTrack:hover {
+  background: rgba(0, 0, 0, 0.16);
 }
 
 .coreValues__progressBar {
   height: 100%;
   background: #1c3b5f;
-  transition: width 300ms ease;
+  border-radius: 3px;
+  transition: width 200ms ease-out;
+  pointer-events: none;
 }
 
 .coreValues__counter {

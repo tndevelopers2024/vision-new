@@ -71,7 +71,7 @@ export default function MinimalContact() {
                   id="min-fullname"
                   name="fullname"
                   type="text"
-                  placeholder="e.g. Mohammed Al Mansoori"
+                  placeholder="Your full name"
                   autoComplete="name"
                   required
                   className="minimalContact__input"
@@ -84,7 +84,7 @@ export default function MinimalContact() {
                   id="min-phone"
                   name="phone"
                   type="tel"
-                  placeholder="+971 50 000 0000"
+                  placeholder="Your phone number"
                   autoComplete="tel"
                   required
                   className="minimalContact__input"

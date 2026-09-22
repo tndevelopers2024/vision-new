@@ -1,0 +1,243 @@
+/* ==========================================================================
+   Legal Pages — Privacy Policy, Terms & Conditions, Disclaimer
+   Clean, luxury typography with executive readability and document navigation
+   ========================================================================== */
+
+.legalPage {
+  background-color: #f7f9fc;
+  color: #1c2b39;
+  min-height: 100vh;
+}
+
+.legalContent {
+  padding: 60px 24px 100px;
+}
+
+.legalContent__container {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+/* ── Sidebar Navigation Tabs ── */
+.legalNav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: #ffffff;
+  border: 1px solid rgba(28, 59, 95, 0.08);
+  border-radius: 4px;
+  padding: 16px;
+  position: sticky;
+  top: 100px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+.legalNav__item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #4b5e71;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+}
+
+.legalNav__item svg {
+  color: #8c9ba5;
+  transition: color 0.2s ease;
+}
+
+.legalNav__item:hover {
+  color: #1c3b5f;
+  background-color: #f3f6f9;
+}
+
+.legalNav__item:hover svg {
+  color: #1c3b5f;
+}
+
+.legalNav__item--active {
+  color: #1c3b5f;
+  background-color: #edf3f8;
+  font-weight: 600;
+  border-left-color: #1c3b5f;
+}
+
+.legalNav__item--active svg {
+  color: #1c3b5f;
+}
+
+/* ── Main Legal Body ── */
+.legalBody {
+  background: #ffffff;
+  border: 1px solid rgba(28, 59, 95, 0.08);
+  border-radius: 4px;
+  padding: 48px 56px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.03);
+}
+
+.legalBody__head {
+  border-bottom: 1px solid rgba(28, 59, 95, 0.08);
+  padding-bottom: 24px;
+  margin-bottom: 36px;
+}
+
+.legalBody__stamp {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #7b8e9f;
+  margin-bottom: 8px;
+}
+
+.legalBody__lead {
+  font-size: 15px;
+  color: #55697d;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.legalBody__sections {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.legalSection {
+  border-bottom: 1px solid rgba(28, 59, 95, 0.05);
+  padding-bottom: 28px;
+}
+
+.legalSection:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.legalSection__title {
+  font-family: var(--font-base);
+  font-size: 20px;
+  font-weight: 600;
+  color: #112338;
+  margin: 0 0 16px;
+  letter-spacing: -0.01em;
+}
+
+.legalSection__text {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.legalSection__text p {
+  font-size: 15px;
+  line-height: 1.75;
+  color: #405264;
+  margin: 0;
+}
+
+/* ── Compliance CTA Card ── */
+.legalCard {
+  margin-top: 48px;
+  background: linear-gradient(135deg, #112338 0%, #1c3b5f 100%);
+  border-radius: 4px;
+  padding: 32px;
+  color: #ffffff;
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.legalCard__iconHolder {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #ffffff;
+}
+
+.legalCard__content {
+  flex: 1;
+}
+
+.legalCard__title {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 8px;
+  color: #ffffff;
+}
+
+.legalCard__desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0 0 20px;
+}
+
+.legalCard__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: #ffffff;
+  color: #112338;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: all 0.2s ease;
+}
+
+.legalCard__btn:hover {
+  background: #edf3f8;
+  transform: translateX(2px);
+}
+
+/* ── Responsive ── */
+@media (max-width: 960px) {
+  .legalContent__container {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .legalNav {
+    position: static;
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 8px;
+  }
+
+  .legalNav__item {
+    padding: 10px 14px;
+    white-space: nowrap;
+    border-left: none;
+    border-bottom: 2px solid transparent;
+  }
+
+  .legalNav__item--active {
+    border-left: none;
+    border-bottom-color: #1c3b5f;
+  }
+
+  .legalBody {
+    padding: 32px 24px;
+  }
+
+  .legalCard {
+    flex-direction: column;
+    padding: 24px;
+  }
+}

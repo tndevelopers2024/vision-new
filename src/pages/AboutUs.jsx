@@ -5,8 +5,8 @@ import WhoWeWorkWith from '../components/sections/WhoWeWorkWith/WhoWeWorkWith.js
 import WhatSetsUsApart from '../components/sections/WhatSetsUsApart/WhatSetsUsApart.jsx'
 import Commitment from '../components/sections/Commitment/Commitment.jsx'
 import Founder from '../components/sections/Founder/Founder.jsx'
-import { ourStory, coreValues, ourServices, commitment } from '../data/home.js'
-import { contact, whatsappLink } from '../config/contact.js'
+import { ourStory, coreValues, commitment } from '../data/home.js'
+import { contact, hasPhone } from '../config/contact.js'
 import PageHero from '../components/layout/PageHero/PageHero.jsx'
 import imgStory from '../assets/images/our-story-advisory.jpg'
 import imgHero from '../assets/images/banner-burj-khalifa.jpg'
@@ -17,18 +17,16 @@ import './AboutUs.css'
  *
  * Every user-facing string on this page comes from the client's own copy deck,
  * "Website Content_Vision.docx" (mirrored in `Website-Content-Vision.txt`), and
- * the sections follow that document's "About Us" order — except Our Founder,
- * which the client asked to lead the page:
+ * the sections follow that document's "About Us" order:
  *
  *   1. Hero
- *   2. Our Founder
- *   3. Our Story
+ *   2. Our Story
+ *   3. Our Founder
  *   4. Who We Work With
  *   5. What Sets Us Apart
  *   6. Our Core Values
  *   7. Our Commitment
- *   8. Our Services  (labels from the document's navigation list)
- *   9. Request a Callback  (a required feature per "Other Requirements")
+ *   8. Request a Callback  (a required feature per "Other Requirements")
  *
  * Nothing here is written copy: no invented statistics, straplines or intros.
  */
@@ -54,10 +52,7 @@ export default function AboutUs() {
         image={imgHero}
       />
 
-      {/* ── 2. Our Founder ──────────────────────────────────────── */}
-      <Founder />
-
-      {/* ── 3. Our Story ────────────────────────────────────────── */}
+      {/* ── 2. Our Story ────────────────────────────────────────── */}
       <section className="aboutStory" id="our-story">
         <div className="aboutStory__inner">
           <div className="aboutStory__panel">
@@ -90,6 +85,9 @@ export default function AboutUs() {
         </div>
       </section>
 
+      {/* ── 3. Our Founder ──────────────────────────────────────── */}
+      <Founder />
+
       {/* ── 4. Who We Work With ─────────────────────────────────── */}
       <WhoWeWorkWith />
 
@@ -97,7 +95,7 @@ export default function AboutUs() {
       <WhatSetsUsApart />
 
       {/* ── 6. Our Core Values ──────────────────────────────────── */}
-      <section className="aboutStand">
+      <section className="aboutStand" id="values">
         <header className="aboutStand__head">
           <h2 className="aboutStand__title">Our Core Values</h2>
         </header>
@@ -117,79 +115,7 @@ export default function AboutUs() {
       {/* ── 7. Our Commitment ───────────────────────────────────── */}
       <Commitment />
 
-      {/* ── 8. Our Services ─────────────────────────────────────── */}
-      <section className="aboutServices" id="services">
-        <div className="aboutServices__inner">
-          <header className="aboutServices__head">
-            <span className="aboutServices__super">{ourServices.super || 'OUR SERVICES'}</span>
-            <h2 className="aboutServices__title">
-              {ourServices.title} <strong>{ourServices.accent}</strong>
-            </h2>
-            {ourServices.intro && <p className="aboutServices__intro">{ourServices.intro}</p>}
-          </header>
-
-          <div className="aboutServices__grid">
-            {ourServices.groups.map((group, index) => (
-              <article className="aboutServiceCard" key={group.title}>
-                <div className="aboutServiceCard__header">
-                  <span className="aboutServiceCard__icon">
-                    <Icon name={group.icon} />
-                  </span>
-                  <span className="aboutServiceCard__index" aria-hidden="true">
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
-                </div>
-
-                <h3 className="aboutServiceCard__title">{group.title}</h3>
-
-                <ul className="aboutServiceCard__list">
-                  {group.items.map((item) => (
-                    <li className="aboutServiceCard__item" key={item}>
-                      <Icon name="check" size="small" className="aboutServiceCard__check" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="aboutServiceCard__foot">
-                  <a href="#request-callback" className="aboutServiceCard__cta">
-                    <span>Inquire Now</span>
-                    <Icon name="arrow-right" size="small" />
-                  </a>
-                </div>
-              </article>
-            ))}
-          </div>
-
-          <div className="aboutServices__banner">
-            <div className="aboutServices__bannerText">
-              <span className="aboutServices__bannerSuper">OUR COMMITMENT</span>
-              <h3 className="aboutServices__bannerTitle">Every Business starts with Vision.</h3>
-              <p className="aboutServices__bannerDesc">
-                Whether you are starting fresh or expanding your presence, our team is here to guide you with expertise, clarity, and dedication. Connect with Vision Business Setup and experience a service built around you.
-              </p>
-            </div>
-            <div className="aboutServices__bannerActions">
-              <a href="#request-callback" className="aboutServices__bannerBtn aboutServices__bannerBtn--primary">
-                <span>Request a Callback</span>
-                <Icon name="arrow-right" size="small" />
-              </a>
-              <a
-                href={whatsappLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="aboutServices__bannerBtn aboutServices__bannerBtn--secondary"
-                aria-label="Chat on WhatsApp"
-              >
-                <Icon name="whatsapp" size="small" />
-                <span>WhatsApp Us</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── 9. Request a Callback ───────────────────────────────── */}
+      {/* ── 8. Request a Callback ───────────────────────────────── */}
       <section className="aboutContact" id="request-callback">
         <div className="aboutContact__inner">
           <div className="aboutContact__formCol">
@@ -232,6 +158,7 @@ export default function AboutUs() {
             <p className="aboutContact__panelText">{commitment.closing.lines[1]}</p>
             <p className="aboutContact__panelMeta">
               <a href={`mailto:${contact.email}`}>{contact.email}</a>
+              {hasPhone && <a href={contact.phoneHref}>{contact.phoneDisplay}</a>}
               <span>{contact.addressLines.join(', ')}</span>
               <span>{contact.hours}</span>
             </p>

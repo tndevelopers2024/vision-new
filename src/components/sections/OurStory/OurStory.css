@@ -33,20 +33,17 @@
 }
 
 .aboutWhyBadgeWrapper {
-  margin-bottom: 8px;
+  margin-bottom: 0.9em;
 }
 
 .aboutWhyBadge {
-  display: inline-block;
-  background-color: rgba(0, 0, 0, 0.08);
-  color: #222222;
-  font-family: var(--font-alt);
-  font-size: 13px;
-  font-weight: 500;
-  line-height: 1;
-  padding: 8px 16px;
-  border-radius: 5px;
-  letter-spacing: 0.01em;
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: var(--fw-normal);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--c-muted);
 }
 
 .aboutWhyTitle {

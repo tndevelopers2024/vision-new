@@ -6,7 +6,10 @@ import WhatsApp from './components/layout/WhatsApp/WhatsApp.jsx'
 import Home from './pages/Home.jsx'
 import AboutUs from './pages/AboutUs.jsx'
 import Contact from './pages/Contact.jsx'
+import Services from './pages/Services.jsx'
+import ServiceDetail from './pages/ServiceDetail.jsx'
 import Jurisdiction from './pages/Jurisdiction.jsx'
+import Legal from './pages/Legal.jsx'
 import { jurisdictions } from './data/jurisdictions.js'
 import heroMainland from './assets/images/banner-night.jpg'
 import heroFreeZone from './assets/images/banner-atlantis.webp'
@@ -22,7 +25,8 @@ function RouteScrollHandler() {
   useEffect(() => {
     if (hash) {
       const timer = setTimeout(() => {
-        const el = document.querySelector(hash)
+        const id = hash.replace(/^#/, '')
+        const el = document.getElementById(id) || document.querySelector(hash)
         if (el) {
           el.scrollIntoView({ behavior: 'smooth' })
         }
@@ -46,7 +50,12 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<AboutUs />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/services/:slug" element={<ServiceDetail />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/privacy-policy" element={<Legal type="privacy" />} />
+            <Route path="/terms-conditions" element={<Legal type="terms" />} />
+            <Route path="/disclaimer" element={<Legal type="disclaimer" />} />
             {/* Business Setup — one page per jurisdiction, content verbatim
                 from "Website Content_Vision.docx". */}
             <Route

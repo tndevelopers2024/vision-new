@@ -27,7 +27,7 @@ export default function BusinessSetup() {
     <section className="businessSetup" id="business-setup">
       <div className="businessSetup__cell">
         <header className="bsHead">
-          <span className="bsHead__super">{eyebrow}</span>
+          {eyebrow && <span className="bsHead__super">{eyebrow}</span>}
           <h2 className="bsHead__title">
             <span className="bsHead__plain">{title}</span>{' '}
             <strong className="bsHead__accent">{accent}</strong>

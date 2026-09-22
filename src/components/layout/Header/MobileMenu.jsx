@@ -71,8 +71,18 @@ export default function MobileMenu({ open, onClose }) {
             {mainMenu.map((item) => {
               const isCurrent =
                 item.href === location.pathname ||
-                (item.href === '/' && location.pathname === '/')
-              return <MenuItem key={item.label} item={item} current={isCurrent} />
+                (item.href === '/' && location.pathname === '/') ||
+                (item.href !== '/' && !item.href.startsWith('/#') && location.pathname.startsWith(item.href)) ||
+                Boolean(item.children?.some((c) => c.href === location.pathname))
+              return (
+                <MenuItem
+                  key={item.label}
+                  item={item}
+                  current={isCurrent}
+                  isMobile={true}
+                  onNavigate={onClose}
+                />
+              )
             })}
           </ul>
         </nav>

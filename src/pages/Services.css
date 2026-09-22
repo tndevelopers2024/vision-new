@@ -1,0 +1,1197 @@
+/* ==========================================================================
+   Services Page — Vision Business Setup (/services)
+   Visual language mirrors AboutUs.css & Jurisdiction.css:
+   Clean monochrome / brand navy accents, 1240px container, clamp-based scale,
+   hairline cards, crisp typography.
+   ========================================================================== */
+
+.svcPage {
+  position: relative;
+  width: 100%;
+  background-color: #ffffff;
+  scroll-behavior: smooth;
+}
+
+/* ==========================================================================
+   1 — Hero: handled by components/layout/PageHero/PageHero.css
+   ========================================================================== */
+
+/* ==========================================================================
+   2 — Metrics Strip
+   ========================================================================== */
+
+.svcMetrics {
+  width: 100%;
+  background-color: #f7f8f9;
+  border-bottom: 1px solid var(--c-border-soft);
+  padding: clamp(24px, 3vw, 36px) 0;
+}
+
+.svcMetrics__container {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 40px);
+}
+
+.svcMetrics__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(16px, 2.5vw, 28px);
+}
+
+.svcMetricCard {
+  background: #ffffff;
+  border: 1px solid var(--c-border-soft);
+  border-radius: 4px;
+  padding: clamp(18px, 2vw, 24px);
+  text-align: left;
+  transition: transform var(--t-fast), box-shadow var(--t-fast);
+}
+
+.svcMetricCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+}
+
+.svcMetricCard__value {
+  font-family: var(--font-heading);
+  font-size: clamp(28px, 2.6vw, 38px);
+  font-weight: 700;
+  color: var(--c-brand);
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+
+.svcMetricCard__label {
+  font-family: var(--font-heading);
+  font-size: 15px;
+  font-weight: 600;
+  color: #111111;
+  margin-bottom: 4px;
+}
+
+.svcMetricCard__desc {
+  font-family: var(--font-base);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--c-muted);
+}
+
+/* ==========================================================================
+   3 — Category Filter Tabs Bar (Sticky)
+   ========================================================================== */
+
+.svcNav {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background-color: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--c-border);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.svcNav__container {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 40px);
+}
+
+.svcNav__list {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 12px 0;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.svcNav__list::-webkit-scrollbar {
+  display: none;
+}
+
+.svcNav__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 500;
+  color: #333333;
+  text-decoration: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all var(--t-fast);
+}
+
+.svcNav__item:hover {
+  background-color: #f0f2f5;
+  color: #000000;
+  border-color: var(--c-border-soft);
+}
+
+.svcNav__item--active {
+  background-color: var(--c-brand) !important;
+  color: #ffffff !important;
+  border-color: var(--c-brand) !important;
+}
+
+.svcNav__item--active .svcNav__icon {
+  color: #ffffff;
+}
+
+.svcNav__item--active .svcNav__badge {
+  background-color: rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+}
+
+.svcNav__icon {
+  display: inline-flex;
+  color: var(--c-brand);
+}
+
+.svcNav__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  background-color: rgba(0, 0, 0, 0.07);
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #333333;
+}
+
+.svcNav__item--cta {
+  margin-left: auto;
+  background-color: var(--c-brand);
+  color: #ffffff !important;
+  font-weight: 600;
+}
+
+.svcNav__item--cta:hover {
+  background-color: var(--c-brand-deep) !important;
+  color: #ffffff !important;
+}
+
+/* ==========================================================================
+   4 — Service Categories Body
+   ========================================================================== */
+
+.svcBody {
+  width: 100%;
+}
+
+.svcCategorySection {
+  padding: clamp(54px, 6vw, 84px) 0;
+  background-color: #ffffff;
+  scroll-margin-top: 70px;
+}
+
+.svcCategorySection--alt {
+  background-color: #fafbfc;
+  border-top: 1px solid var(--c-border-soft);
+  border-bottom: 1px solid var(--c-border-soft);
+}
+
+.svcCategorySection__container {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 40px);
+}
+
+/* Category Header */
+.svcCategoryHead {
+  max-width: 780px;
+  margin-bottom: clamp(36px, 4vw, 54px);
+}
+
+.svcCategoryHead__badgeRow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.svcCategoryHead__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: rgba(28, 59, 95, 0.08);
+  color: var(--c-brand);
+  font-family: var(--font-alt);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border-radius: 4px;
+}
+
+.svcCategoryHead__tally {
+  font-family: var(--font-alt);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--c-muted);
+}
+
+.svcCategoryHead__title {
+  font-family: var(--font-heading);
+  font-size: clamp(28px, 2.8vw, 38px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: #000000;
+  margin: 0 0 10px 0;
+}
+
+.svcCategoryHead__tagline {
+  font-family: var(--font-base);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--c-brand);
+  margin: 0 0 14px 0;
+}
+
+.svcCategoryHead__desc {
+  font-family: var(--font-base);
+  font-size: 15.5px;
+  line-height: 1.7;
+  color: #444444;
+  margin: 0;
+}
+
+/* Service Grid */
+.svcGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(24px, 3vw, 36px);
+}
+
+.svcCard {
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  padding: clamp(26px, 3vw, 36px);
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--t-fast), box-shadow var(--t-fast), border-color var(--t-fast);
+  scroll-margin-top: 80px;
+}
+
+.svcCard:hover {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+  border-color: rgba(28, 59, 95, 0.35);
+}
+
+.svcCard__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.svcCard__index {
+  font-family: var(--font-heading);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--c-muted);
+  letter-spacing: 0.08em;
+}
+
+.svcCard__badges {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.svcCard__timeBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-alt);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--c-brand);
+  background-color: rgba(28, 59, 95, 0.08);
+  padding: 4px 9px;
+  border-radius: 3px;
+}
+
+.svcCard__badge {
+  font-family: var(--font-alt);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background-color: #f2f4f7;
+  color: #222222;
+  padding: 4px 9px;
+  border-radius: 3px;
+}
+
+.svcCard__iconWrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background-color: rgba(28, 59, 95, 0.07);
+  color: var(--c-brand);
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+
+.svcCard__title {
+  font-family: var(--font-heading);
+  font-size: clamp(20px, 1.8vw, 24px);
+  font-weight: 700;
+  line-height: 1.3;
+  color: #000000;
+  margin: 0 0 12px 0;
+}
+
+.svcCard__summary {
+  font-family: var(--font-base);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.6;
+  color: #111111;
+  margin: 0 0 12px 0;
+}
+
+.svcCard__desc {
+  font-family: var(--font-base);
+  font-size: 14px;
+  line-height: 1.7;
+  color: #555555;
+  margin: 0 0 18px 0;
+}
+
+/* Feature Blocks (Decisive Zone Content) */
+.svcCard__featureBlock {
+  background-color: #f8f9fa;
+  border-left: 3px solid var(--c-brand);
+  border-radius: 0 4px 4px 0;
+  padding: 12px 14px;
+  margin-bottom: 16px;
+}
+
+.svcCard__featureBlock--highlight {
+  background-color: #f5f8fc;
+  border-left-color: #d4a373;
+}
+
+.svcCard__featureTitle {
+  font-family: var(--font-heading);
+  font-size: 12.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #222222;
+  margin: 0 0 8px 0;
+}
+
+.svcCard__featureList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.svcCard__featureItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-family: var(--font-base);
+  font-size: 13px;
+  line-height: 1.5;
+  color: #333333;
+}
+
+.svcCard__featureDot {
+  width: 5px;
+  height: 5px;
+  background-color: var(--c-brand);
+  border-radius: 50%;
+  margin-top: 7px;
+  flex-shrink: 0;
+}
+
+.svcCard__starIcon {
+  color: #d4a373;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.svcCard__tagCloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.svcCard__tag {
+  background-color: #ffffff;
+  border: 1px solid var(--c-border);
+  padding: 4px 10px;
+  border-radius: 3px;
+  font-family: var(--font-base);
+  font-size: 12px;
+  font-weight: 500;
+  color: #222222;
+}
+
+/* Deliverables */
+.svcCard__deliverables {
+  background-color: #fcfcfd;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  border-radius: 4px;
+  padding: 14px 16px;
+  margin-top: auto;
+  margin-bottom: 16px;
+}
+
+.svcCard__delivTitle {
+  font-family: var(--font-heading);
+  font-size: 12.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #333333;
+  margin: 0 0 8px 0;
+}
+
+.svcCard__delivList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.svcCard__delivItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  font-family: var(--font-base);
+  font-size: 13px;
+  line-height: 1.5;
+  color: #444444;
+}
+
+.svcCard__delivCheck {
+  display: inline-flex;
+  color: var(--c-brand);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Expandable Drawer (Requirements & Steps) */
+.svcCard__accordion {
+  margin-bottom: 16px;
+}
+
+.svcCard__toggleBtn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 12px;
+  background-color: #f1f4f8;
+  border: 1px solid rgba(28, 59, 95, 0.15);
+  border-radius: 4px;
+  font-family: var(--font-heading);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--c-brand);
+  cursor: pointer;
+  transition: all var(--t-fast);
+}
+
+.svcCard__toggleBtn:hover {
+  background-color: #e6ecf3;
+}
+
+.svcCard__expandedPanel {
+  margin-top: 10px;
+  padding: 14px;
+  background-color: #ffffff;
+  border: 1px solid var(--c-border);
+  border-radius: 4px;
+  animation: fadeIn 200ms ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.svcCard__drawerSection {
+  margin-bottom: 12px;
+}
+
+.svcCard__drawerSection:last-child {
+  margin-bottom: 0;
+}
+
+.svcCard__drawerHeading {
+  font-family: var(--font-heading);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--c-brand);
+  margin: 0 0 6px 0;
+}
+
+.svcCard__drawerList {
+  margin: 0;
+  padding-left: 18px;
+  font-family: var(--font-base);
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: #444444;
+}
+
+.svcCard__drawerNumberedList {
+  margin: 0;
+  padding-left: 18px;
+  font-family: var(--font-base);
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: #444444;
+}
+
+/* Card Actions */
+.svcCard__footer {
+  padding-top: 14px;
+  border-top: 1px solid var(--c-border-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.svcCard__pageBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 12px 18px;
+  font-family: var(--font-base);
+  font-size: 14px;
+  font-weight: 600;
+  background-color: var(--c-brand);
+  color: #ffffff;
+  border: 1px solid var(--c-brand);
+  border-radius: 4px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--t-fast);
+}
+
+.svcCard__pageBtn:hover {
+  background-color: #000000;
+  border-color: #000000;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.svcCard__ctaBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 10px 18px;
+  font-family: var(--font-base);
+  font-size: 13px;
+  font-weight: 600;
+  background-color: transparent;
+  color: #222222;
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all var(--t-fast);
+}
+
+.svcCard__ctaBtn:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+  color: #000000;
+  border-color: rgba(0, 0, 0, 0.35);
+}
+
+/* ==========================================================================
+   5 — Methodology / 4-Step Process Section
+   ========================================================================== */
+
+.svcProcess {
+  background-color: var(--c-brand);
+  color: #ffffff;
+  padding: clamp(60px, 6.5vw, 90px) 0;
+}
+
+.svcProcess__container {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 40px);
+}
+
+.svcProcess__head {
+  max-width: 680px;
+  margin-bottom: clamp(40px, 5vw, 60px);
+}
+
+.svcProcess__super {
+  display: block;
+  font-family: var(--font-alt);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 12px;
+}
+
+.svcProcess__title {
+  font-family: var(--font-heading);
+  font-size: clamp(28px, 2.8vw, 40px);
+  font-weight: 400;
+  line-height: 1.2;
+  color: #ffffff;
+  margin: 0 0 16px 0;
+}
+
+.svcProcess__title strong {
+  font-weight: 700;
+}
+
+.svcProcess__intro {
+  font-family: var(--font-base);
+  font-size: 16px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+}
+
+.svcProcess__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(20px, 2.5vw, 32px);
+}
+
+.svcStepCard {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  padding: clamp(22px, 2.4vw, 32px);
+  position: relative;
+  transition: transform var(--t-fast), background-color var(--t-fast);
+}
+
+.svcStepCard:hover {
+  background: rgba(255, 255, 255, 0.09);
+  transform: translateY(-3px);
+}
+
+.svcStepCard__num {
+  font-family: var(--font-heading);
+  font-size: clamp(32px, 3.2vw, 46px);
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.3);
+  line-height: 1;
+  margin-bottom: 16px;
+}
+
+.svcStepCard__title {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 12px 0;
+  line-height: 1.35;
+}
+
+.svcStepCard__text {
+  font-family: var(--font-base);
+  font-size: 14px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.78);
+  margin: 0;
+}
+
+/* ==========================================================================
+   6 — FAQ Section
+   ========================================================================== */
+
+.svcFaq {
+  background-color: #ffffff;
+  padding: clamp(54px, 6vw, 84px) 0;
+  border-bottom: 1px solid var(--c-border-soft);
+}
+
+.svcFaq__container {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 40px);
+}
+
+.svcFaq__head {
+  text-align: center;
+  margin-bottom: clamp(36px, 4.5vw, 54px);
+}
+
+.svcFaq__super {
+  display: block;
+  font-family: var(--font-alt);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c-muted);
+  margin-bottom: 10px;
+}
+
+.svcFaq__title {
+  font-family: var(--font-heading);
+  font-size: clamp(26px, 2.6vw, 36px);
+  font-weight: 400;
+  color: #000000;
+  margin: 0;
+}
+
+.svcFaq__title strong {
+  font-weight: 700;
+}
+
+.svcFaq__list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.svcFaqItem {
+  border: 1px solid var(--c-border);
+  border-radius: 6px;
+  overflow: hidden;
+  transition: border-color var(--t-fast);
+}
+
+.svcFaqItem--open {
+  border-color: var(--c-brand);
+}
+
+.svcFaqItem__question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 24px;
+  background-color: #ffffff;
+  border: none;
+  font-family: var(--font-heading);
+  font-size: 17px;
+  font-weight: 600;
+  color: #111111;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color var(--t-fast);
+}
+
+.svcFaqItem__question:hover {
+  background-color: #f7f9fa;
+}
+
+.svcFaqItem__toggleIcon {
+  display: inline-flex;
+  color: var(--c-brand);
+  flex-shrink: 0;
+}
+
+.svcFaqItem__answer {
+  padding: 0 24px 22px 24px;
+  background-color: #ffffff;
+  font-family: var(--font-base);
+  font-size: 15px;
+  line-height: 1.7;
+  color: #444444;
+}
+
+.svcFaqItem__answer p {
+  margin: 0;
+}
+
+/* ==========================================================================
+   7 — Request a Callback / Inquiry Form
+   ========================================================================== */
+
+.svcContact {
+  background-color: #f5f6f8;
+  padding: clamp(60px, 6.5vw, 90px) 0;
+  scroll-margin-top: 60px;
+}
+
+.svcContact__container {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 40px);
+}
+
+.svcContact__inner {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: clamp(36px, 5vw, 64px);
+  align-items: start;
+}
+
+/* Form Column */
+.svcContact__formCol {
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: clamp(32px, 4vw, 48px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+.svcContact__super {
+  display: block;
+  font-family: var(--font-alt);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c-brand);
+  margin-bottom: 8px;
+}
+
+.svcContact__title {
+  font-family: var(--font-heading);
+  font-size: clamp(26px, 2.6vw, 36px);
+  font-weight: 700;
+  color: #000000;
+  margin: 0 0 12px 0;
+}
+
+.svcContact__lead {
+  font-family: var(--font-base);
+  font-size: 15px;
+  line-height: 1.65;
+  color: #555555;
+  margin: 0 0 28px 0;
+}
+
+.svcContact__form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.svcFieldRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.svcField {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.svcField label {
+  font-family: var(--font-heading);
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #222222;
+}
+
+.svcField input,
+.svcField select,
+.svcField textarea {
+  width: 100%;
+  padding: 13px 15px;
+  font-family: var(--font-base);
+  font-size: 15px;
+  color: #111111;
+  background-color: #fbfbfb;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  border-radius: 4px;
+  transition: all var(--t-fast);
+  box-sizing: border-box;
+}
+
+.svcField input:focus,
+.svcField select:focus,
+.svcField textarea:focus {
+  outline: none;
+  background-color: #ffffff;
+  border-color: var(--c-brand);
+  box-shadow: 0 0 0 3px rgba(28, 59, 95, 0.12);
+}
+
+.svcContact__submitBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 32px;
+  font-family: var(--font-base);
+  font-size: 15px;
+  font-weight: 600;
+  background-color: var(--c-brand);
+  color: #ffffff;
+  border: 1px solid var(--c-brand);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color var(--t-fast), transform var(--t-fast);
+  margin-top: 8px;
+}
+
+.svcContact__submitBtn:hover {
+  background-color: var(--c-brand-deep);
+  border-color: var(--c-brand-deep);
+  transform: translateY(-1px);
+}
+
+/* Sent Confirmation */
+.svcContact__sent {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.svcContact__sentIcon {
+  display: inline-flex;
+  color: #1a8754;
+  margin-bottom: 16px;
+}
+
+.svcContact__sentTitle {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 700;
+  color: #000000;
+  margin: 0 0 10px 0;
+}
+
+.svcContact__sentDesc {
+  font-family: var(--font-base);
+  font-size: 15px;
+  line-height: 1.6;
+  color: #555555;
+  max-width: 440px;
+  margin: 0 auto 24px auto;
+}
+
+.svcContact__againBtn {
+  display: inline-flex;
+  padding: 10px 22px;
+  font-family: var(--font-base);
+  font-size: 14px;
+  font-weight: 600;
+  background-color: transparent;
+  color: var(--c-brand);
+  border: 1px solid var(--c-brand);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all var(--t-fast);
+}
+
+.svcContact__againBtn:hover {
+  background-color: var(--c-brand);
+  color: #ffffff;
+}
+
+/* Sidebar Column */
+.svcSideCard {
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: clamp(28px, 3.5vw, 40px);
+}
+
+.svcSideCard__badge {
+  display: inline-block;
+  background-color: rgba(28, 59, 95, 0.08);
+  color: var(--c-brand);
+  font-family: var(--font-alt);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 3px;
+  margin-bottom: 12px;
+}
+
+.svcSideCard__title {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 700;
+  color: #000000;
+  margin: 0 0 12px 0;
+}
+
+.svcSideCard__text {
+  font-family: var(--font-base);
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: #555555;
+  margin: 0 0 20px 0;
+}
+
+.svcSideCard__points {
+  list-style: none;
+  margin: 0 0 28px 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.svcSideCard__points li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-family: var(--font-base);
+  font-size: 14px;
+  line-height: 1.5;
+  color: #222222;
+}
+
+.svcSideCard__pointCheck {
+  display: inline-flex;
+  color: var(--c-brand);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.svcSideCard__contactBlock {
+  border-top: 1px solid var(--c-border-soft);
+  padding-top: 20px;
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.svcSideContactItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  color: var(--c-brand);
+}
+
+.svcSideContactItem__label {
+  display: block;
+  font-family: var(--font-alt);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--c-muted);
+  margin-bottom: 2px;
+}
+
+.svcSideContactItem__val {
+  font-family: var(--font-base);
+  font-size: 14px;
+  font-weight: 500;
+  color: #111111;
+  text-decoration: none;
+  line-height: 1.4;
+}
+
+a.svcSideContactItem__val:hover {
+  color: var(--c-brand);
+  text-decoration: underline;
+}
+
+.svcSideCard__ctaWrap {
+  border-top: 1px solid var(--c-border-soft);
+  padding-top: 18px;
+}
+
+.svcSideCard__linkBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 12px 18px;
+  font-family: var(--font-base);
+  font-size: 14px;
+  font-weight: 600;
+  background-color: transparent;
+  color: #000000;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all var(--t-fast);
+}
+
+.svcSideCard__linkBtn:hover {
+  background-color: var(--c-brand);
+  color: #ffffff;
+  border-color: var(--c-brand);
+}
+
+
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .svcMetrics__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .svcGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .svcProcess__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .svcContact__inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .svcFieldRow {
+    grid-template-columns: 1fr;
+  }
+
+  .svcMetrics__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .svcProcess__grid {
+    grid-template-columns: 1fr;
+  }
+}

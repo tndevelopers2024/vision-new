@@ -36,7 +36,7 @@ export const heroSlides = [
     title: 'A trusted name in the UAE’s business setup landscape',
     image: 'banner-atlantis.webp',
     buttons: [
-      { label: 'Our Services', href: '#services' },
+      { label: 'Our Services', href: '/services' },
       { label: 'Contact Us', href: '#request-callback' },
     ],
   },
@@ -45,9 +45,8 @@ export const heroSlides = [
 /* 2 — BUSINESS SETUP OPTIONS --------------------------------------------- */
 
 export const businessSetup = {
-  super: 'BUSINESS SETUP',
   title: 'UAE Business',
-  accent: 'Setup Options',
+  accent: 'Setup',
   intro:
     'We act as strategic advisors, helping clients choose the right structure, navigate regulations, and build a strong foundation for long-term success in the UAE.',
   options: [
@@ -128,44 +127,98 @@ export const ourStory = {
   ],
 }
 
-/* 5b — TRUSTED BY SOME BIGGEST NAMES (testimonials) -------------------- */
+/* 5b — CLIENT TESTIMONIALS & TRUST (testimonials) --------------------- */
 
-/*
- * Recreated 1:1 from the Avantage Business reference section
- * ("Trusted by some Biggest Names"). Quote copy, names, companies, ratings
- * and the avatar images are the theme's originals, kept verbatim.
- */
 export const testimonials = {
-  super: 'GREAT REVIEWS FOR OUR SERVICES',
-  title: 'Trusted by some',
-  accent: 'Biggest Names',
+  super: 'CLIENT TESTIMONIALS',
+  title: 'Trusted by founders & leaders across',
+  accent: 'the UAE',
+  intro:
+    'Real experiences from entrepreneurs, multinational founders, and business leaders who established and scaled their operations with Vision Business Setup.',
+  stats: [
+    { value: '1,000+', label: 'Companies Formed' },
+    { value: '10+', label: 'Years UAE Advisory' },
+    { value: '100%', label: 'Foreign Ownership' },
+    { value: '5.0 ★', label: 'Client Satisfaction' },
+  ],
   items: [
     {
-      image: 'img-quote-01.jpg',
-      title: 'Absolutely spot-on!',
+      image: 'img-quote-04.jpg',
+      title: 'Effortless Mainland Formation & Banking',
       quote:
-        'Seamlessly visualize quality intellectual capital without superior collaboration and idea-sharing. Holistically pontificate installed base portals.',
-      name: 'James Brisk',
-      company: 'HSBC Bank',
+        'Expanding our commercial operations to Dubai was seamless with Vision Business Setup. Viekram and his team guided us through every regulatory milestone—from securing our DED general trading license and Dubai Customs code to opening our corporate bank account in record time. Their round-the-clock responsiveness and transparent guidance made all the difference.',
+      name: 'Tariq Al Mansoori',
+      role: 'Managing Director',
+      company: 'Apex Global Commerce LLC',
+      location: 'Dubai Mainland',
+      serviceTag: 'Mainland · General Trading & Banking',
       rating: 5,
-    },
-    {
-      image: 'img-quote-02.jpg',
-      title: 'Best decision ever',
-      quote:
-        'Quickly deploy strategic networks with compelling e-business. Credibly pontificate highly efficient manufactured products and enabled data.',
-      name: 'Howard McMillan',
-      company: 'Hotel Berg',
-      rating: 5,
+      verified: true,
     },
     {
       image: 'img-quote-03.jpg',
-      title: 'Saved my Business',
+      title: 'RERA Licensing & Executive Golden Visas',
       quote:
-        'Dynamically target high-payoff intellectual capital for customized technologies. Objectively integrate emerging core competency communities.',
-      name: 'Maria Gothenburg',
-      company: 'Applauz Startup',
+        'Launching a luxury real estate brokerage in Downtown Dubai requires navigating strict RERA guidelines and commercial clearances. Vision handled the complete licensing documentation, office approvals, and 10-year Golden Visas for our executive team with flawless precision. They don’t just process papers—they act as true strategic advisors.',
+      name: 'Elena Rostova',
+      role: 'Founder & Managing Partner',
+      company: 'Aurelia Prime Properties',
+      location: 'Downtown Dubai',
+      serviceTag: 'Real Estate · RERA & Golden Visas',
       rating: 5,
+      verified: true,
+    },
+    {
+      image: 'img-quote-02.jpg',
+      title: 'Turnkey Approvals for Multi-Outlet Dining',
+      quote:
+        'Opening restaurant venues in Dubai involves rigorous Dubai Municipality health permits, layout inspections, and civil defence clearances. Vision Business Setup managed the entire turnkey process and coordinated over 45 staff residence visas without a single delay. Their commitment truly extends well beyond day one.',
+      name: 'Marcus Vance',
+      role: 'Co-Founder & Operations Director',
+      company: 'Artisan Hospitality Group',
+      location: 'Dubai Marina & DIFC',
+      serviceTag: 'Food & Beverage · Municipality Clearances',
+      rating: 5,
+      verified: true,
+    },
+    {
+      image: 'img-quote-05.jpg',
+      title: 'Strategic Free Zone Structuring & Corporate Tax',
+      quote:
+        'As an international technology firm expanding into the Middle East, selecting the right Free Zone jurisdiction was vital. Vision evaluated our business activities, structured our DMCC entity with 100% foreign ownership, and set up our corporate tax and bookkeeping frameworks smoothly. Their proactive communication gave our board immense confidence.',
+      name: 'Priya Sharma',
+      role: 'Chief Executive Officer',
+      company: 'NexaCloud Innovations FZ-LLC',
+      location: 'DMCC Free Zone, Dubai',
+      serviceTag: 'UAE Free Zone · DMCC & Corporate Tax',
+      rating: 5,
+      verified: true,
+    },
+    {
+      image: 'img-quote-06.jpg',
+      title: 'Complex Health & Aesthetics Permits Handled',
+      quote:
+        'Opening a premium wellness and aesthetics salon in Jumeirah requires specialized DHA and municipality clearances. Vision’s personal, client-first approach and deep network in Dubai’s regulatory landscape made an intimidating process feel effortless. Their attention to detail and high standards are unmatched.',
+      name: 'Sophie Laurent',
+      role: 'Creative & Managing Director',
+      company: 'L’Étoile Aesthetic Wellness',
+      location: 'Jumeirah, Dubai',
+      serviceTag: 'Salons & Lifestyle · Health Authority Permits',
+      rating: 5,
+      verified: true,
+    },
+    {
+      image: 'img-quote-01.jpg',
+      title: 'MOHRE Labour Licensing & Rapid Quotas',
+      quote:
+        'Securing MOHRE manpower supply licensing and bank guarantee compliance is one of the most intricate setup procedures in the UAE. Vision’s deep government liaison relationships and meticulous attention to detail ensured our workforce licenses and initial quota approvals were granted without delays. Highly dependable partners.',
+      name: 'David Sterling',
+      role: 'Director of Operations',
+      company: 'Vanguard Workforce Solutions',
+      location: 'Business Bay, Dubai',
+      serviceTag: 'Manpower Supply · MOHRE Quotas',
+      rating: 5,
+      verified: true,
     },
   ],
 }
@@ -214,7 +267,6 @@ export const whoWeWorkWith = {
     'Our diverse client base spans multiple industries, reflecting our ability to adapt, understand, and deliver across different business environments. We have successfully supported:',
   items: [
     {
-      num: '01',
       tag: 'Real Estate & Development',
       icon: 'building',
       title: 'Real estate and property development companies',
@@ -223,7 +275,6 @@ export const whoWeWorkWith = {
       features: ['RERA Broker & Developer Licences', 'Land & Development Structuring', 'Commercial Office Leasing'],
     },
     {
-      num: '02',
       tag: 'Food & Beverage Ventures',
       icon: 'utensils',
       title: 'Food & beverage ventures',
@@ -232,7 +283,6 @@ export const whoWeWorkWith = {
       features: ['DED Restaurant & Cafe Permits', 'Food Safety & Health Clearances', 'Liquor & Entertainment Approvals'],
     },
     {
-      num: '03',
       tag: 'Trading & General Commerce',
       icon: 'briefcase',
       title: 'Trading and general commerce businesses',
@@ -241,7 +291,6 @@ export const whoWeWorkWith = {
       features: ['General Trading Licences', 'Dubai Customs & Code Registration', 'Corporate Banking & Tax Structuring'],
     },
     {
-      num: '04',
       tag: 'Salons & Lifestyle Brands',
       icon: 'sparkle',
       title: 'Salons and lifestyle brands',
@@ -250,7 +299,6 @@ export const whoWeWorkWith = {
       features: ['Municipality & Health Approvals', 'Specialized Aesthetics Licensing', 'Prime Retail & Mall Leases'],
     },
     {
-      num: '05',
       tag: 'Manpower & Workforce Supply',
       icon: 'users',
       title: 'Manpower and workforce supply companies',
@@ -270,28 +318,26 @@ export const ourServices = {
   title: 'Everything your company needs,',
   accent: 'under one roof',
   intro: 'Licensing, visas, banking and the day-to-day compliance work that keeps a UAE company running \u2014 handled end to end by one team.',
-  cta: 'Request a Callback',
-  ctaHref: '#request-callback',
+  cta: 'View All Services',
+  ctaHref: '/services',
   groups: [
     {
       icon: 'id-card',
       title: 'Licence',
+      slug: 'licence',
       items: ['License Renewal', 'License Modification', 'License Cancellation', 'License Freezing'],
     },
     {
       icon: 'passport',
       title: 'Visa',
+      slug: 'visa',
       items: ['Residence Visa', 'Dependent Visa', 'Remote Work Visa', 'Golden Visa', 'Freelance Visa', 'Domestic Worker Visa'],
     },
     {
       icon: 'bank',
       title: 'Finance & Banking',
+      slug: 'finance-banking',
       items: ['Bank Account Opening', 'Corporate Tax Guide', 'Bookkeeping & VAT Registration'],
-    },
-    {
-      icon: 'grid',
-      title: 'Other',
-      items: ['VIP Medical & Emirates ID Assistance', 'Customs Registration', 'Office Spaces'],
     },
   ],
 }
@@ -359,49 +405,36 @@ export const coreValues = {
   subtitle: '',
   items: [
     {
-      num: '01',
       icon: 'shield',
-      title: 'Trust',
-      text: 'We build long-term relationships through honesty, reliability, and consistency.',
+      title: 'Trust & Transparency',
+      text: 'We build long-term relationships through honesty, clear communication, and straightforward processes.',
       image: 'trust.jpg',
     },
     {
-      num: '02',
-      icon: 'eye',
-      title: 'Transparency',
-      text: 'Clear communication and straightforward processes are at the heart of how we operate.',
-      image: 'transparency.jpg',
-    },
-    {
-      num: '03',
       icon: 'chat',
       title: 'Understanding',
       text: 'We listen before we advise—ensuring every solution is aligned with your unique needs.',
       image: 'understanding.jpg',
     },
     {
-      num: '04',
       icon: 'puzzle',
       title: 'Tailored Solutions',
       text: 'No two businesses are the same. Our approach reflects that in every recommendation we make.',
       image: 'tailored-solutions.jpg',
     },
     {
-      num: '05',
       icon: 'star',
       title: 'Quality Service',
       text: 'We maintain high standards in every interaction, every process, and every outcome.',
       image: 'quality-service.jpg',
     },
     {
-      num: '06',
       icon: 'sync',
       title: 'Reliability & Consistency',
       text: 'Our clients depend on us—and we deliver, every time.',
       image: 'reliability.jpg',
     },
     {
-      num: '07',
       icon: 'route',
       title: 'End-to-End Support',
       text: 'From initial idea to operational launch, we stay with you at every step.',
@@ -434,10 +467,10 @@ export const callbackForm = {
     'End-to-End Support — from initial idea to operational launch',
   ],
   fields: [
-    { name: 'name', label: 'Full name', type: 'text', placeholder: 'e.g. Mohammed Al Mansoori', autoComplete: 'name', required: true },
-    { name: 'phone', label: 'Phone number', type: 'tel', placeholder: '+971 50 000 0000', autoComplete: 'tel', required: true },
-    { name: 'email', label: 'Email address', type: 'email', placeholder: 'mohammed@example.com', autoComplete: 'email', required: true },
-    { name: 'message', label: 'How can we help?', type: 'textarea', placeholder: 'Tell us about your business setup requirements...', required: false },
+    { name: 'name', label: 'Full name', type: 'text', placeholder: 'Your full name', autoComplete: 'name', required: true },
+    { name: 'phone', label: 'Phone number', type: 'tel', placeholder: 'Your phone number', autoComplete: 'tel', required: true },
+    { name: 'email', label: 'Email address', type: 'email', placeholder: 'Your email address', autoComplete: 'email', required: true },
+    { name: 'message', label: 'How can we help?', type: 'textarea', placeholder: 'Tell us about your requirements...', required: false },
   ],
   submitLabel: 'Request a Callback',
 }

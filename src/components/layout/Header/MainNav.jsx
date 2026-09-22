@@ -31,33 +31,34 @@ export default function MainNav({ onOpenMobile, mobile, isLight = false }) {
         {!mobile && (
           <nav className="navCenter" aria-label="Primary">
             <ul className="menu">
-              {mainMenu
-                .filter((item) => item.label !== 'Contact Us')
-                .map((item) => {
-                  const isCurrent =
-                    item.href === location.pathname ||
-                    (item.href === '/' && location.pathname === '/')
+              {mainMenu.map((item) => {
+                const isCurrent =
+                  item.href === location.pathname ||
+                  (item.href === '/' && location.pathname === '/') ||
+                  (item.href !== '/' && !item.href.startsWith('/#') && location.pathname.startsWith(item.href)) ||
+                  Boolean(item.children?.some((c) => c.href === location.pathname))
 
-                  return (
-                    <MenuItem
-                      key={item.label}
-                      item={item}
-                      current={isCurrent}
-                    />
-                  )
-                })}
+                return (
+                  <MenuItem
+                    key={item.label}
+                    item={item}
+                    current={isCurrent}
+                    isMobile={false}
+                  />
+                )
+              })}
             </ul>
           </nav>
         )}
 
-        {/* Right: Contact Us Action Button + Mobile hamburger trigger */}
+        {/* Right: Enquiry Action Button + Mobile hamburger trigger */}
         <div className="navRight">
           <Link
             to="/contact"
             className="navCtaBtn"
-            title="Contact Vision Business Setup"
+            title="Make an Enquiry"
           >
-            Contact Us
+            Enquiry
           </Link>
 
           {mobile && (

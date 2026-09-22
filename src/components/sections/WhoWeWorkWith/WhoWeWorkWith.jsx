@@ -30,25 +30,34 @@ const IMAGES = {
  * - Executive closing consultation banner connecting to #request-callback
  */
 export default function WhoWeWorkWith() {
-  const { super: eyebrow, title, accent, intro, items, closing } = whoWeWorkWith
+  const { super: eyebrow, title, accent, intro, items } = whoWeWorkWith
   const trackRef = useRef(null)
   const [canScrollLeft, setCanScrollLeft] = useState(false)
   const [canScrollRight, setCanScrollRight] = useState(true)
   const [activeIndex, setActiveIndex] = useState(0)
+  const [progress, setProgress] = useState((1 / items.length) * 100)
 
   const checkScroll = useCallback(() => {
     const el = trackRef.current
     if (!el) return
     const { scrollLeft, scrollWidth, clientWidth } = el
+    const maxScroll = scrollWidth - clientWidth
     setCanScrollLeft(scrollLeft > 6)
-    setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 6)
+    setCanScrollRight(scrollLeft < maxScroll - 6)
 
-    const card = el.querySelector('.whoCard')
-    if (card) {
-      const cardWidth = card.offsetWidth + 24
-      const idx = Math.round(scrollLeft / cardWidth)
-      setActiveIndex(Math.min(Math.max(0, idx), items.length - 1))
+    if (maxScroll <= 0) {
+      setActiveIndex(0)
+      setProgress(100)
+      return
     }
+
+    const ratio = Math.min(1, Math.max(0, scrollLeft / maxScroll))
+    const idx = Math.min(items.length - 1, Math.max(0, Math.round(ratio * (items.length - 1))))
+    setActiveIndex(idx)
+
+    const minPercent = (1 / items.length) * 100
+    const progressWidth = minPercent + ratio * (100 - minPercent)
+    setProgress(progressWidth)
   }, [items.length])
 
   useEffect(() => {
@@ -72,6 +81,45 @@ export default function WhoWeWorkWith() {
     const gap = 24
     const amount = card ? (card.offsetWidth + gap) * direction : 380 * direction
     el.scrollBy({ left: amount, behavior: 'smooth' })
+  }
+
+  const handleTrackPointerDown = (e) => {
+    const track = e.currentTarget
+    track.setPointerCapture(e.pointerId)
+
+    const seek = (clientX, smooth = false) => {
+      const el = trackRef.current
+      if (!el) return
+      const rect = track.getBoundingClientRect()
+      const ratio = Math.min(1, Math.max(0, (clientX - rect.left) / rect.width))
+      const maxScroll = el.scrollWidth - el.clientWidth
+      if (smooth) {
+        el.scrollTo({ left: ratio * maxScroll, behavior: 'smooth' })
+      } else {
+        el.scrollLeft = ratio * maxScroll
+      }
+    }
+
+    seek(e.clientX, true)
+
+    const onPointerMove = (evt) => {
+      seek(evt.clientX, false)
+    }
+
+    const onPointerUp = (evt) => {
+      try {
+        track.releasePointerCapture(evt.pointerId)
+      } catch {
+        // ignore
+      }
+      track.removeEventListener('pointermove', onPointerMove)
+      track.removeEventListener('pointerup', onPointerUp)
+      track.removeEventListener('pointercancel', onPointerUp)
+    }
+
+    track.addEventListener('pointermove', onPointerMove)
+    track.addEventListener('pointerup', onPointerUp)
+    track.addEventListener('pointercancel', onPointerUp)
   }
 
   return (
@@ -118,7 +166,7 @@ export default function WhoWeWorkWith() {
         {/* Carousel Container */}
         <div className="whoWork__container">
           <div className="whoWork__track" ref={trackRef}>
-            {items.map((item, idx) => {
+            {items.map((item) => {
               const imgSrc = IMAGES[item.image] || workWith01
 
               return (
@@ -132,14 +180,11 @@ export default function WhoWeWorkWith() {
                       loading="lazy"
                     />
                     <div className="whoCard__overlay" />
-                    <div className="whoCard__topMeta">
-                      <span className="whoCard__badge">
-                        {item.num || `0${idx + 1}`}
-                      </span>
-                      {item.tag && (
+                    {item.tag && (
+                      <div className="whoCard__topMeta">
                         <span className="whoCard__tag">{item.tag}</span>
-                      )}
-                    </div>
+                      </div>
+                    )}
                   </div>
 
                   {/* Card Content Overlay */}
@@ -170,7 +215,7 @@ export default function WhoWeWorkWith() {
 
                     <div className="whoCard__foot">
                       <a href="#request-callback" className="whoCard__link">
-                        <span>Setup Advisory</span>
+                        <span>Enquiry</span>
                         <Icon name="arrow-right" size="small" />
                       </a>
                     </div>
@@ -183,31 +228,25 @@ export default function WhoWeWorkWith() {
 
         {/* Bottom Progress Bar & Counter */}
         <div className="whoWork__pagination">
-          <div className="whoWork__progressTrack">
+          <div
+            className="whoWork__progressTrack"
+            role="scrollbar"
+            aria-label="Industries carousel scrollbar"
+            aria-valuenow={Math.round(progress)}
+            aria-valuemin={0}
+            aria-valuemax={100}
+            onPointerDown={handleTrackPointerDown}
+          >
             <div
               className="whoWork__progressBar"
               style={{
-                width: `${((activeIndex + 1) / items.length) * 100}%`,
+                width: `${progress}%`,
               }}
             />
           </div>
           <span className="whoWork__counter">
             0{activeIndex + 1} / 0{items.length}
           </span>
-        </div>
-
-        {/* Executive Closing Callout Strip */}
-        <div className="whoWork__closingStrip">
-          <div className="whoWork__closingText">
-            <span className="whoWork__closingSuper">Cross-Industry Strategic Advisory</span>
-            <p className="whoWork__closingPara">{closing}</p>
-          </div>
-          <div className="whoWork__closingAction">
-            <a href="#request-callback" className="whoWork__closingBtn">
-              <span>Consult an Industry Specialist</span>
-              <Icon name="arrow-right" size="small" />
-            </a>
-          </div>
         </div>
       </div>
     </section>

@@ -123,9 +123,7 @@ const freeZone = {
       {
         icon: 'globe',
         title: 'Business Activity & Free Zone Selection',
-        text: 'We guide you in choosing the most suitable Free Zone based on your industry and expansion plans such as',
-        /* The document names two zones under this item. */
-        subItems: ['DMCC Free Zone', 'IFZA Free Zone'],
+        text: 'We guide you in choosing the most suitable Free Zone based on your industry and expansion plans, such as DMCC and IFZA.',
       },
       {
         icon: 'id-card',

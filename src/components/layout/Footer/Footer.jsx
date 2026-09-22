@@ -14,7 +14,7 @@ const logo = `${import.meta.env.BASE_URL}logo-lockup-light.png`
  * 4. Polished Bottom Bar (Dynamic copyright, Legal links, Social links & Back to top)
  */
 export default function Footer() {
-  const { cta, contactCards, company, columns, legal, copyright, social } = footer
+  const { contactCards, company, columns, legal, copyright, social } = footer
 
   const scrollToTop = useCallback(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -23,41 +23,7 @@ export default function Footer() {
   return (
     <footer className="luxuryFooter">
       <div className="luxuryFooter__container">
-        {/* 1. Top Callout & Action Card */}
-        {cta && (
-          <div className="luxuryFooter__ctaCard">
-            <div className="luxuryFooter__ctaContent">
-              <div className="luxuryFooter__ctaBadge">
-                <span className="luxuryFooter__ctaBadgeDot" />
-                <span>{cta.badge}</span>
-              </div>
-              <h2 className="luxuryFooter__ctaHeadline">{cta.headline}</h2>
-              {cta.subheadline && (
-                <p className="luxuryFooter__ctaSubheadline">{cta.subheadline}</p>
-              )}
-            </div>
-
-            <div className="luxuryFooter__ctaActions">
-              <SmartLink
-                href={cta.primaryBtn.href}
-                className="luxuryFooter__ctaBtn luxuryFooter__ctaBtn--primary"
-              >
-                {cta.primaryBtn.label}
-              </SmartLink>
-              <a
-                href={cta.secondaryBtn.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="luxuryFooter__ctaBtn luxuryFooter__ctaBtn--outline"
-              >
-                <Icon name="whatsapp" />
-                <span>{cta.secondaryBtn.label}</span>
-              </a>
-            </div>
-          </div>
-        )}
-
-        {/* 2. Interactive Contact Cards */}
+        {/* Interactive Contact Cards */}
         {contactCards && contactCards.length > 0 && (
           <div className="luxuryFooter__contactGrid">
             {contactCards.map((card, idx) => (
@@ -87,9 +53,9 @@ export default function Footer() {
         <div className="luxuryFooter__mainGrid">
           {/* Col 1: Brand & Profile */}
           <div className="luxuryFooter__block luxuryFooter__block--brand">
-            <a href="#top" className="luxuryFooter__logoLink" aria-label="Vision Business Setup">
+            <SmartLink href="/" className="luxuryFooter__logoLink" aria-label="Vision Business Setup">
               <img src={logo} alt={company.title} className="luxuryFooter__logoImg" />
-            </a>
+            </SmartLink>
             <p className="luxuryFooter__desc">{company.text}</p>
 
             <div className="luxuryFooter__metaGroup">
@@ -141,9 +107,9 @@ export default function Footer() {
               {legal.map((item, idx) => (
                 <span key={item.label} className="luxuryFooter__legalItem">
                   {idx > 0 && <span className="luxuryFooter__legalSep">·</span>}
-                  <a href={item.href} className="luxuryFooter__legalLink">
+                  <SmartLink href={item.href} className="luxuryFooter__legalLink">
                     {item.label}
-                  </a>
+                  </SmartLink>
                 </span>
               ))}
             </div>

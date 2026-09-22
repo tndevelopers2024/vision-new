@@ -31,50 +31,33 @@ const m = (label, href = '#', children) => ({ label, href, ...(children && { chi
 
 export const mainMenu = [
   m('Home', '/'),
-  m('About us', '/about'),
   m('Business Setup', '/#business-setup', [
     m('UAE Mainland', '/business-setup/uae-mainland'),
     m('UAE Free Zone', '/business-setup/uae-free-zone'),
     m('UAE Offshore', '/business-setup/uae-offshore'),
   ]),
-  m('Our Services', '/#services', [
-    m('Licence', '/#services', [
-      m('License Renewal', '/#services'),
-      m('License Modification', '/#services'),
-      m('License Cancellation', '/#services'),
-      m('License Freezing', '/#services'),
+  m('Our Services', '/services', [
+    m('Licence', '/services#licence', [
+      m('License Renewal', '/services/license-renewal'),
+      m('License Modification', '/services/license-modification'),
+      m('License Cancellation', '/services/license-cancellation'),
+      m('License Freezing', '/services/license-freezing'),
     ]),
-    m('Visa', '/#services', [
-      m('Residence Visa', '/#services'),
-      m('Dependent Visa', '/#services'),
-      m('Remote Work Visa', '/#services'),
-      m('Golden Visa', '/#services'),
-      m('Freelance Visa', '/#services'),
-      m('Domestic Worker Visa', '/#services'),
+    m('Visa', '/services#visa', [
+      m('Residence Visa', '/services/residence-visa'),
+      m('Dependent Visa', '/services/dependent-visa'),
+      m('Remote Work Visa', '/services/remote-work-visa'),
+      m('Golden Visa', '/services/golden-visa'),
+      m('Freelance Visa', '/services/freelance-visa'),
+      m('Domestic Worker Visa', '/services/domestic-worker-visa'),
     ]),
-    m('Finance & Banking', '/#services', [
-      m('Bank Account Opening', '/#services'),
-      m('Corporate Tax Guide', '/#services'),
-      m('Bookkeeping & VAT Registration', '/#services'),
-    ]),
-    m('Other', '/#services', [
-      m('Emirates ID VIP Service', '/#services'),
-      m('VIP Medical Assistance', '/#services'),
-      m('Customs Clearance Card', '/#services'),
-      m('Virtual Office', '/#services'),
-      m('Trade Mark Registration', '/#services'),
-      m('Establishment Card', '/#services'),
+    m('Finance & Banking', '/services#finance-banking', [
+      m('Bank Account Opening', '/services/bank-account-opening'),
+      m('Corporate Tax Guide', '/services/corporate-tax-guide'),
+      m('Bookkeeping & VAT Registration', '/services/bookkeeping-vat'),
     ]),
   ]),
-  /* No "#jurisdictions" section exists — the three jurisdictions are the
-     Business Setup band on the homepage, so this points there. */
-  m('Jurisdictions', '/#business-setup', [
-    m('UAE Mainland', '/business-setup/uae-mainland'),
-    m('UAE Free Zone', '/business-setup/uae-free-zone'),
-    m('UAE Offshore', '/business-setup/uae-offshore'),
-    m('DMCC Free Zone', '/business-setup/uae-free-zone'),
-    m('IFZA Free Zone', '/business-setup/uae-free-zone'),
-  ]),
+  m('About Us', '/about'),
   m('Contact Us', '/contact'),
 ]
 
@@ -159,19 +142,19 @@ export const footer = {
         { label: 'UAE Offshore', href: '/business-setup/uae-offshore' },
         { label: 'DMCC Free Zone', href: '/business-setup/uae-free-zone' },
         { label: 'IFZA Free Zone', href: '/business-setup/uae-free-zone' },
-        { label: 'License Renewal', href: '/#services' },
+        { label: 'License Renewal', href: '/services/license-renewal' },
       ],
     },
     {
       id: 'corporate-services',
       title: 'Our Services',
       links: [
-        { label: 'Residence Visa', href: '/#services' },
-        { label: 'Golden Visa', href: '/#services' },
-        { label: 'Bank Account Opening', href: '/#services' },
-        { label: 'Corporate Tax Guide', href: '/#services' },
-        { label: 'Bookkeeping & VAT Registration', href: '/#services' },
-        { label: 'VIP Medical & Emirates ID Assistance', href: '/#services' },
+        { label: 'Residence Visa', href: '/services/residence-visa' },
+        { label: 'Golden Visa', href: '/services/golden-visa' },
+        { label: 'Bank Account Opening', href: '/services/bank-account-opening' },
+        { label: 'Corporate Tax Guide', href: '/services/corporate-tax-guide' },
+        { label: 'Bookkeeping & VAT Registration', href: '/services/bookkeeping-vat' },
+        { label: 'Remote Work Visa', href: '/services/remote-work-visa' },
       ],
     },
     {
@@ -182,15 +165,15 @@ export const footer = {
         { label: 'Our Story', href: '/#our-story' },
         { label: 'Who We Work With', href: '/#industries' },
         { label: 'Our Core Values', href: '/#values' },
-        { label: 'Our Services', href: '/#services' },
+        { label: 'Our Services', href: '/services' },
         { label: 'Contact Us', href: '/contact' },
       ],
     },
   ],
   legal: [
-    { label: 'Privacy Policy', href: '#top' },
-    { label: 'Terms & Conditions', href: '#top' },
-    { label: 'Disclaimer', href: '#top' },
+    { label: 'Privacy Policy', href: '/privacy-policy' },
+    { label: 'Terms & Conditions', href: '/terms-conditions' },
+    { label: 'Disclaimer', href: '/disclaimer' },
   ],
   copyright: `© ${new Date().getFullYear()} Vision Business Setup. All rights reserved.`,
   social: contact.social,

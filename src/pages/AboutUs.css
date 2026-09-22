@@ -203,11 +203,6 @@
   border: 1px solid rgba(0, 0, 0, 0.13);
 }
 
-.aboutStand__grid > .aboutValue:first-child,
-.aboutStand__grid > .aboutValue:last-child {
-  grid-column: span 2;
-}
-
 .aboutValue {
   position: relative;
   display: flex;
@@ -269,12 +264,6 @@
   color: var(--c-body);
   margin: 14px 0 0;
   max-width: 46ch;
-}
-
-/* The two double-width cells carry a larger headline. */
-.aboutStand__grid > .aboutValue:first-child .aboutValue__title,
-.aboutStand__grid > .aboutValue:last-child .aboutValue__title {
-  font-size: clamp(1.6rem, 2.1vw, 2rem);
 }
 
 /* ==========================================================================
@@ -757,30 +746,11 @@
   .aboutStand__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-
-  /* Two columns: the opener still runs full width, the closer pairs off. */
-  .aboutStand__grid > .aboutValue:first-child {
-    grid-column: 1 / -1;
-  }
-
-  .aboutStand__grid > .aboutValue:last-child {
-    grid-column: auto;
-  }
 }
 
 @media (max-width: 680px) {
   .aboutStand__grid {
     grid-template-columns: minmax(0, 1fr);
-  }
-
-  .aboutStand__grid > .aboutValue:first-child,
-  .aboutStand__grid > .aboutValue:last-child {
-    grid-column: auto;
-  }
-
-  .aboutStand__grid > .aboutValue:first-child .aboutValue__title,
-  .aboutStand__grid > .aboutValue:last-child .aboutValue__title {
-    font-size: clamp(1.3rem, 1.6vw, 1.5rem);
   }
 }
 
