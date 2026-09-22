@@ -51,14 +51,41 @@ export default function MenuItem({
     .filter(Boolean)
     .join(' ')
 
-  const handleLinkClick = () => {
+  const handleLinkClick = (e, targetHref) => {
+    const href = targetHref || item.href
+
+    // On mobile: tapping an item with children toggles the accordion
+    if (isMobile && hasChildren && (!targetHref || targetHref === item.href)) {
+      if (e) {
+        e.preventDefault()
+        e.stopPropagation()
+      }
+      setOpen((v) => !v)
+      return
+    }
+
     if (onNavigate) onNavigate()
     if (onCloseAll) {
       onCloseAll()
     } else {
       setOpen(false)
     }
-    if (item.href === location.pathname) {
+
+    if (!href) return
+
+    // Handle hash links on the current page
+    if (href.includes('#')) {
+      const [targetPath, hashId] = href.split('#')
+      const currentPath = location.pathname.replace(/\/$/, '') || '/'
+      const cleanTargetPath = targetPath.replace(/\/$/, '') || '/'
+
+      if (currentPath === cleanTargetPath && hashId) {
+        const el = document.getElementById(hashId) || document.querySelector(`#${hashId}`)
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' })
+        }
+      }
+    } else if (href === location.pathname) {
       window.scrollTo({ top: 0, behavior: 'smooth' })
     }
   }
@@ -105,7 +132,7 @@ export default function MenuItem({
           aria-current={current ? 'page' : undefined}
           aria-expanded={hasChildren ? open : undefined}
           aria-controls={hasChildren ? id : undefined}
-          onClick={handleLinkClick}
+          onClick={(e) => handleLinkClick(e, item.href)}
         >
           <span>{item.label}</span>
           {!isMobile && hasChildren && depth === 0 && (
@@ -133,7 +160,7 @@ export default function MenuItem({
           aria-current={current ? 'page' : undefined}
           aria-expanded={hasChildren ? open : undefined}
           aria-controls={hasChildren ? id : undefined}
-          onClick={handleLinkClick}
+          onClick={(e) => handleLinkClick(e, item.href)}
         >
           <span>{item.label}</span>
           {!isMobile && hasChildren && depth === 0 && (
@@ -172,7 +199,7 @@ export default function MenuItem({
                 setOpen((v) => !v)
               }}
             >
-              <Icon name={depth === 0 ? 'chevron-down' : 'chevron-right'} size="small" />
+              <Icon name="chevron-down" size="small" />
             </button>
           )}
 
@@ -192,22 +219,26 @@ export default function MenuItem({
                     <Link
                       to={group.href}
                       className="navMegaCol__head"
-                      onClick={handleLinkClick}
+                      onClick={(e) => handleLinkClick(e, group.href)}
                     >
                       <span>{group.label}</span>
                     </Link>
                     <ul className="navMegaCol__list">
-                      {group.children?.map((sub) => (
-                        <li key={sub.label} className="navMegaCol__item">
-                          <Link
-                            to={sub.href}
-                            className="navMegaCol__link"
-                            onClick={handleLinkClick}
-                          >
-                            {sub.label}
-                          </Link>
-                        </li>
-                      ))}
+                      {group.children?.map((sub) => {
+                        const isSubActive = location.pathname === sub.href
+                        return (
+                          <li key={sub.label} className="navMegaCol__item">
+                            <Link
+                              to={sub.href}
+                              className={`navMegaCol__link ${isSubActive ? 'navMegaCol__link--active' : ''}`}
+                              aria-current={isSubActive ? 'page' : undefined}
+                              onClick={(e) => handleLinkClick(e, sub.href)}
+                            >
+                              {sub.label}
+                            </Link>
+                          </li>
+                        )
+                      })}
                     </ul>
                   </div>
                 ))}
@@ -219,7 +250,7 @@ export default function MenuItem({
                 <Link
                   to="/services"
                   className="navMegaPanel__bottomBtn"
-                  onClick={handleLinkClick}
+                  onClick={(e) => handleLinkClick(e, '/services')}
                 >
                   <span>Explore All Services</span>
                   <svg viewBox="0 0 12 12" width="12" height="12" fill="none" aria-hidden="true">

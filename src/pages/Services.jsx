@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import PageHero from '../components/layout/PageHero/PageHero.jsx'
 import Icon from '../components/ui/Icon.jsx'
 import {
@@ -14,11 +14,23 @@ import imgHero from '../assets/images/banner-burj-khalifa.jpg'
 import './Services.css'
 
 export default function Services() {
+  const location = useLocation()
   const [selectedService, setSelectedService] = useState('')
   const [activeFaq, setActiveFaq] = useState(null)
   const [submitted, setSubmitted] = useState(false)
-  const [activeTab, setActiveTab] = useState('all')
+  const [activeTab, setActiveTab] = useState(() => {
+    const hash = window.location.hash.replace(/^#/, '')
+    return serviceCategories.some((c) => c.id === hash) ? hash : 'all'
+  })
   const [expandedCards, setExpandedCards] = useState({})
+  const targetCategoryFromHash = location.hash ? location.hash.replace(/^#/, '') : null
+  const [prevHash, setPrevHash] = useState(location.hash)
+  if (prevHash !== location.hash) {
+    setPrevHash(location.hash)
+    if (targetCategoryFromHash && serviceCategories.some((c) => c.id === targetCategoryFromHash)) {
+      setActiveTab(targetCategoryFromHash)
+    }
+  }
 
   // Flatten all services for the inquiry dropdown
   const allServicesList = serviceCategories.flatMap((cat) =>
@@ -87,7 +99,10 @@ export default function Services() {
             <button
               type="button"
               className={`svcNav__item ${activeTab === 'all' ? 'svcNav__item--active' : ''}`}
-              onClick={() => setActiveTab('all')}
+              onClick={() => {
+                setActiveTab('all')
+                window.history.replaceState(null, '', '/services')
+              }}
             >
               <span className="svcNav__label">All Services</span>
               <span className="svcNav__badge">{allServicesList.length}</span>
@@ -100,6 +115,7 @@ export default function Services() {
                 className={`svcNav__item ${activeTab === cat.id ? 'svcNav__item--active' : ''}`}
                 onClick={() => {
                   setActiveTab(cat.id)
+                  window.history.replaceState(null, '', `/services#${cat.id}`)
                   const el = document.getElementById(cat.id)
                   if (el) el.scrollIntoView({ behavior: 'smooth' })
                 }}

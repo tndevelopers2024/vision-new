@@ -51,6 +51,12 @@ export default function ServiceDetail() {
     <main className="sdPage">
       {/* 1 — Hero */}
       <PageHero
+        crumbs={[
+          { label: 'Home', href: '/' },
+          { label: 'Our Services', href: '/services' },
+          { label: service.categoryTitle, href: `/services#${service.categoryId}` },
+          { label: service.title },
+        ]}
         eyebrow={`${service.categoryShortTitle.toUpperCase()} • ${service.badge.toUpperCase()}`}
         title={service.title}
         intro={[service.summary]}
@@ -69,6 +75,16 @@ export default function ServiceDetail() {
               <h2 className="sdSection__title">Overview of {service.title}</h2>
               <div className="sdSection__body">
                 <p className="sdText--lead">{service.description}</p>
+                {service.overviewImage && (
+                  <div className="sdOverviewMedia">
+                    <img
+                      src={service.overviewImage}
+                      alt={`Overview of ${service.title}`}
+                      className="sdOverviewMedia__img"
+                      loading="lazy"
+                    />
+                  </div>
+                )}
               </div>
             </section>
 

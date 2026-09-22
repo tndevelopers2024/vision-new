@@ -212,6 +212,30 @@
   margin: 0;
 }
 
+/* Overview Section Media */
+.sdOverviewMedia {
+  position: relative;
+  margin-top: 28px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--c-border-soft);
+  box-shadow: 0 16px 36px -10px rgba(10, 25, 47, 0.08);
+  background-color: var(--c-bg-sub);
+}
+
+.sdOverviewMedia__img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.sdOverviewMedia:hover .sdOverviewMedia__img {
+  transform: scale(1.02);
+}
+
 /* Feature Grid */
 .sdFeatureGrid {
   display: grid;

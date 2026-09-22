@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import Footer from './components/layout/Footer/Footer.jsx'
 import Header from './components/layout/Header/Header.jsx'
 import WhatsApp from './components/layout/WhatsApp/WhatsApp.jsx'
@@ -21,19 +21,36 @@ import heroOffshore from './assets/images/banner-palm-jumeirah.jpg'
  */
 function RouteScrollHandler() {
   const { pathname, hash } = useLocation()
+  const prevPathRef = useRef(pathname)
 
   useEffect(() => {
+    const isNewPage = prevPathRef.current !== pathname
+    prevPathRef.current = pathname
+
     if (hash) {
-      const timer = setTimeout(() => {
+      const scrollToHash = () => {
         const id = hash.replace(/^#/, '')
         const el = document.getElementById(id) || document.querySelector(hash)
         if (el) {
           el.scrollIntoView({ behavior: 'smooth' })
+          return true
         }
-      }, 100)
-      return () => clearTimeout(timer)
+        return false
+      }
+
+      if (!scrollToHash()) {
+        const t1 = setTimeout(scrollToHash, 60)
+        const t2 = setTimeout(scrollToHash, 180)
+        const t3 = setTimeout(scrollToHash, 350)
+        return () => {
+          clearTimeout(t1)
+          clearTimeout(t2)
+          clearTimeout(t3)
+        }
+      }
+    } else if (isNewPage) {
+      window.scrollTo(0, 0)
     }
-    window.scrollTo({ top: 0, behavior: 'smooth' })
   }, [pathname, hash])
 
   return null

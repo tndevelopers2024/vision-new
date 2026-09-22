@@ -13,6 +13,15 @@ import heroVisa from '../assets/images/banner-burj-khalifa.jpg'
 import heroFinance from '../assets/images/banner-palm-jumeirah.jpg'
 import heroLicenseRenewal from '../assets/images/license-renewal-hero.jpg'
 import heroLicenseModification from '../assets/images/license-modification-hero.jpg'
+import heroLicenseCancellation from '../assets/images/license-cancellation-hero.jpg'
+import heroLicenseFreezing from '../assets/images/license-freezing-hero.jpg'
+import overviewLicenseRenewal from '../assets/images/license-renewal-overview.jpg'
+import overviewLicenseModification from '../assets/images/license-modification-overview.jpg'
+import overviewLicenseCancellation from '../assets/images/license-cancellation-overview.jpg'
+import heroDependentVisa from '../assets/images/dependent-visa-hero.jpg'
+import heroResidenceVisa from '../assets/images/residence-visa-hero.jpg'
+import heroRemoteWorkVisa from '../assets/images/remote-work-visa-hero.jpg'
+import heroGoldenVisa from '../assets/images/golden-visa-hero.jpg'
 
 export const servicesHero = {
   crumbs: [{ label: 'Home', href: '/' }, { label: 'Our Services' }],
@@ -51,6 +60,7 @@ export const serviceCategories = [
       {
         id: 'license-renewal',
         heroImage: heroLicenseRenewal,
+        overviewImage: overviewLicenseRenewal,
         title: 'License Renewal',
         authority: 'DET (Dubai Economy & Tourism) & UAE Free Zones',
         timeframe: '24 – 48 Hours',
@@ -141,6 +151,7 @@ export const serviceCategories = [
         id: 'license-modification',
         title: 'License Modification & Amendments',
         heroImage: heroLicenseModification,
+        overviewImage: overviewLicenseModification,
         authority: 'DET, UAE Free Zones & Notary Public',
         timeframe: '3 – 5 Working Days',
         badge: 'Corporate Amendments',
@@ -248,6 +259,8 @@ export const serviceCategories = [
       {
         id: 'license-cancellation',
         title: 'License Cancellation & Liquidation',
+        heroImage: heroLicenseCancellation,
+        overviewImage: overviewLicenseCancellation,
         authority: 'DET, Free Zone Authorities, MOHRE & FTA',
         timeframe: '1 – 4 Weeks (Free Zone) | 2 – 3 Months (LLC)',
         badge: 'Compliant Closure',
@@ -326,6 +339,7 @@ export const serviceCategories = [
       {
         id: 'license-freezing',
         title: 'License Freezing',
+        heroImage: heroLicenseFreezing,
         authority: 'DET (Department of Economy and Tourism) & UAE Free Zones',
         timeframe: '3 – 5 Working Days',
         badge: 'Cost Protection (Up to 3 Years)',
@@ -437,6 +451,7 @@ export const serviceCategories = [
       {
         id: 'residence-visa',
         title: 'Residence Visa (Investor & Employment)',
+        heroImage: heroResidenceVisa,
         authority: 'GDRFA (Dubai) & ICP (Federal Authority)',
         timeframe: '10 – 15 Working Days (VIP 3–5 Days)',
         badge: 'Residency Core',
@@ -540,6 +555,7 @@ export const serviceCategories = [
       {
         id: 'golden-visa',
         title: 'UAE Golden Visa (10 Years)',
+        heroImage: heroGoldenVisa,
         authority: 'ICP, GDRFA & DET (Dubai Economy & Tourism)',
         timeframe: '10 – 12 Working Days',
         badge: '10-Year Long-Term',
@@ -664,6 +680,7 @@ export const serviceCategories = [
       },
       {
         id: 'dependent-visa',
+        heroImage: heroDependentVisa,
         title: 'Dependent & Family Visa',
         authority: 'GDRFA (Dubai) & ICP (Federal Authority)',
         timeframe: '7 – 10 Working Days',
@@ -784,6 +801,7 @@ export const serviceCategories = [
       {
         id: 'remote-work-visa',
         title: 'Remote Work Visa (Digital Nomad)',
+        heroImage: heroRemoteWorkVisa,
         authority: 'GDRFA Dubai & ICP',
         timeframe: '10 – 12 Working Days',
         badge: '1-Year Self-Sponsored',

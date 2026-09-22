@@ -336,10 +336,17 @@
   transition: all 160ms ease;
 }
 
-.navMegaCol__link:hover {
+.navMegaCol__link:hover,
+.navMegaCol__link--active {
   color: #ffffff;
-  background-color: rgba(255, 255, 255, 0.07);
+  background-color: rgba(255, 255, 255, 0.08);
   padding-left: 12px;
+}
+
+.navMegaCol__link--active {
+  color: #ffffff;
+  font-weight: 600;
+  border-left: 2px solid var(--c-nav-gold);
 }
 
 .navMegaPanel__bottom {
