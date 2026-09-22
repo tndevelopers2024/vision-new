@@ -589,53 +589,82 @@ export const serviceCategories = [
         faqs: [
           {
             question: 'What is the UAE Golden Visa and how does it work?',
-            answer:
-              'The UAE Golden Visa is a long-term, renewable residence visa issued for 5 or 10 years to investors, entrepreneurs, skilled professionals, specialised talents, and outstanding students. It lets you live, work, and study in the UAE without a local sponsor or employer. It is self-sponsored, so you hold it in your own name and can sponsor your family. It stays valid as long as you continue to meet the eligibility criteria, and is administered by the ICP at the federal level and the GDRFA in Dubai.',
+            answer: [
+              'The UAE Golden Visa is a long-term, renewable residence visa issued for 5 or 10 years to investors, entrepreneurs, skilled professionals, specialised talents, and outstanding students. It lets you live, work, and study in the UAE without a local sponsor or employer.',
+              'It is self-sponsored, so you hold it in your own name and can sponsor your family. It stays valid as long as you continue to meet the eligibility criteria, and is administered by the ICP at the federal level and the GDRFA in Dubai.',
+            ],
           },
           {
             question: 'What are the requirements to apply for the UAE long-term residency program?',
-            answer:
-              'To apply, you must qualify under one of the eligibility categories and then provide supporting proof, such as a property title deed, salary certificate, trade licence, or professional credentials for your category. Across all categories you will also need a valid passport, a medical fitness test, valid health insurance, and a clean criminal record. Requirements are set by the ICP and GDRFA, and Vision Business Setup assesses your eligibility thoroughly before applying.',
+            answer: [
+              'To apply, you must qualify under one of the eligibility categories and then provide the supporting proof, such as a property title deed, salary certificate, trade licence, or professional credentials for your category.',
+              'Across all categories you\'ll also need a valid passport, a medical fitness test, valid health insurance, and a clean criminal record. Requirements are set by the ICP and GDRFA and can vary by category, so Vision Business Setup can assess your eligibility before you apply.',
+            ],
           },
           {
             question: 'Who meets the eligibility criteria for this long-term visa in the UAE?',
-            answer:
-              'The Golden Visa covers several categories: Property investors owning UAE real estate worth AED 2 million or more; Public or company investors with an approved investment of AED 2 million or more; Entrepreneurs with an approved project worth at least AED 500,000; Skilled professionals earning at least AED 30,000 a month with an attested bachelor degree; Specialised talents such as scientists, doctors, artists, and athletes; and Outstanding students and graduates with strong academic records. Humanitarian pioneers and frontline workers can also qualify.',
+            answer: [
+              'The Golden Visa covers several categories, with current criteria including:',
+              '• Property investors owning UAE real estate worth AED 2 million or more\n• Public or company investors with an approved investment of AED 2 million or more\n• Entrepreneurs with an approved project, typically from AED 500,000\n• Skilled professionals earning at least AED 30,000 a month with a university degree\n• Specialised talents such as scientists, doctors, artists, and athletes\n• Outstanding students and graduates with strong academic records',
+              'Humanitarian pioneers and frontline workers can also qualify. Vision Business Setup can confirm which category fits your profile.',
+            ],
           },
           {
             question: 'What are the main benefits of holding a UAE long-term residency visa?',
-            answer:
-              'The Golden Visa offers stability that standard residency does not. Key benefits include a renewable 5 or 10-year residence visa, self-sponsorship without an employer or local partner, and the ability to sponsor your family. It also lets you stay outside the UAE for long periods without the visa lapsing, unlike ordinary residence visas, and supports 100% foreign business ownership. For investors, professionals, and families, it makes long-term planning far easier.',
+            answer: [
+              'The Golden Visa offers stability that standard residency doesn\'t. Key benefits include a renewable 5 or 10-year residence visa, self-sponsorship without an employer or local partner, and the ability to sponsor your family.',
+              'It also lets you stay outside the UAE for long periods without the visa lapsing, unlike ordinary residence visas, and supports 100% foreign business ownership. For investors, professionals, and families, it makes long-term planning far easier.',
+            ],
           },
           {
             question: 'What is the 10 year golden visa in UAE and who qualifies for it?',
-            answer:
-              'The 10-year Golden Visa is the longest residency tier. It is aimed at real estate investors (AED 2 million or more), public or company investors (AED 2 million or more), skilled professionals earning at least AED 30,000 a month, and specialised talents such as scientists, inventors, and leading professionals. It offers the same self-sponsored, renewable benefits as the 5-year visa, with a longer term between renewals. We advise whether you qualify for the 5-year or 10-year route.',
+            answer: [
+              'The 10-year Golden Visa is the longest residency tier. It is aimed at real estate investors (AED 2 million or more), public or company investors (AED 2 million or more), skilled professionals earning at least AED 30,000 a month, and specialised talents such as scientists, inventors, and leading professionals.',
+              'It offers the same self-sponsored, renewable benefits as the 5-year visa, with a longer term between renewals. Vision Business Setup can advise whether you qualify for the 5-year or 10-year route.',
+            ],
           },
           {
             question: 'How can investors apply for the Dubai Golden Visa through property or business investment?',
-            answer:
-              'Through property, you must own UAE real estate worth at least AED 2 million, which can include mortgaged or off-plan property from approved developers. You obtain a property valuation certificate from the Dubai Land Department and apply through the DLD or GDRFA. Through business, you invest at least AED 2 million in an approved company or fund, or own a qualifying business, supported by your trade licence and financial documents. Either route then follows the standard steps: eligibility check, document submission, medical test, and Emirates ID.',
+            answer: [
+              'Through property, you must own UAE real estate worth at least AED 2 million, which can include mortgaged or off-plan property from approved developers. You obtain a property valuation certificate from the Dubai Land Department and apply through the DLD or GDRFA.',
+              'Through business, you invest at least AED 2 million in an approved company or fund, or own a qualifying business, supported by your trade licence and financial documents. Either route then follows the standard steps: eligibility check, document submission, medical test, and Emirates ID. Vision Business Setup manages the full application for you.',
+            ],
           },
           {
             question: 'Can family members be sponsored under this long-term residency program?',
-            answer:
-              'Yes. A Golden Visa holder can sponsor their spouse and children, and in many cases parents and domestic staff, for the same duration as the primary visa. Children can generally be sponsored regardless of age, which is a key advantage over standard residency. Each dependent goes through their own medical test and Emirates ID process. Vision Business Setup handles your family visas alongside your own.',
+            answer: [
+              'Yes. A Golden Visa holder can sponsor their spouse and children, and in many cases parents and domestic staff, for the same duration as the primary visa.',
+              'Children can generally be sponsored regardless of age, which is a key advantage over standard residency. Each dependent goes through their own medical test and Emirates ID process. Vision Business Setup can handle your family\'s visas alongside yours.',
+            ],
           },
           {
             question: 'How long does the application process usually take after submission?',
-            answer:
-              'Once your application and documents are submitted, the Golden Visa is usually issued within a few weeks, and faster where a fast-track VIP service applies. Investor and talent applications involve additional background and financial checks, which can add time. The most common cause of delay is incomplete or unverified documents, so getting the file right the first time matters.',
+            answer: [
+              'Once your application and documents are submitted, the Golden Visa is usually issued within a few weeks, and faster where a fast-track service applies. Investor and talent applications involve additional background and financial checks, which can add time.',
+              'The most common cause of delay is incomplete or unverified documents, so getting the file right the first time matters. Vision Business Setup prepares and checks everything before submission.',
+            ],
           },
           {
             question: 'Can the visa be renewed after the validity period ends?',
-            answer:
-              'Yes. The Golden Visa is renewable for successive 5 or 10-year terms, provided you continue to meet the eligibility criteria for your category, such as maintaining the qualifying investment or professional status. Renewing keeps your residency and family sponsorship uninterrupted.',
+            answer: [
+              'Yes. The Golden Visa is renewable for successive 5 or 10-year terms, provided you continue to meet the eligibility criteria for your category, such as maintaining the qualifying investment or professional status.',
+              'Renewing keeps your residency and family sponsorship uninterrupted. Vision Business Setup can manage the renewal and confirm you still meet the requirements ahead of time.',
+            ],
+          },
+          {
+            question: 'Can I set up my Dubai business remotely without visiting UAE?',
+            answer: [
+              'In many cases, yes. Much of company formation can now be completed remotely through digital portals — registering the company, reserving a name, and receiving your licence.',
+              'Where a visit may still be needed:',
+              '• Bank account opening — some banks require in-person or video verification\n• Visa medical test and Emirates ID biometrics — generally require you to be present, if you\'re taking a residence visa',
+              'If you just need a licence or an offshore structure, you may never travel. If you want residency, a short visit is usually part of it. Either way, Vision Business Setup handles the paperwork so your presence is only needed where it truly has to be.',
+            ],
           },
           {
             question: 'Has the AED 1 million cash down payment requirement for property investors been removed?',
-            answer:
+            answer: [
               'Yes. Under the updated UAE Golden Visa rules, investors purchasing property valued at AED 2 million or more qualify for the 10-year Golden Visa regardless of whether the property is mortgaged or off-plan, with no minimum initial down payment required.',
+            ],
           },
         ],
       },
