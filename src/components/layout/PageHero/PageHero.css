@@ -175,8 +175,8 @@
 
 @media (max-width: 768px) {
   .pageHero {
-    min-height: clamp(400px, 46vh, 460px);
-    padding: calc(72px + clamp(18px, 2.5vw, 28px)) 0 clamp(28px, 3.5vw, 36px);
+    min-height: clamp(440px, 50vh, 500px);
+    padding: calc(72px + clamp(22px, 3vw, 34px)) 0 clamp(32px, 4vw, 44px);
   }
 
   .pageHero__title {
@@ -187,8 +187,8 @@
 
 @media (max-width: 480px) {
   .pageHero {
-    min-height: 380px;
-    padding: calc(58px + 18px) 0 28px;
+    min-height: 420px;
+    padding: calc(58px + 22px) 0 34px;
   }
 
   .pageHero__crumbs ol {
