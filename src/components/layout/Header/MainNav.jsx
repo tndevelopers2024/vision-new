@@ -1,3 +1,4 @@
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import Icon from '../../ui/Icon.jsx'
 import { mainMenu } from '../../../data/site.js'
@@ -16,6 +17,48 @@ const logoDark = `${import.meta.env.BASE_URL}logo-lockup.png`
 export default function MainNav({ onOpenMobile, mobile, isLight = false }) {
   const location = useLocation()
   const logo = isLight ? logoDark : logoLight
+  const [activeMenu, setActiveMenu] = useState(null)
+  const closeTimerRef = useRef(null)
+
+  const handleMenuEnter = useCallback((label) => {
+    if (closeTimerRef.current) {
+      clearTimeout(closeTimerRef.current)
+      closeTimerRef.current = null
+    }
+    setActiveMenu(label)
+  }, [])
+
+  const handleMenuLeave = useCallback(() => {
+    if (closeTimerRef.current) {
+      clearTimeout(closeTimerRef.current)
+    }
+    closeTimerRef.current = setTimeout(() => {
+      setActiveMenu(null)
+    }, 160)
+  }, [])
+
+  const handleImmediateClose = useCallback(() => {
+    if (closeTimerRef.current) {
+      clearTimeout(closeTimerRef.current)
+      closeTimerRef.current = null
+    }
+    setActiveMenu(null)
+  }, [])
+
+  const currentPathKey = location.pathname + location.hash
+  const [prevPathKey, setPrevPathKey] = useState(currentPathKey)
+  if (prevPathKey !== currentPathKey) {
+    setPrevPathKey(currentPathKey)
+    setActiveMenu(null)
+  }
+
+  useEffect(() => {
+    return () => {
+      if (closeTimerRef.current) {
+        clearTimeout(closeTimerRef.current)
+      }
+    }
+  }, [])
 
   return (
     <div className="mainNavHolder">
@@ -30,7 +73,7 @@ export default function MainNav({ onOpenMobile, mobile, isLight = false }) {
         {/* Center: Navigation Links (desktop) */}
         {!mobile && (
           <nav className="navCenter" aria-label="Primary">
-            <ul className="menu">
+            <ul className="menu" onMouseLeave={handleMenuLeave}>
               {mainMenu.map((item) => {
                 const isCurrent =
                   item.href === location.pathname ||
@@ -38,11 +81,17 @@ export default function MainNav({ onOpenMobile, mobile, isLight = false }) {
                   (item.href !== '/' && !item.href.startsWith('/#') && location.pathname.startsWith(item.href)) ||
                   Boolean(item.children?.some((c) => c.href === location.pathname))
 
+                const isOpen = activeMenu === item.label
+
                 return (
                   <MenuItem
                     key={item.label}
                     item={item}
                     current={isCurrent}
+                    isOpen={isOpen}
+                    onMenuEnter={() => handleMenuEnter(item.label)}
+                    onMenuLeave={handleMenuLeave}
+                    onCloseAll={handleImmediateClose}
                     isMobile={false}
                   />
                 )

@@ -18,13 +18,25 @@ export default function MenuItem({
   depth = 0,
   current = false,
   isMobile = false,
+  isOpen,
+  onMenuEnter,
+  onMenuLeave,
+  onCloseAll,
   onNavigate,
 }) {
   const location = useLocation()
-  const [open, setOpen] = useState(false)
+  const [internalOpen, setInternalOpen] = useState(false)
+  const isControlled = typeof isOpen === 'boolean'
+  const open = isControlled ? isOpen : internalOpen
   const id = useId()
   const hasChildren = Boolean(item.children?.length)
   const isRouterLink = item.href?.startsWith('/')
+
+  const setOpen = (val) => {
+    if (!isControlled) {
+      setInternalOpen(val)
+    }
+  }
 
   // A mega menu is used on desktop when top-level item's children have their own sub-children (e.g. Our Services)
   const isMegaMenu = !isMobile && depth === 0 && item.children?.some((child) => Boolean(child.children?.length))
@@ -41,21 +53,49 @@ export default function MenuItem({
 
   const handleLinkClick = () => {
     if (onNavigate) onNavigate()
-    setOpen(false)
+    if (onCloseAll) {
+      onCloseAll()
+    } else {
+      setOpen(false)
+    }
     if (item.href === location.pathname) {
       window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  }
+
+  const handleMouseEnter = () => {
+    if (isMobile) return
+    if (onMenuEnter) {
+      onMenuEnter()
+    } else if (hasChildren) {
+      setOpen(true)
+    }
+  }
+
+  const handleMouseLeave = () => {
+    if (isMobile) return
+    if (onMenuLeave) {
+      onMenuLeave()
+    } else if (hasChildren) {
+      setOpen(false)
     }
   }
 
   return (
     <li
       className={classes}
-      onMouseEnter={() => !isMobile && hasChildren && setOpen(true)}
-      onMouseLeave={() => !isMobile && hasChildren && setOpen(false)}
-      onFocus={() => !isMobile && hasChildren && setOpen(true)}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onFocus={() => {
+        if (!isMobile && hasChildren) {
+          if (onMenuEnter) onMenuEnter()
+          else setOpen(true)
+        }
+      }}
       onBlur={(e) => {
         if (!isMobile && hasChildren && !e.currentTarget.contains(e.relatedTarget)) {
-          setOpen(false)
+          if (onCloseAll) onCloseAll()
+          else setOpen(false)
         }
       }}
     >
@@ -143,6 +183,8 @@ export default function MenuItem({
               className="navMegaPanel"
               role="region"
               aria-label={`${item.label} categories`}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
             >
               <div className="navMegaPanel__grid">
                 {item.children.map((group) => (
@@ -150,7 +192,7 @@ export default function MenuItem({
                     <Link
                       to={group.href}
                       className="navMegaCol__head"
-                      onClick={() => setOpen(false)}
+                      onClick={handleLinkClick}
                     >
                       <span>{group.label}</span>
                     </Link>
@@ -160,7 +202,7 @@ export default function MenuItem({
                           <Link
                             to={sub.href}
                             className="navMegaCol__link"
-                            onClick={() => setOpen(false)}
+                            onClick={handleLinkClick}
                           >
                             {sub.label}
                           </Link>
@@ -177,7 +219,7 @@ export default function MenuItem({
                 <Link
                   to="/services"
                   className="navMegaPanel__bottomBtn"
-                  onClick={() => setOpen(false)}
+                  onClick={handleLinkClick}
                 >
                   <span>Explore All Services</span>
                   <svg viewBox="0 0 12 12" width="12" height="12" fill="none" aria-hidden="true">
@@ -194,7 +236,12 @@ export default function MenuItem({
             </div>
           ) : (
             /* Traditional Single-Column Dropdown (or Mobile Hierarchical List) */
-            <ul id={id} className="sub-menu">
+            <ul
+              id={id}
+              className="sub-menu"
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            >
               {item.children.map((child) => (
                 <MenuItem
                   key={child.label}
@@ -202,6 +249,7 @@ export default function MenuItem({
                   depth={depth + 1}
                   isMobile={isMobile}
                   onNavigate={onNavigate}
+                  onCloseAll={onCloseAll}
                 />
               ))}
             </ul>
