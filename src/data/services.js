@@ -20,9 +20,13 @@ import overviewLicenseModification from '../assets/images/license-modification-o
 import overviewLicenseCancellation from '../assets/images/license-cancellation-overview.jpg'
 import overviewLicenseFreezing from '../assets/images/license-freezing-overview.jpg'
 import heroDependentVisa from '../assets/images/dependent-visa-hero.jpg'
+import overviewDependentVisa from '../assets/images/dependent-visa-overview.jpg'
 import heroResidenceVisa from '../assets/images/residence-visa-hero.jpg'
+import overviewResidenceVisa from '../assets/images/residence-visa-overview.jpg'
 import heroRemoteWorkVisa from '../assets/images/remote-work-visa-hero.jpg'
+import overviewRemoteWorkVisa from '../assets/images/remote-work-visa-overview.jpg'
 import heroGoldenVisa from '../assets/images/golden-visa-hero.jpg'
+import overviewGoldenVisa from '../assets/images/golden-visa-overview.jpg'
 import heroFreelanceVisa from '../assets/images/freelance-visa-hero.jpg'
 import overviewFreelanceVisa from '../assets/images/freelance-visa-overview.jpg'
 import heroBankAccount from '../assets/images/bank-account-hero.jpg'
@@ -471,6 +475,7 @@ export const serviceCategories = [
         id: 'residence-visa',
         title: 'Residence Visa (Investor & Employment)',
         heroImage: heroResidenceVisa,
+        overviewImage: overviewResidenceVisa,
         authority: 'GDRFA (Dubai) & ICP (Federal Authority)',
         timeframe: '10 – 15 Working Days (VIP 3–5 Days)',
         badge: 'Residency Core',
@@ -575,6 +580,7 @@ export const serviceCategories = [
         id: 'golden-visa',
         title: 'UAE Golden Visa (10 Years)',
         heroImage: heroGoldenVisa,
+        overviewImage: overviewGoldenVisa,
         authority: 'ICP, GDRFA & DET (Dubai Economy & Tourism)',
         timeframe: '10 – 12 Working Days',
         badge: '10-Year Long-Term',
@@ -700,6 +706,7 @@ export const serviceCategories = [
       {
         id: 'dependent-visa',
         heroImage: heroDependentVisa,
+        overviewImage: overviewDependentVisa,
         title: 'Dependent & Family Visa',
         authority: 'GDRFA (Dubai) & ICP (Federal Authority)',
         timeframe: '7 – 10 Working Days',
@@ -821,6 +828,7 @@ export const serviceCategories = [
         id: 'remote-work-visa',
         title: 'Remote Work Visa (Digital Nomad)',
         heroImage: heroRemoteWorkVisa,
+        overviewImage: overviewRemoteWorkVisa,
         authority: 'GDRFA Dubai & ICP',
         timeframe: '10 – 12 Working Days',
         badge: '1-Year Self-Sponsored',
