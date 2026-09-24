@@ -330,8 +330,65 @@ export const ourStory = {
 }
 
 export const testimonials = {
-  "items": [],
-  "stats": []
+  super: 'Client Trust & Success',
+  title: 'Client',
+  accent: 'Testimonials',
+  intro:
+    'Discover how Vision Business Setup has empowered entrepreneurs and international companies to launch and scale their operations in the UAE.',
+  items: [
+    {
+      name: 'Rashid Al Mansoori',
+      role: 'Managing Director',
+      company: 'Apex Property Development',
+      location: 'Dubai, UAE',
+      image: 'img-quote-01.jpg',
+      rating: 5,
+      serviceTag: 'Mainland Business Setup',
+      title: 'Flawless Mainland Formation & PRO Support',
+      quote:
+        'Vision Business Setup managed our mainland company formation with unmatched efficiency. From trade license issuance to corporate banking assistance, Viekram and his team delivered every commitment ahead of schedule.',
+      verified: true,
+    },
+    {
+      name: 'Elena Rostova',
+      role: 'Founder & CEO',
+      company: 'Luxe Living Lifestyle',
+      location: 'DMCC, Dubai',
+      image: 'img-quote-02.jpg',
+      rating: 5,
+      serviceTag: 'Free Zone Setup & Visas',
+      title: 'Strategic Advice & Fast-Track Licensing',
+      quote:
+        'As an international investor setting up in DMCC, having a clear, reliable advisor was critical. Vision Business Setup guided us through license selection, investor Golden Visas, and bank account setup seamlessly.',
+      verified: true,
+    },
+    {
+      name: 'Marcus Vance',
+      role: 'Co-Founder',
+      company: 'Vance Global Commerce',
+      location: 'Dubai, UAE',
+      image: 'img-quote-03.jpg',
+      rating: 5,
+      serviceTag: 'Licence Renewal & Corporate Tax',
+      title: 'Transparent & Round-The-Clock Advisory',
+      quote:
+        'Their round-the-clock availability and complete transparency are what set them apart. We rely on Vision Business Setup for all our corporate renewals, visa processing, and tax registration.',
+      verified: true,
+    },
+    {
+      name: 'Tariq Mahmood',
+      role: 'Operations Director',
+      company: 'Gulf Logistics & Manpower',
+      location: 'Dubai, UAE',
+      image: 'img-quote-04.jpg',
+      rating: 5,
+      serviceTag: 'Offshore Structuring & Banking',
+      title: 'Expert Guidance on Complex Corporate Structures',
+      quote:
+        'We needed structured corporate setup for our workforce supply operations. Vision Business Setup delivered tailored solutions aligned perfectly with UAE regulations and banking requirements.',
+      verified: true,
+    },
+  ],
 }
 
 export const whatSetsUsApart = {
