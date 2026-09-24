@@ -214,8 +214,8 @@ export default function WhoWeWorkWith() {
                     )}
 
                     <div className="whoCard__foot">
-                      <a href="#request-callback" className="whoCard__link">
-                        <span>Enquiry</span>
+                      <a href="/contact" className="whoCard__link">
+                        <span>Contact Us</span>
                         <Icon name="arrow-right" size="small" />
                       </a>
                     </div>
@@ -225,6 +225,8 @@ export default function WhoWeWorkWith() {
             })}
           </div>
         </div>
+
+        <p className="whoWork__intro">{whoWeWorkWith.closing}</p>
 
         {/* Bottom Progress Bar & Counter */}
         <div className="whoWork__pagination">

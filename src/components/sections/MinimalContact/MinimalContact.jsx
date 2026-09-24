@@ -30,7 +30,7 @@ export default function MinimalContact() {
       <div className="minimalContact__container">
         <div className="minimalContact__card">
           <header className="minimalContact__header">
-            <span className="minimalContact__super">EVERY BUSINESS STARTS WITH VISION</span>
+            <span className="minimalContact__super">Every Business starts with Vision</span>
             <h2 className="minimalContact__title">Request a Callback</h2>
             <p className="minimalContact__desc">
               Whether you are starting fresh or expanding your presence, our team is here to guide you with
@@ -107,7 +107,7 @@ export default function MinimalContact() {
 
               <div className="minimalContact__submitWrap">
                 <button type="submit" className="minimalContact__submitBtn">
-                  <span>Request Callback</span>
+                  <span>Request a Callback</span>
                   <Icon name="arrow-right" size="small" />
                 </button>
               </div>
@@ -124,14 +124,14 @@ export default function MinimalContact() {
                 <Icon name="check" size="small" /> Tailored Solutions
               </span>
               <span className="minimalContact__trustItem">
-                <Icon name="check" size="small" /> UAE Mainland, Free Zone &amp; Offshore
+                <Icon name="check" size="small" /> End-to-End Support
               </span>
             </div>
 
             <div className="minimalContact__pageLink">
-              <span>Need our full inquiry form?</span>{' '}
+              {' '}
               <SmartLink href="/contact" className="minimalContact__contactLink">
-                Contact Us →
+                Contact Us
               </SmartLink>
             </div>
           </div>

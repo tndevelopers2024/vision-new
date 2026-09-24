@@ -78,7 +78,7 @@ export default function OurStory() {
 
           {quote && (
             <div className="aboutWhyQuote">
-              <span className="aboutWhyQuoteText">&ldquo;{quote}&rdquo;</span>
+              <span className="aboutWhyQuoteText">{quote}</span>
             </div>
           )}
 

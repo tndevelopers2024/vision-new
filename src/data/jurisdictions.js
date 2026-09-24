@@ -15,7 +15,7 @@
 const mainland = {
   slug: 'uae-mainland',
   /* Nav label — "Business Setup › UAE Mainland" */
-  eyebrow: 'BUSINESS SETUP',
+  eyebrow: 'Business Setup',
   title: 'UAE Mainland',
   intro: [
     'Setting up a Mainland company in the UAE offers unmatched flexibility, allowing you to operate freely across the local market and beyond. At Vision Business Setup, we provide a streamlined and strategic approach to Mainland company formation, ensuring your business is structured for growth, compliance, and long-term success.',
@@ -43,7 +43,7 @@ const mainland = {
     items: [
       {
         icon: 'compass',
-        title: 'Business Activity Consultation',
+        title: 'Business Activity Consultation -',
         text: 'We help you choose the right activity aligned with your goals and compliance requirements.',
       },
       {
@@ -94,7 +94,7 @@ const mainland = {
 
 const freeZone = {
   slug: 'uae-free-zone',
-  eyebrow: 'BUSINESS SETUP',
+  eyebrow: 'Business Setup',
   title: 'UAE Free Zone',
   intro: [
     'Free Zone company formation in the UAE offers a streamlined pathway for entrepreneurs and international investors seeking full ownership, simplified processes, and a globally connected business environment. At Vision Business Setup, we deliver tailored Free Zone solutions designed for speed, efficiency, and long-term scalability.',
@@ -123,7 +123,8 @@ const freeZone = {
       {
         icon: 'globe',
         title: 'Business Activity & Free Zone Selection',
-        text: 'We guide you in choosing the most suitable Free Zone based on your industry and expansion plans, such as DMCC and IFZA.',
+        text: 'We guide you in choosing the most suitable Free Zone based on your industry and expansion plans such as',
+        subItems: ['DMCC Free Zone', 'IFZA Free Zone'],
       },
       {
         icon: 'id-card',
@@ -162,7 +163,7 @@ const freeZone = {
 
 const offshore = {
   slug: 'uae-offshore',
-  eyebrow: 'BUSINESS SETUP',
+  eyebrow: 'Business Setup',
   title: 'UAE Offshore',
   intro: [
     'Offshore company formation in the UAE provides a strategic solution for international investors seeking asset protection, global operations, and efficient corporate structuring. At Vision Business Setup, we offer expert guidance to help you establish a compliant and effective offshore entity tailored to your long-term objectives.',

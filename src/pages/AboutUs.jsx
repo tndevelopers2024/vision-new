@@ -40,7 +40,7 @@ export default function AboutUs() {
       <section className="aboutStory" id="our-story">
         <div className="aboutStory__inner">
           <div className="aboutStory__panel">
-            <span className="aboutStory__badge">EST. 2015</span>
+            <span className="aboutStory__badge">Established in 2015</span>
             <h2 className="aboutStory__title">{ourStory.title}</h2>
             {ourStory.paragraphs.map((p, index) => (
               <p
@@ -70,7 +70,6 @@ export default function AboutUs() {
       </section>
 
       {/* ── 3. Our Founder ──────────────────────────────────────── */}
-      <Founder />
 
       {/* ── 4. Who We Work With ─────────────────────────────────── */}
       <WhoWeWorkWith />
@@ -98,6 +97,7 @@ export default function AboutUs() {
 
       {/* ── 7. Our Commitment ───────────────────────────────────── */}
       <Commitment />
+      <Founder />
 
     </main>
   )

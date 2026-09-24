@@ -85,7 +85,7 @@ export const headerPhones = contact.phones?.map((p) => ({
 
 export const footer = {
   cta: {
-    badge: 'START YOUR JOURNEY',
+    badge: 'Our Commitment',
     headline:
       'Whether you are starting fresh or expanding your presence, our team is here to guide you with expertise, clarity, and dedication.',
     subheadline:
@@ -109,7 +109,7 @@ export const footer = {
               ? `${contact.phoneDisplay}  |  ${contact.secondaryPhoneDisplay}`
               : contact.phoneDisplay,
             href: contact.phoneHref,
-            detail: 'Support whenever you need it, beyond the conventional 9-to-5 framework',
+            detail: 'Our team is available beyond the conventional 9-to-5 framework, ensuring you have support whenever you need it.',
           },
         ]
       : [
@@ -118,7 +118,7 @@ export const footer = {
             label: 'Round-the-Clock Support',
             value: contact.whatsappDisplay,
             href: whatsappLink,
-            detail: 'Support whenever you need it, beyond the conventional 9-to-5 framework',
+            detail: 'Our team is available beyond the conventional 9-to-5 framework, ensuring you have support whenever you need it.',
             target: '_blank',
           },
         ]),
@@ -127,11 +127,11 @@ export const footer = {
       label: 'Request a Callback',
       value: contact.email,
       href: `mailto:${contact.email}`,
-      detail: 'Connect with Vision Business Setup and experience a service built around you',
+      detail: 'Connect with Vision Business Setup and experience a service built around you.',
     },
     {
       icon: 'pin',
-      label: 'Business Setup in the UAE',
+      label: 'Business Setup',
       value: contact.addressLines.join(', '),
       href: contact.mapLink || `https://www.google.com/maps/search/${encodeURIComponent(contact.addressLines.join(' '))}`,
       detail: 'Open in Google Maps ↗',

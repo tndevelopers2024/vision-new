@@ -84,15 +84,9 @@ export default function OurServices() {
               </ul>
 
               <div className="svcCol__foot">
-                <span className="svcCol__tally">
-                  {String(group.items.length).padStart(2, '0')} services
-                </span>
                 <Link className="svcCol__link" to={`/services#${group.slug || 'licence'}`}>
-                  <span>Explore</span>
+                  <span>{group.title}</span>
                   <Icon name="arrow-right" size="small" />
-                  <span className="svcCol__linkLabel">
-                    {' '}about {group.title}
-                  </span>
                 </Link>
               </div>
             </li>
