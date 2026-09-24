@@ -18,6 +18,7 @@ import './Jurisdiction.css'
 export default function Jurisdiction({ data, heroImage }) {
   const {
     title,
+    eyebrow,
     intro = [],
     definition,
     advantages,
@@ -30,14 +31,8 @@ export default function Jurisdiction({ data, heroImage }) {
   return (
     <main className="jurPage">
       {/* 1 — Hero banner */}
-      {/* The breadcrumb already reads "Business Setup", so the data's
-          eyebrow isn't repeated above the title. */}
       <PageHero
-        crumbs={[
-          { label: 'Home', href: '/' },
-          { label: 'Business Setup', href: '/#business-setup' },
-          { label: title },
-        ]}
+        eyebrow={eyebrow}
         title={title}
         intro={intro}
         image={heroImage}

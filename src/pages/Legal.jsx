@@ -2,7 +2,9 @@ import { useMemo } from 'react'
 import PageHero from '../components/layout/PageHero/PageHero.jsx'
 import SmartLink from '../components/ui/SmartLink.jsx'
 import Icon from '../components/ui/Icon.jsx'
-import heroImg from '../assets/images/banner-night.jpg'
+import heroPrivacy from '../assets/images/our-story-advisory.jpg'
+import heroTerms from '../assets/images/terms-conditions-hero.jpg'
+import heroDisclaimer from '../assets/images/disclaimer-hero.jpg'
 import './Legal.css'
 
 const LEGAL_DATA = {
@@ -145,20 +147,22 @@ const LEGAL_DATA = {
   },
 }
 
+const HERO_IMAGES = {
+  privacy: heroPrivacy,
+  terms: heroTerms,
+  disclaimer: heroDisclaimer,
+}
+
 export default function Legal({ type = 'privacy' }) {
   const data = useMemo(() => LEGAL_DATA[type] || LEGAL_DATA.privacy, [type])
 
   return (
     <div className="legalPage">
       <PageHero
-        crumbs={[
-          { label: 'Home', href: '/' },
-          { label: data.title },
-        ]}
         eyebrow={data.eyebrow}
         title={data.title}
         intro={data.intro}
-        image={heroImg}
+        image={HERO_IMAGES[type] || heroPrivacy}
       />
 
       <section className="legalContent">

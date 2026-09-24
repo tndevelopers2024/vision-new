@@ -5,7 +5,7 @@ import { callbackForm, ctaBanner } from '../data/home.js'
 import { contact, hasPhone, whatsappLink } from '../config/contact.js'
 import './Contact.css'
 
-import contactHero from '../assets/images/banner-night.jpg'
+import contactHero from '../assets/images/contact-page-hero.jpg'
 
 const officeQuery = contact.addressLines.filter(Boolean).join(', ')
 const mapSrc =
@@ -18,6 +18,12 @@ const mapLink =
 /** Direct lines — only channels with a configured value are listed. */
 const CONTACT_LINES = [
   hasPhone && { icon: 'phone', label: 'Call us', value: contact.phoneDisplay, href: contact.phoneHref },
+  contact.secondaryPhoneDisplay && {
+    icon: 'phone',
+    label: 'Direct line',
+    value: contact.secondaryPhoneDisplay,
+    href: contact.secondaryPhoneHref,
+  },
   { icon: 'whatsapp', label: 'WhatsApp', value: contact.whatsappDisplay, href: whatsappLink, external: true },
   contact.email && { icon: 'mail', label: 'Email Us', value: contact.email, href: `mailto:${contact.email}` },
   officeQuery && { icon: 'pin', label: 'Office', value: officeQuery, href: mapLink, external: true },
@@ -50,7 +56,6 @@ export default function Contact() {
   return (
     <main className="contactPage">
       <PageHero
-        crumbs={[{ label: 'Home', href: '/' }, { label: 'Contact Us' }]}
         title="Contact Us"
         intro="Whether you are starting fresh or expanding your presence, our team is here to guide you with expertise, clarity, and dedication. Connect with Vision Business Setup and experience a service built around you."
         image={contactHero}
@@ -120,7 +125,9 @@ export default function Contact() {
                 <h3>Thank you — request received</h3>
                 <p>
                   A Vision Business Setup consultant will be in touch shortly. For anything urgent,{' '}
-                  {hasPhone ? `call us on ${contact.phoneDisplay}.` : 'message us on WhatsApp.'}
+                  {hasPhone
+                    ? `call us on ${contact.phoneDisplay}${contact.secondaryPhoneDisplay ? ` or ${contact.secondaryPhoneDisplay}` : ''}.`
+                    : 'message us on WhatsApp.'}
                 </p>
                 <button type="button" onClick={() => setSent(false)}>
                   Send another request

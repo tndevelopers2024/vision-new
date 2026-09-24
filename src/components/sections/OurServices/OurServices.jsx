@@ -59,9 +59,13 @@ export default function OurServices() {
                     'Remote Work Visa': '/services/remote-work-visa',
                     'Golden Visa': '/services/golden-visa',
                     'Freelance Visa': '/services/freelance-visa',
+                    'Domestic Worker Visa': '/services/domestic-worker-visa',
                     'Bank Account Opening': '/services/bank-account-opening',
                     'Corporate Tax Guide': '/services/corporate-tax-guide',
                     'Bookkeeping & VAT Registration': '/services/bookkeeping-vat',
+                    'VIP Medical & Emirates ID Assistance': '/services/vip-medical-eid',
+                    'Customs Registration': '/services/customs-registration',
+                    'Office Spaces': '/services/office-spaces',
                   }
                   const href = serviceSlugMap[item]
                   return (

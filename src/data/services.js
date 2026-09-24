@@ -23,6 +23,22 @@ import heroDependentVisa from '../assets/images/dependent-visa-hero.jpg'
 import heroResidenceVisa from '../assets/images/residence-visa-hero.jpg'
 import heroRemoteWorkVisa from '../assets/images/remote-work-visa-hero.jpg'
 import heroGoldenVisa from '../assets/images/golden-visa-hero.jpg'
+import heroFreelanceVisa from '../assets/images/freelance-visa-hero.jpg'
+import overviewFreelanceVisa from '../assets/images/freelance-visa-overview.jpg'
+import heroBankAccount from '../assets/images/bank-account-hero.jpg'
+import overviewBankAccount from '../assets/images/bank-account-opening-overview.jpg'
+import heroCorporateTax from '../assets/images/corporate-tax-hero.jpg'
+import overviewCorporateTax from '../assets/images/corporate-tax-overview.jpg'
+import heroBookkeepingVat from '../assets/images/bookkeeping_vat_hero.png'
+import overviewBookkeepingVat from '../assets/images/bookkeeping-vat-overview.jpg'
+import heroDomesticWorkerVisa from '../assets/images/domestic-worker-visa-hero.jpg'
+import overviewDomesticWorkerVisa from '../assets/images/domestic-worker-visa-overview.jpg'
+import heroVipMedical from '../assets/images/vip-medical-eid-hero.jpg'
+import overviewVipMedical from '../assets/images/vip-medical-eid-overview.jpg'
+import heroCustoms from '../assets/images/customs-registration-hero.jpg'
+import overviewCustoms from '../assets/images/customs-registration-overview.jpg'
+import heroOfficeSpaces from '../assets/images/office_spaces_hero.png'
+import overviewOfficeSpaces from '../assets/images/office-spaces-overview.jpg'
 
 export const servicesHero = {
   crumbs: [{ label: 'Home', href: '/' }, { label: 'Our Services' }],
@@ -45,6 +61,7 @@ export const categoryBanners = {
   licence: heroLicence,
   visa: heroVisa,
   'finance-banking': heroFinance,
+  other: heroLicence,
 }
 
 export const serviceCategories = [
@@ -915,6 +932,8 @@ export const serviceCategories = [
       {
         id: 'freelance-visa',
         title: 'Freelance Visa & Permit',
+        heroImage: heroFreelanceVisa,
+        overviewImage: overviewFreelanceVisa,
         authority: 'UAE Free Zones & MOHRE',
         timeframe: '10 – 12 Working Days',
         badge: 'Sole Practitioner',
@@ -1019,6 +1038,60 @@ export const serviceCategories = [
           },
         ],
       },
+      {
+        id: 'domestic-worker-visa',
+        title: 'Domestic Worker Visa',
+        heroImage: heroDomesticWorkerVisa,
+        overviewImage: overviewDomesticWorkerVisa,
+        authority: 'MOHRE (Ministry of Human Resources & Emiratisation) & ICP',
+        timeframe: '5 – 7 Working Days',
+        badge: 'Household Support',
+        icon: 'users',
+        summary:
+          'End-to-end sponsorship and visa processing for household staff, housemaids, nannies, cooks, and private drivers in Dubai.',
+        description:
+          'In the UAE, residents and citizens who meet specified salary and housing requirements can legally sponsor domestic workers under the regulatory framework of MOHRE (Ministry of Human Resources and Emiratisation). This covers housemaids, nannies, private drivers, cooks, and domestic gardeners. The procedure requires obtaining an entry permit, employment contract legalization through Tadbeer service centers, comprehensive medical fitness screening, Emirates ID biometrics, and final residency visa stamping. Vision Business Setup manages the entire sponsorship lifecycle, ensuring full regulatory adherence, health insurance setup, and rapid delivery of residency permits.',
+        requirements: [
+          'Sponsor\'s valid passport, Emirates ID, and UAE residence visa copy',
+          'Registered Ejari tenancy contract (minimum 2-bedroom for maid accommodation or villa for multi-staff)',
+          'Sponsor\'s certified salary certificate or proof of income (minimum salary thresholds apply as per MOHRE)',
+          'Domestic worker\'s valid passport copy and white-background passport photograph',
+          'Attested medical fitness examination certificate from authorized health center',
+          'MOHRE-approved standardized Tadbeer domestic worker employment contract',
+        ],
+        process: [
+          'Pre-evaluation of sponsor eligibility and salary threshold verification under MOHRE rules',
+          'Application for Tadbeer domestic worker entry permit and document clearing',
+          'VIP medical fitness test and blood screening coordination upon worker arrival',
+          'Emirates ID biometrics appointment scheduling and typing',
+          'Standardized unified employment contract execution and MOHRE deposit management',
+          'Residency visa stamping and physical Emirates ID home or office courier delivery',
+        ],
+        deliverables: [
+          'Complete management of Tadbeer entry permit and MOHRE quota clearance',
+          'Assistance with domestic worker medical screening and health insurance policy setup',
+          'Legal employment contract drafting, consular attestation, and wage protection guidance',
+          'Fast-track Emirates ID issuance and 1 or 2-year renewable residency visa stamping',
+          'Full compliance with UAE Federal Law No. 10 of 2017 on Domestic Workers',
+        ],
+        faqs: [
+          {
+            question: 'What is the salary requirement to sponsor a domestic worker in Dubai?',
+            answer:
+              'Under MOHRE regulations, expatriate residents sponsoring a domestic worker typically must earn a minimum monthly income of AED 25,000 (or meet specific family housing conditions), while UAE nationals have distinct criteria. A registered tenancy contract (Ejari) showing adequate accommodation is also mandatory.',
+          },
+          {
+            question: 'How long does the domestic worker visa process take in the UAE?',
+            answer:
+              'The standard timeframe is 5 to 7 working days once all documentation is submitted. With expedited VIP typing for medical fitness and biometrics, approvals can be finalized in as few as 3 to 4 business days.',
+          },
+          {
+            question: 'Are employers required to provide health insurance for domestic workers?',
+            answer:
+              'Yes. Under UAE labor and health regulations, sponsors are legally obligated to provide medical insurance coverage for sponsored domestic staff, along with timely monthly salary payments under the Wage Protection System (WPS).',
+          },
+        ],
+      },
     ],
   },
   {
@@ -1034,6 +1107,8 @@ export const serviceCategories = [
       {
         id: 'bank-account-opening',
         title: 'Corporate Bank Account Opening',
+        heroImage: heroBankAccount,
+        overviewImage: overviewBankAccount,
         authority: 'Central Bank of the UAE & Partner Commercial Banks',
         timeframe: '2 – 4 Weeks',
         badge: 'Tier-1 UAE Banks',
@@ -1111,6 +1186,8 @@ export const serviceCategories = [
       {
         id: 'corporate-tax-guide',
         title: 'Corporate Tax Guide & Registration',
+        heroImage: heroCorporateTax,
+        overviewImage: overviewCorporateTax,
         authority: 'Federal Tax Authority (FTA)',
         timeframe: '3 – 5 Working Days',
         badge: 'FTA 9% Regime',
@@ -1190,6 +1267,8 @@ export const serviceCategories = [
       {
         id: 'bookkeeping-vat',
         title: 'Bookkeeping & VAT Registration',
+        heroImage: heroBookkeepingVat,
+        overviewImage: overviewBookkeepingVat,
         authority: 'Federal Tax Authority (FTA) & EmaraTax',
         timeframe: 'Monthly / Quarterly Service',
         badge: 'Certified Accountants',
@@ -1275,6 +1354,155 @@ export const serviceCategories = [
       },
     ],
   },
+  {
+    id: 'other',
+    slug: 'other',
+    title: 'PRO & Value-Added Services',
+    shortTitle: 'PRO & Corporate',
+    icon: 'building',
+    tagline: 'VIP medical & Emirates ID, Dubai Customs code & commercial office spaces',
+    description:
+      'Beyond licensing and visas, we provide essential commercial operational support: expedited VIP medical testing and biometrics, Dubai Customs code registration for import/export entities, and fully certified commercial office spaces.',
+    services: [
+      {
+        id: 'vip-medical-eid',
+        title: 'VIP Medical & Emirates ID Assistance',
+        heroImage: heroVipMedical,
+        overviewImage: overviewVipMedical,
+        authority: 'DHA, EHS, ICP & Authorized Smart Centers',
+        timeframe: 'Same-Day / 24 Hours',
+        badge: 'Priority Fast-Track',
+        icon: 'badge-check',
+        summary:
+          'Skip long queues with executive VIP medical fitness screening and same-day Emirates ID biometrics throughout Dubai.',
+        description:
+          'Completing medical fitness exams and Emirates ID biometrics is mandatory for every UAE residency and golden visa issuance. Standard government centers often involve long waiting lines and delayed test turnaround. Vision Business Setup provides an executive VIP lounge service with dedicated chauffeurs, priority fast-track blood screening and chest X-rays, premium lounge access, and expedited test results delivered in as little as 2 to 4 hours.',
+        requirements: [
+          'Original passport and copy of valid UAE entry permit or residence visa',
+          'Current tourist visa or previous cancellation paper (if in-country status change)',
+          'Passport-size white-background photograph',
+          'Emirates ID application typing form',
+        ],
+        process: [
+          'Priority VIP appointment booking at premier smart health screening lounges in Dubai',
+          'Dedicated consultant escort and express queue bypassing for blood test & X-ray',
+          'Express lab processing with certified DHA/EHS fitness results issued within 2–4 hours',
+          'Fast-track biometric fingerprint capture at authorized ICP typing centers',
+          'Instant residency status update and express Emirates ID production clearance',
+        ],
+        deliverables: [
+          'Executive lounge access with zero queue waiting times',
+          'Express medical fitness report delivery in 2 to 4 hours',
+          'Priority biometric capture booking and document clearance',
+          'Real-time residency visa approval coordination with GDRFA/ICP',
+          'End-to-end liaison ensuring rapid turnaround for investors and executives',
+        ],
+        faqs: [
+          {
+            question: 'How fast are VIP medical test results released in Dubai?',
+            answer:
+              'With the VIP express package, medical fitness test results are typically released within 2 to 4 hours directly to the government immigration portal.',
+          },
+          {
+            question: 'What is tested during the UAE residency medical exam?',
+            answer:
+              'The mandatory test screens for communicable diseases: blood test for HIV and Hepatitis B/C (for specified categories), and a chest X-ray for pulmonary tuberculosis.',
+          },
+        ],
+      },
+      {
+        id: 'customs-registration',
+        title: 'Customs Registration',
+        heroImage: heroCustoms,
+        overviewImage: overviewCustoms,
+        authority: 'Dubai Customs & Federal Customs Authority',
+        timeframe: '24 – 48 Hours',
+        badge: 'Import & Export Ready',
+        icon: 'plane',
+        summary:
+          'Obtain your official Dubai Customs Client Code to legally import, export, and clear goods through UAE sea, air, and land ports.',
+        description:
+          'Any UAE Mainland or Free Zone company engaged in commercial trading, manufacturing, e-commerce fulfillment, or logistics must register with Dubai Customs to obtain an official Customs Client Code (Importer/Exporter Code). Without this registration, commercial shipments cannot be cleared through UAE ports and will incur heavy port demurrage fees. Vision Business Setup handles complete registration on the Dubai Trade and Mirsal II portals, securing your customs code and port clearance approvals swiftly.',
+        requirements: [
+          'Valid Dubai/UAE commercial trade license copy showing trading or industrial activities',
+          'Valid Memorandum of Association (MOA) and commercial register certificate',
+          'Passport and Emirates ID copies of company manager or authorized signatory',
+          'Undertaking letter and Dubai Trade portal registration details',
+        ],
+        process: [
+          'Verification of company trade license activities and harmonization code alignment',
+          'Profile creation and credential verification on Dubai Trade (Mirsal II) portal',
+          'Customs client code application submission and customs bond management',
+          'Review and clearance by Dubai Customs inspection division',
+          'Instant delivery of registered Customs Code certificate valid for all UAE ports',
+        ],
+        deliverables: [
+          'Official Dubai Customs Client Code valid for sea, air, and land clearance',
+          'Full activation on Mirsal II and Dubai Trade logistics portal',
+          'Assistance with customs inspection booking and import duty exemptions (for eligible Free Zones)',
+          'Annual customs code renewal and amendment management',
+          'Comprehensive protection against customs clearance hold-ups and storage penalties',
+        ],
+        faqs: [
+          {
+            question: 'Do free zone companies need a Dubai Customs code?',
+            answer:
+              'Yes. Free zone companies importing goods into the free zone, transshipping, or selling into the UAE mainland via a distributor must possess a valid Customs Client Code.',
+          },
+          {
+            question: 'How long is a Dubai Customs code valid?',
+            answer:
+              'A Dubai Customs code is valid for one year and is renewed annually in alignment with your company\'s commercial trade license.',
+          },
+        ],
+      },
+      {
+        id: 'office-spaces',
+        title: 'Office Spaces & Flexi-Desks',
+        heroImage: heroOfficeSpaces,
+        overviewImage: overviewOfficeSpaces,
+        authority: 'Dubai Land Department (Ejari), DED & UAE Free Zones',
+        timeframe: 'Same-Day Allocation',
+        badge: 'Ejari Certified',
+        icon: 'building',
+        summary:
+          'Certified physical offices, executive suites, and cost-effective flexi-desk co-working spaces with instant Ejari registration across prime Dubai business hubs.',
+        description:
+          'Every commercial license in Dubai requires a verified physical or flexi-desk lease agreement registered with Ejari (Dubai Land Department) or the respective Free Zone authority. The right workspace not only ensures regulatory compliance and smooth bank account opening, but also provides meeting rooms, high-speed connectivity, and prestigious addresses in Business Bay, Downtown, Sheikh Zayed Road, and JLT. Vision Business Setup provides flexible workspace solutions tailored to your operational budget and team scale.',
+        requirements: [
+          'Valid company trade license or initial approval certificate',
+          'Passport and Emirates ID copies of authorized signatory',
+          'Signed lease contract agreement and security deposit payment',
+        ],
+        process: [
+          'Consultation to evaluate your visa quota needs, location preference, and commercial activity requirements',
+          'Selection from prime business center flexi-desks, private serviced offices, or fitted commercial suites',
+          'Immediate tenancy agreement generation and lease validation',
+          'Same-day official Ejari registration certificate issuance',
+          'Physical handover with meeting room booking access and corporate mail handling',
+        ],
+        deliverables: [
+          'Official Ejari registration certificate accepted by DET, Free Zones & commercial banks',
+          'Flexible lease options: hot desk, dedicated flexi-desk, or private executive office',
+          'Prestigious corporate business addresses in Downtown Dubai, Business Bay, JLT & Sheikh Zayed Road',
+          'Meeting room access, high-speed fiber internet, and receptionist support',
+          'Scalable office space allowing expansion of your employee visa quota at any time',
+        ],
+        faqs: [
+          {
+            question: 'What is Ejari and why is it mandatory for a trade license?',
+            answer:
+              'Ejari is the official Dubai Land Department system for authenticating commercial and residential leases. DET requires an Ejari-registered tenancy contract to issue and renew any mainland commercial trade license.',
+          },
+          {
+            question: 'How many visas can I get with a flexi-desk or co-working space?',
+            answer:
+              'A standard flexi-desk lease typically entitles the company to 1 to 3 employee/investor residence visas, depending on the licensing jurisdiction. For larger visa quotas, dedicated physical office space is required (typically 9 sq. meters per visa in mainland).',
+          },
+        ],
+      },
+    ],
+  },
 ]
 
 // Flattened list of all services with category metadata
@@ -1302,6 +1530,17 @@ const serviceSlugAliases = {
   'golden-visa-in-dubai-uae-decisive-zone': 'golden-visa',
   'freelancer-visa-uae': 'freelance-visa',
   'vat-registration-bookkeeping': 'bookkeeping-vat',
+  'corporate-tax': 'corporate-tax-guide',
+  'corporate-tax-registration': 'corporate-tax-guide',
+  'corporate-bank-account': 'bank-account-opening',
+  'bank-account': 'bank-account-opening',
+  'bookkeeping': 'bookkeeping-vat',
+  'vat-registration': 'bookkeeping-vat',
+  'vip-medical': 'vip-medical-eid',
+  'customs': 'customs-registration',
+  'office': 'office-spaces',
+  'office-space': 'office-spaces',
+  'domestic-worker': 'domestic-worker-visa',
 }
 
 export const allServicesMap = Object.fromEntries([

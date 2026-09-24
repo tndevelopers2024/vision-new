@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import Icon from '../../ui/Icon.jsx'
-import { headerPhone, mainMenu, topBar } from '../../../data/site.js'
+import { headerPhone, headerPhones, mainMenu, topBar } from '../../../data/site.js'
 import { whatsappLink } from '../../../config/contact.js'
 import MenuItem from './MenuItem.jsx'
 
@@ -88,7 +88,14 @@ export default function MobileMenu({ open, onClose }) {
         </nav>
 
         <div className="btMobileFoot">
-          {headerPhone ? (
+          {headerPhones && headerPhones.length > 0 ? (
+            headerPhones.map((hp, idx) => (
+              <a key={idx} href={hp.href} className="bt_button_widget bt_button_widget_accent">
+                <span className="bt_bb_button_text">{hp.label}</span>
+                <Icon name="phone" size="small" />
+              </a>
+            ))
+          ) : headerPhone ? (
             <a href={headerPhone.href} className="bt_button_widget bt_button_widget_accent">
               <span className="bt_bb_button_text">{headerPhone.label}</span>
               <Icon name="phone" size="small" />

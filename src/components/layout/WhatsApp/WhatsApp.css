@@ -1,31 +1,40 @@
-/* WhatsApp Floating Button — circular high-contrast floating button */
+/* ==========================================================================
+   WhatsApp Floating Button — Luxury Rounded Pill Badge with "Chat Now" Label
+   ========================================================================== */
 
 .whatsapp-float {
   position: fixed;
   bottom: 24px;
   right: 24px;
   left: auto;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
+  width: auto;
+  height: 50px;
+  border-radius: 9999px;
+  padding: 10px 18px 10px 14px;
+  gap: 8px;
   background: #25d366;
   color: #ffffff;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), 0 2px 8px rgba(37, 211, 102, 0.4);
-  border: none;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.25);
   z-index: 9999;
   text-decoration: none;
   cursor: pointer;
+  font-family: var(--font-base, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  line-height: 1;
   transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .whatsapp-float:hover {
   background: #20ba5a;
   color: #ffffff;
-  transform: translateY(-3px) scale(1.06);
-  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.35), 0 4px 12px rgba(37, 211, 102, 0.5);
+  transform: none;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
 }
 
 .whatsapp-float:active {
@@ -38,24 +47,31 @@
 }
 
 .whatsapp-float__icon {
-  font-size: 32px;
-  width: 32px;
-  height: 32px;
+  font-size: 26px;
+  width: 26px;
+  height: 26px;
   display: block;
   flex-shrink: 0;
 }
 
-@media (max-width: 560px) {
+.whatsapp-float__label {
+  white-space: nowrap;
+  user-select: none;
+}
+
+@media (max-width: 480px) {
   .whatsapp-float {
     bottom: 16px;
     right: 16px;
-    width: 48px;
-    height: 48px;
+    height: 44px;
+    padding: 8px 14px 8px 11px;
+    gap: 7px;
+    font-size: 13.5px;
   }
 
   .whatsapp-float__icon {
-    font-size: 26px;
-    width: 26px;
-    height: 26px;
+    font-size: 22px;
+    width: 22px;
+    height: 22px;
   }
 }

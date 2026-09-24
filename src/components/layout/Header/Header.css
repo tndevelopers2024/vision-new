@@ -17,6 +17,15 @@
   --c-nav-gold: #ffffff;
 }
 
+@keyframes headerSlideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
 .mainHeader {
   position: absolute;
   top: 0;
@@ -35,6 +44,40 @@
     rgba(28, 59, 95, 0) 100%
   );
   border: none;
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* --------------------------------------------------------------------------
+   Sticky Header Variant — Dark luxury glassmorphism fixed on scroll
+   -------------------------------------------------------------------------- */
+
+.mainHeader--sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1050;
+  background-color: rgba(28, 59, 95, 0.95);
+  background-image: none;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  animation: headerSlideDown 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mainHeader--sticky .mainNavHolder {
+  padding: 10px 0;
+  transition: padding 0.3s ease;
+}
+
+.mainHeader--sticky .navLogo {
+  height: 68px;
+}
+
+.mainHeader--sticky .navBrandTagline {
+  font-size: 9.5px;
+  margin-top: 2px;
 }
 
 /* Spacer is disabled so the nav overlays the hero banner */
@@ -50,6 +93,7 @@
 .mainNavHolder {
   width: 100%;
   padding: 20px 0;
+  transition: padding 0.3s ease;
 }
 
 .mainNavPort {
@@ -63,16 +107,23 @@
   position: relative;
 }
 
-/* Left: Logo */
+/* Left: Logo & Tagline */
 .navBrand {
   flex: 0 0 auto;
   display: flex;
   align-items: center;
 }
 
+.navBrandLink {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-decoration: none;
+}
+
 .navBrand a {
   display: block;
-  line-height: 0;
+  line-height: normal;
 }
 
 .navLogo {
@@ -80,11 +131,29 @@
   height: 96px;
   width: auto;
   object-fit: contain;
-  transition: opacity var(--t-fast);
+  transition: opacity var(--t-fast), height 0.3s ease;
 }
 
 .navLogo:hover {
   opacity: 0.9;
+}
+
+.navBrandTagline {
+  display: block;
+  font-family: var(--font-base);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #e2c99f; /* subtle luxury champagne gold */
+  margin-top: 3px;
+  line-height: 1.2;
+  white-space: nowrap;
+  transition: color 200ms ease;
+}
+
+.navBrandLink:hover .navBrandTagline {
+  color: #ffffff;
 }
 
 /* Center: Primary Navigation Links */
@@ -379,14 +448,70 @@
 }
 
 /* --------------------------------------------------------------------------
-   Right: Phone Link + Mobile Menu Trigger
+   Right: Phone CTA + Enquiry Button + Mobile Menu Trigger
    -------------------------------------------------------------------------- */
 
 .navRight {
   flex: 0 0 auto;
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
+}
+
+.navPhoneBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0.65em 1.25em;
+  font-family: var(--font-base);
+  font-size: 0.88rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(226, 201, 159, 0.55); /* Subtle luxury gold border */
+  border-radius: 4px;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 250ms ease;
+}
+
+.navPhoneBtn__short {
+  display: none;
+}
+
+.navPhoneBtn__full {
+  display: inline;
+}
+
+.navPhoneBtn .btIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #e2c99f;
+  transition: transform 200ms ease, color 200ms ease;
+}
+
+.navPhoneBtn .btIcon svg {
+  width: 14px;
+  height: 14px;
+}
+
+.navPhoneBtn:hover {
+  background-color: #e2c99f;
+  color: #112338;
+  border-color: #e2c99f;
+  box-shadow: 0 4px 16px rgba(226, 201, 159, 0.35);
+  transform: translateY(-1px);
+}
+
+.navPhoneBtn:hover .btIcon {
+  color: #112338;
+  transform: scale(1.1);
 }
 
 .navCtaBtn,
@@ -395,16 +520,16 @@
   align-items: center;
   justify-content: center;
   gap: 0.6em;
-  min-width: 160px;
-  padding: 0.85em 2.5em;
+  min-width: 120px;
+  padding: 0.65em 1.5em;
   font-family: var(--font-base);
-  font-size: 0.95rem;
-  font-weight: 500;
+  font-size: 0.88rem;
+  font-weight: 600;
   line-height: 1.2;
   color: #ffffff;
   background-color: transparent;
   border: 1px solid #ffffff;
-  border-radius: 0;
+  border-radius: 4px;
   text-decoration: none;
   white-space: nowrap;
   cursor: pointer;
@@ -414,8 +539,9 @@
 .navCtaBtn:hover,
 .navPhone:hover {
   background-color: #ffffff;
-  color: #000000;
+  color: #1c3b5f;
   border-color: #ffffff;
+  transform: translateY(-1px);
 }
 
 .navPhone .btIcon {
@@ -459,7 +585,7 @@
 .btMobileScrim {
   position: fixed;
   inset: 0;
-  z-index: 1030;
+  z-index: 1060;
   background: rgba(19, 42, 69, 0.6);
   opacity: 0;
   pointer-events: none;
@@ -476,7 +602,7 @@
   top: 0;
   right: 0;
   bottom: 0;
-  z-index: 1040;
+  z-index: 1070;
   width: 320px;
   max-width: 85vw;
   padding: 1.5em 0 2em;
@@ -625,26 +751,42 @@
    Responsive Breakpoints
    -------------------------------------------------------------------------- */
 
+@media (min-width: 1201px) and (max-width: 1360px) {
+  .navCenter {
+    margin: 0 16px;
+  }
+
+  .navCenter ul.menu {
+    gap: 20px;
+  }
+
+  .navPhoneBtn {
+    padding: 0.52em 0.85em;
+    font-size: 0.82rem;
+    gap: 6px;
+  }
+
+  .mainNavPort {
+    padding: 0 24px;
+  }
+}
+
 @media (max-width: 1200px) {
   .navCenter {
     display: none;
   }
 
   .navCtaBtn,
-  .navPhone {
-    padding: 0.5em 1em;
+  .navPhoneBtn {
+    min-width: auto;
+    padding: 0.55em 1.1em;
     font-size: 0.85rem;
-  }
-
-  .navPhoneText {
-    display: none;
   }
 }
 
-@media (max-width: 480px) {
-  .navCtaBtn {
-    padding: 0.45em 0.85em;
-    font-size: 0.8rem;
+@media (max-width: 900px) {
+  .navBrandTagline {
+    display: none;
   }
 }
 
@@ -660,11 +802,47 @@
   .navLogo {
     height: 72px;
   }
+
+  .mainHeader--sticky .navLogo {
+    height: 58px;
+  }
+}
+
+@media (max-width: 600px) {
+  .navPhoneBtn__full {
+    display: none;
+  }
+
+  .navPhoneBtn__short {
+    display: inline;
+    font-size: 0.82rem;
+    font-weight: 600;
+  }
+
+  .navPhoneBtn {
+    padding: 0.45em 0.75em;
+    min-width: auto;
+    gap: 6px;
+  }
+
+  .navRight {
+    gap: 8px;
+  }
+}
+
+@media (max-width: 380px) {
+  .navPhoneBtn__short {
+    display: none;
+  }
+
+  .navPhoneBtn {
+    padding: 0.45em 0.6em;
+  }
 }
 
 @media (max-width: 480px) {
   .mainNavHolder {
-    padding: 14px 0;
+    padding: 12px 0;
   }
 
   .mainNavPort {
@@ -672,7 +850,16 @@
   }
 
   .navLogo {
-    height: 58px;
+    height: 54px;
+  }
+
+  .mainHeader--sticky .navLogo {
+    height: 48px;
+  }
+
+  .navCtaBtn {
+    padding: 0.45em 0.85em;
+    font-size: 0.8rem;
   }
 }
 
@@ -690,6 +877,20 @@
   --c-nav-gold: #000000;
 }
 
+.mainHeader--light.mainHeader--sticky {
+  background-color: rgba(255, 255, 255, 0.96);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.mainHeader--light .navBrandTagline {
+  color: #8c734b;
+}
+
+.mainHeader--light .navBrandLink:hover .navBrandTagline {
+  color: #1c3b5f;
+}
+
 .mainHeader--light .navCenter ul.menu > li > a {
   color: rgba(0, 0, 0, 0.65);
 }
@@ -697,6 +898,26 @@
 .mainHeader--light .navCenter ul.menu > li > a:hover,
 .mainHeader--light .navCenter ul.menu > li.current-menu-item > a {
   color: var(--c-nav-gold);
+}
+
+.mainHeader--light .navPhoneBtn {
+  color: #1c3b5f;
+  background-color: rgba(28, 59, 95, 0.05);
+  border-color: rgba(28, 59, 95, 0.3);
+}
+
+.mainHeader--light .navPhoneBtn .btIcon {
+  color: #1c3b5f;
+}
+
+.mainHeader--light .navPhoneBtn:hover {
+  background-color: #1c3b5f;
+  color: #ffffff;
+  border-color: #1c3b5f;
+}
+
+.mainHeader--light .navPhoneBtn:hover .btIcon {
+  color: #ffffff;
 }
 
 .mainHeader--light .navCtaBtn {

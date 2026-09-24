@@ -49,11 +49,17 @@ export const mainMenu = [
       m('Remote Work Visa', '/services/remote-work-visa'),
       m('Golden Visa', '/services/golden-visa'),
       m('Freelance Visa', '/services/freelance-visa'),
+      m('Domestic Worker Visa', '/services/domestic-worker-visa'),
     ]),
     m('Finance & Banking', '/services#finance-banking', [
       m('Bank Account Opening', '/services/bank-account-opening'),
       m('Corporate Tax Guide', '/services/corporate-tax-guide'),
       m('Bookkeeping & VAT Registration', '/services/bookkeeping-vat'),
+    ]),
+    m('Other', '/services#other', [
+      m('VIP Medical & Emirates ID Assistance', '/services/vip-medical-eid'),
+      m('Customs Registration', '/services/customs-registration'),
+      m('Office Spaces', '/services/office-spaces'),
     ]),
   ]),
   m('About Us', '/about'),
@@ -70,6 +76,12 @@ export const headerPhone = hasPhone
       href: contact.phoneHref,
     }
   : null
+
+export const headerPhones = contact.phones?.map((p) => ({
+  label: p.display,
+  href: p.href,
+  shortLabel: p.shortDisplay,
+})) || (headerPhone ? [headerPhone] : [])
 
 export const footer = {
   cta: {
@@ -93,7 +105,9 @@ export const footer = {
           {
             icon: 'phone',
             label: 'Round-the-Clock Support',
-            value: contact.phoneDisplay,
+            value: contact.secondaryPhoneDisplay
+              ? `${contact.phoneDisplay}  |  ${contact.secondaryPhoneDisplay}`
+              : contact.phoneDisplay,
             href: contact.phoneHref,
             detail: 'Support whenever you need it, beyond the conventional 9-to-5 framework',
           },

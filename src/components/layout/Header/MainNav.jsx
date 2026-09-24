@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import Icon from '../../ui/Icon.jsx'
 import { mainMenu } from '../../../data/site.js'
+import { contact } from '../../../config/contact.js'
 import MenuItem from './MenuItem.jsx'
 
 const logoLight = `${import.meta.env.BASE_URL}logo-lockup-light.png`
@@ -9,12 +10,12 @@ const logoDark = `${import.meta.env.BASE_URL}logo-lockup.png`
 
 /**
  * MainNav — Luxury floating header inspired by Pride & Property Dubai:
- * - Brand logo on the left
+ * - Brand logo on the left with tagline
  * - Centered navigation links (active state, hover)
- * - Sharp Contact Us action button on the right
+ * - Prominent phone CTA and Enquiry action button on the right
  * - Mobile hamburger trigger on smaller viewports
  */
-export default function MainNav({ onOpenMobile, mobile, isLight = false }) {
+export default function MainNav({ onOpenMobile, mobile, isLight = false, _isSticky = false }) {
   const location = useLocation()
   const logo = isLight ? logoDark : logoLight
   const [activeMenu, setActiveMenu] = useState(null)
@@ -153,10 +154,11 @@ export default function MainNav({ onOpenMobile, mobile, isLight = false }) {
   return (
     <div className="mainNavHolder">
       <div className="mainNavPort">
-        {/* Left: Brand Logo */}
+        {/* Left: Brand Logo & Tagline */}
         <div className="navBrand" onMouseEnter={handleImmediateClose}>
-          <Link to="/" aria-label="Vision Business Setup — home">
+          <Link to="/" aria-label="Vision Business Setup — home" className="navBrandLink">
             <img className="navLogo" src={logo} alt="Vision Business Setup" />
+            <span className="navBrandTagline">Every Business starts with Vision</span>
           </Link>
         </div>
 
@@ -192,15 +194,23 @@ export default function MainNav({ onOpenMobile, mobile, isLight = false }) {
           </nav>
         )}
 
-        {/* Right: Enquiry Action Button + Mobile hamburger trigger */}
+        {/* Right: Phone Number CTAs + Mobile hamburger trigger */}
         <div className="navRight" onMouseEnter={handleImmediateClose}>
-          <Link
-            to="/contact"
-            className="navCtaBtn"
-            title="Make an Enquiry"
-          >
-            Enquiry
-          </Link>
+          {(contact.phones || [{ display: contact.phoneDisplay, href: contact.phoneHref, shortDisplay: 'Call' }]).map(
+            (phone, idx) => (
+              <a
+                key={phone.href || idx}
+                href={phone.href}
+                className={`navPhoneBtn ${idx > 0 ? 'navPhoneBtn--secondary' : ''}`}
+                title={`Call us: ${phone.display}`}
+                aria-label={`Call us: ${phone.display}`}
+              >
+                <Icon name="phone" size="small" />
+                <span className="navPhoneBtn__full">{phone.display}</span>
+                <span className="navPhoneBtn__short">{phone.shortDisplay || phone.display}</span>
+              </a>
+            ),
+          )}
 
           {mobile && (
             <button

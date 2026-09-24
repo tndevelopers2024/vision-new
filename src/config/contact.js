@@ -21,8 +21,25 @@ export const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURICom
 
 export const contact = {
   // Public phone line is configured site-wide.
-  phoneDisplay: '+971 55 161 2342',
-  phoneHref: 'tel:+971551612342',
+  phoneDisplay: '+971 50 545 9247',
+  phoneHref: 'tel:+971505459247',
+  secondaryPhoneDisplay: '+971 55 161 2342',
+  secondaryPhoneHref: 'tel:+971551612342',
+
+  phones: [
+    {
+      display: '+971 50 545 9247',
+      href: 'tel:+971505459247',
+      shortDisplay: '050',
+      raw: '050 545 9247',
+    },
+    {
+      display: '+971 55 161 2342',
+      href: 'tel:+971551612342',
+      shortDisplay: '055',
+      raw: '055 161 2342',
+    },
+  ],
 
   whatsappNumber,
   whatsappDisplay: '+971 55 161 2342',
@@ -39,9 +56,7 @@ export const contact = {
   mapEmbedUrl: '',
   mapLink: '',
 
-  social: [
-    { icon: 'whatsapp', href: whatsappLink, label: 'WhatsApp' },
-  ],
+  social: [],
 }
 
 /** True while a public phone number is configured (display + tel: link). */

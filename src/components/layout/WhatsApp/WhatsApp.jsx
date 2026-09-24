@@ -16,6 +16,7 @@ export default function WhatsApp() {
       title="Chat on WhatsApp"
     >
       <FaWhatsapp className="whatsapp-float__icon" aria-hidden="true" />
+      <span className="whatsapp-float__label">Chat Now</span>
     </a>
   )
 }
