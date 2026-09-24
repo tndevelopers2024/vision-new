@@ -133,7 +133,7 @@ export const footer = {
       icon: 'pin',
       label: 'Business Setup in the UAE',
       value: contact.addressLines.join(', '),
-      href: `https://www.google.com/maps/search/${encodeURIComponent(contact.addressLines.join(' '))}`,
+      href: contact.mapLink || `https://www.google.com/maps/search/${encodeURIComponent(contact.addressLines.join(' '))}`,
       detail: 'Open in Google Maps ↗',
       target: '_blank',
     },

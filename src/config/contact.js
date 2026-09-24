@@ -46,15 +46,17 @@ export const contact = {
   whatsappMessage,
 
   email: 'admin@visionbusinesssetup.ae',
-  addressLines: ['IDS Business Center, Office no. 107', 'Karama, Dubai'],
+  address: 'IDS Global Business Center, Office no. 107, Karama, Dubai',
+  addressLines: [
+    'IDS Global Business Center',
+    'Office no. 107, Karama, Dubai',
+  ],
 
   hours: '09:00 AM – 07:00 PM, Sunday Closed',
 
-  // Get in Touch map. Leave `mapEmbedUrl` empty to show the styled placeholder;
-  // paste a Google Maps / OpenStreetMap "embed" src URL once the office
-  // location is confirmed. `mapLink` opens the full map in a new tab.
-  mapEmbedUrl: '',
-  mapLink: '',
+  // Get in Touch map.
+  mapEmbedUrl: 'https://www.google.com/maps?q=IDS+Global+Business+Center+Karama+Dubai&output=embed',
+  mapLink: 'https://www.google.com/maps/search/?api=1&query=IDS+Global+Business+Center+Karama+Dubai',
 
   social: [],
 }

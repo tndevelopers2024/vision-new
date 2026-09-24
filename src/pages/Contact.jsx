@@ -206,7 +206,14 @@ export default function Contact() {
         <div className="contactMap__inner">
           <div className="contactMap__card">
             <span className="contactEyebrow contactEyebrow--light">Office</span>
-            <p className="contactMap__city">{officeQuery || 'Office address to be added'}</p>
+            {contact.addressLines && contact.addressLines.length > 1 ? (
+              <>
+                <p className="contactMap__city">{contact.addressLines[0]}</p>
+                <p className="contactMap__addressDetail">{contact.addressLines.slice(1).join(', ')}</p>
+              </>
+            ) : (
+              <p className="contactMap__city">{officeQuery || 'Office address to be added'}</p>
+            )}
             {contact.hours && <p className="contactMap__hours">{contact.hours}</p>}
             {mapLink && (
               <a className="contactMap__link" href={mapLink} target="_blank" rel="noopener noreferrer">
