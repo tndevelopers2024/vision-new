@@ -70,6 +70,7 @@ export default function AboutUs() {
       </section>
 
       {/* ── 3. Our Founder ──────────────────────────────────────── */}
+      <Founder />
 
       {/* ── 4. Who We Work With ─────────────────────────────────── */}
       <WhoWeWorkWith />
@@ -97,8 +98,6 @@ export default function AboutUs() {
 
       {/* ── 7. Our Commitment ───────────────────────────────────── */}
       <Commitment />
-      <Founder />
-
     </main>
   )
 }

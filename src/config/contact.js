@@ -33,12 +33,6 @@ export const contact = {
       shortDisplay: '050',
       raw: '050 545 9247',
     },
-    {
-      display: '+971 55 161 2342',
-      href: 'tel:+971551612342',
-      shortDisplay: '055',
-      raw: '055 161 2342',
-    },
   ],
 
   whatsappNumber,

@@ -154,11 +154,10 @@ export default function MainNav({ onOpenMobile, mobile, isLight = false, _isStic
   return (
     <div className="mainNavHolder">
       <div className="mainNavPort">
-        {/* Left: Brand Logo & Tagline */}
+        {/* Left: Brand Logo */}
         <div className="navBrand" onMouseEnter={handleImmediateClose}>
           <Link to="/" aria-label="Vision Business Setup — home" className="navBrandLink">
             <img className="navLogo" src={logo} alt="Vision Business Setup" />
-            <span className="navBrandTagline">Every Business starts with Vision</span>
           </Link>
         </div>
 

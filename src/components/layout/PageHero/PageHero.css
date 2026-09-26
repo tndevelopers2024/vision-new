@@ -113,6 +113,44 @@
   margin-bottom: 0;
 }
 
+/* --- Action Buttons (Dual Outline Buttons matching Home Hero) --------- */
+
+.pageHero__buttons {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-top: clamp(28px, 3.5vw, 40px);
+}
+
+.pageHero__btn,
+.pageHero__btn:visited {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 160px;
+  padding: 0.85em 2.5em;
+  font-family: var(--font-base);
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: #ffffff !important;
+  background-color: transparent;
+  border: 1px solid #ffffff;
+  border-radius: 0;
+  text-decoration: none !important;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: background-color 250ms ease, color 250ms ease, border-color 250ms ease;
+}
+
+.pageHero__btn:hover,
+.pageHero__btn:focus {
+  background-color: #ffffff;
+  color: #000000 !important;
+  border-color: #ffffff;
+}
+
 /* --- Motion -------------------------------------------------------------- */
 
 @keyframes pageHeroSettle {
@@ -161,5 +199,17 @@
   .pageHero__intro {
     margin-top: 16px;
     padding-top: 14px;
+  }
+
+  .pageHero__buttons {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .pageHero__btn {
+    width: 100%;
+    min-width: auto;
   }
 }

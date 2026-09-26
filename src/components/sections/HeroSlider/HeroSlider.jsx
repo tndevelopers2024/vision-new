@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { heroSlides } from '../../../data/home.js'
 import './HeroSlider.css'
 
@@ -26,7 +27,9 @@ const AUTOPLAY_MS = 5500
  * Section 1 — Hero slider.
  *
  * Full-bleed, centered luxury banner with dark Dubai skyline,
- * elegant typography and dual outline buttons inspired by Pride and Property.
+ * elegant typography and stable dual outline buttons inspired by Pride and Property.
+ *
+ * Background crossfades independently so foreground buttons never duplicate or ghost.
  */
 export default function HeroSlider() {
   const [current, setCurrent] = useState(0)
@@ -50,48 +53,58 @@ export default function HeroSlider() {
     [goTo, next],
   )
 
+  const activeSlide = heroSlides[current] || heroSlides[0]
+
   return (
     <section
       className="heroSlider"
       aria-roledescription="carousel"
       aria-label="Vision Business Setup"
     >
-      <div className="heroSlider__viewport">
+      {/* Background layer crossfades smoothly behind the content */}
+      <div className="heroSlider__bgLayer">
         {heroSlides.map((slide, i) => (
-          <article
-            key={slide.title}
-            className={`heroSlide${i === current ? ' is-active' : ''}`}
+          <div
+            key={slide.image}
+            className={`heroSlideBg${i === current ? ' is-active' : ''}`}
             style={{ backgroundImage: `url(${resolveImage(slide.image)})` }}
-            aria-hidden={i === current ? undefined : true}
-            aria-roledescription="slide"
-            aria-label={`${i + 1} of ${count}`}
-          >
-            <div className="heroSlide__inner">
-              <div className="heroSlide__content">
-                {slide.super && <p className="heroSlide__super">{slide.super}</p>}
-                <h1 className="heroSlide__title">{slide.title}</h1>
-                {slide.text && <p className="heroSlide__sub">{slide.text}</p>}
-
-                {slide.buttons?.length > 0 && (
-                  <div className="heroButtons">
-                    {slide.buttons.map((btn) => (
-                      <a
-                        key={btn.label}
-                        href={btn.href}
-                        className="heroButton"
-                        tabIndex={i === current ? 0 : -1}
-                      >
-                        {btn.label}
-                      </a>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </div>
-          </article>
+            aria-hidden="true"
+          />
         ))}
       </div>
 
+      {/* Foreground Content — Rendered once to eliminate ghosting / double buttons */}
+      <div className="heroSlide__inner">
+        <div className="heroSlide__content">
+          <p className="heroSlide__super" key={`super-${current}`}>
+            {activeSlide.super}
+          </p>
+
+          <div className="heroSlide__titleBox">
+            <h1 className="heroSlide__title" key={`title-${current}`}>
+              {activeSlide.title}
+            </h1>
+          </div>
+
+          {activeSlide.text && (
+            <p className="heroSlide__sub" key={`sub-${current}`}>
+              {activeSlide.text}
+            </p>
+          )}
+
+          {/* Stable single instance of action buttons — never duplicates or shifts */}
+          <div className="heroButtons">
+            <Link to="/about" className="heroButton" style={{ color: '#ffffff' }}>
+              About Us
+            </Link>
+            <Link to="/contact" className="heroButton" style={{ color: '#ffffff' }}>
+              Contact Us
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Slide Indicators */}
       <ul className="heroDots" role="tablist" aria-label="Select a slide">
         {heroSlides.map((slide, i) => (
           <li key={slide.title} className={i === current ? 'is-active' : ''}>
@@ -99,7 +112,7 @@ export default function HeroSlider() {
               type="button"
               role="tab"
               aria-selected={i === current}
-              aria-label={`Go to slide ${i + 1}`}
+              aria-label={`Go to slide ${i + 1}: ${slide.title}`}
               onClick={() => pick(i)}
             />
           </li>

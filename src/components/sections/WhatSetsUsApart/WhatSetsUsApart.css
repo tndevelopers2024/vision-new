@@ -1,322 +1,139 @@
 /* ==========================================================================
-   Section 4 — What Sets Us Apart
-   Monochrome editorial layout in the same language as Who We Work With and
-   Our Services: white ground, black type, hairline rules, #f5f5f5 for tone,
-   and the site's transparent-to-black button. No accent colour.
-   Every selector is scoped to .whatSets / .wsItem.
+   Section: What Sets Us Apart
+   2x2 elevated white card grid with centered header (Pride & Property reference)
    ========================================================================== */
 
 .whatSets {
   position: relative;
+  width: 100%;
   background-color: #ffffff;
-  padding: clamp(36px, 4vw, 54px) 0;
-  /* No `overflow: hidden` here — it would make this element the scroll
-     container for anything sticky inside it. */
+  padding: clamp(24px, 3vw, 40px) 0 clamp(54px, 6vw, 84px);
 }
 
-.whatSets__cell {
-  position: relative;
-  width: var(--w-boxed-1200);
-  max-width: calc(100% - (var(--page-gutter) * 2));
+.whatSets__container {
+  width: 100%;
+  max-width: 1240px;
   margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 40px);
+  box-sizing: border-box;
 }
 
-/* --- Asymmetric layout ------------------------------------------------- */
+/* --- Centered Header --------------------------------------------------- */
 
-.whatSets__layout {
-  display: grid;
-  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
-  gap: clamp(44px, 6vw, 92px);
-  /* Top-aligned, not centred: the headline column is far shorter than the
-     four-row list, and centring it opened a large empty band above the
-     heading. */
-  align-items: start;
-}
-
-/* --- Headline column --------------------------------------------------- */
-
-/* The headline travels with the list instead of leaving dead space beneath
-   it. `.btPageWrap` uses `overflow-x: clip`, so sticky resolves against the
-   page. */
-.whatSets__head {
-  position: sticky;
-  top: 108px;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .whatSets__head {
-    position: relative;
-    top: 0;
-  }
-}
-
-.whatSets__super {
-  display: block;
-  font-family: var(--font-heading);
-  font-size: 1rem;
-  font-weight: var(--fw-normal);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--c-muted);
-  margin-bottom: 0.9em;
+.whatSets__header {
+  text-align: center;
+  max-width: 780px;
+  margin: 0 auto clamp(28px, 3.5vw, 44px);
 }
 
 .whatSets__title {
   font-family: var(--font-heading);
-  font-size: clamp(2rem, 3vw, 2.6rem);
-  line-height: 1.14;
-  letter-spacing: -0.02em;
-  margin: 0;
-  color: #000000;
-}
-
-.whatSets__titlePlain {
-  display: block;
-  font-weight: var(--fw-light);
-  color: rgba(0, 0, 0, 0.45);
-}
-
-.whatSets__titleAccent {
-  display: block;
-  font-weight: var(--fw-bold);
-  color: #000000;
+  font-size: clamp(30px, 3.2vw, 44px);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: #111111;
+  margin: 0 0 16px;
 }
 
 .whatSets__intro {
-  margin: 1.5em 0 0;
-  padding-left: 1.15em;
-  border-left: 2px solid rgba(0, 0, 0, 0.12);
-  font-family: var(--font-alt);
-  font-size: 1.0625rem;
-  line-height: 1.7;
-  color: var(--c-body);
-  max-width: 34em;
-}
-
-/* Site button: transparent with a black hairline, filling black on hover. */
-.whatSets__button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.6em;
-  min-width: 160px;
-  margin-top: 2.3em;
-  padding: 0.85em 2.5em;
   font-family: var(--font-base);
-  font-weight: 500;
-  font-size: 0.95rem;
-  line-height: 1.2;
-  color: #000000;
-  background-color: transparent;
-  border: 1px solid #1c3b5f;
-  border-radius: 0;
-  text-decoration: none;
-  cursor: pointer;
-  transition: background-color 250ms ease, color 250ms ease, border-color 250ms ease;
+  font-size: clamp(15px, 1.05vw, 16px);
+  font-weight: 400;
+  line-height: 1.65;
+  color: #555555;
+  margin: 0 auto;
+  max-width: 720px;
 }
 
-.whatSets__button:hover {
-  background-color: #1c3b5f;
-  color: #ffffff;
-  border-color: #1c3b5f;
-}
-
-/* --- Differentiator rows ----------------------------------------------- */
+/* --- 2x2 Grid of Cards ------------------------------------------------- */
 
 .whatSets__grid {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.wsItem {
-  position: relative;
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  align-items: start;
-  gap: 0 1.5em;
-  padding: 2.15em 1.5em;
-  border-top: 1px solid rgba(0, 0, 0, 0.09);
-  transition: background-color 320ms ease, transform 320ms var(--ease);
-}
-
-.wsItem:last-child {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.09);
-}
-
-/* Black hairline that draws in from the left on hover. */
-.wsItem::before {
-  content: '';
-  position: absolute;
-  top: -1px;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background-color: #1c3b5f;
-  transition: width 480ms var(--ease);
-}
-
-.wsItem:hover {
-  background-color: #f5f5f5;
-  transform: translateX(6px);
-}
-
-.wsItem:hover::before {
-  width: 100%;
-}
-
-.wsItem__icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 58px;
-  height: 58px;
-  flex: 0 0 auto;
-  color: #000000;
-  background-color: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.09);
-  border-radius: 0;
-  transition: background-color 320ms ease, border-color 320ms ease, color 320ms ease;
-}
-
-.wsItem__icon .btIcon {
-  width: 28px;
-  height: 28px;
-}
-
-.wsItem:hover .wsItem__icon {
-  color: #ffffff;
-  background-color: #1c3b5f;
-  border-color: #1c3b5f;
-}
-
-.wsItem__body {
-  min-width: 0;
-}
-
-.wsItem__title {
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(24px, 3vw, 36px);
+  list-style: none;
+  padding: 0;
   margin: 0;
+}
+
+/* --- Differentiator Card ----------------------------------------------- */
+
+.wsCard {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: clamp(36px, 4vw, 48px) clamp(30px, 3.5vw, 44px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  transition: transform 260ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 260ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 260ms ease;
+}
+
+.wsCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.09), 0 2px 6px rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+.wsCard__title {
+  font-family: var(--font-heading);
+  font-size: clamp(21px, 1.6vw, 24px);
+  font-weight: 500;
+  line-height: 1.3;
+  color: #111111;
+  letter-spacing: -0.01em;
+  margin: 0 0 14px 0;
+}
+
+.wsCard__text {
   font-family: var(--font-base);
-  font-size: 1.375rem;
-  font-weight: var(--fw-bold);
-  line-height: 1.25;
-  letter-spacing: -0.02em;
-  color: #000000;
+  font-size: clamp(14px, 1vw, 15px);
+  font-weight: 400;
+  line-height: 1.68;
+  color: #555555;
+  margin: 0;
 }
 
-.wsItem__text {
-  margin: 0.6rem 0 0;
-  font-family: var(--font-base);
-  font-size: 0.9375rem;
-  line-height: 1.65;
-  color: var(--c-body);
-}
+/* --- Reveal animation -------------------------------------------------- */
 
-/* --- Scroll reveal ------------------------------------------------------
-   Driven by `useInView`: `.is-inView` lands on the headline column and on
-   each row as it enters the viewport. Keyframes rather than transitions, and
-   `animation-fill-mode: backwards` rather than `both`, so a finished reveal
-   leaves no forwards fill sitting on top of the hover transform below.
-   ------------------------------------------------------------------------ */
-
-@keyframes wsReveal-rise {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-}
-
-@keyframes wsReveal-pop {
-  from {
-    opacity: 0;
-    transform: scale(0.82);
-  }
-}
-
-.whatSets .wsReveal {
+.wsReveal {
   opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 600ms cubic-bezier(0.16, 1, 0.3, 1),
+              transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--reveal-delay, 0ms);
 }
 
-.whatSets__head.is-inView .wsReveal,
-.whatSets .wsItem.wsReveal.is-inView {
+.wsReveal.is-inView {
   opacity: 1;
-  animation: wsReveal-rise 720ms var(--ease) var(--reveal-delay, 0ms) backwards;
-}
-
-/* The icon tile lands just after its row. */
-.wsItem.is-inView .wsItem__icon {
-  animation: wsReveal-pop 620ms var(--ease)
-    calc(var(--reveal-delay, 0ms) + 140ms) backwards;
-}
-
-/* --- Responsive --------------------------------------------------------- */
-
-@media (max-width: 1100px) {
-  .whatSets__layout {
-    grid-template-columns: 1fr;
-    gap: 46px;
-  }
-
-  /* Single column — the headline sits directly above the list. */
-  .whatSets__head {
-    position: relative;
-    top: 0;
-  }
-
-  .whatSets__intro {
-    max-width: none;
-  }
-}
-
-@media (max-width: 680px) {
-  .whatSets {
-    padding: 30px 0;
-  }
-
-  .wsItem {
-    grid-template-columns: auto minmax(0, 1fr);
-    gap: 0 1.25em;
-    padding: 1.8em 0.5em;
-  }
-
-  .wsItem__icon {
-    width: 48px;
-    height: 48px;
-  }
-
-  .wsItem__icon .btIcon {
-    width: 22px;
-    height: 22px;
-  }
-
-  .wsItem:hover {
-    transform: none;
-  }
-
-  .whatSets__button {
-    width: 100%;
-  }
+  transform: translateY(0);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .whatSets__button,
-  .wsItem,
-  .wsItem::before {
+  .wsReveal {
+    opacity: 1;
+    transform: none;
     transition: none;
   }
+}
 
-  .wsItem:hover {
-    transform: none;
+/* --- Responsive -------------------------------------------------------- */
+
+@media (max-width: 860px) {
+  .whatSets__grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
 
-  /* No scroll reveal — everything is simply present. */
-  .whatSets .wsReveal {
-    opacity: 1;
+  .whatSets {
+    padding: clamp(20px, 2.5vw, 32px) 0 clamp(44px, 5.5vw, 64px);
   }
 
-  .whatSets__head.is-inView .wsReveal,
-  .whatSets .wsItem.wsReveal.is-inView,
-  .wsItem.is-inView .wsItem__icon {
-    animation: none;
+  .wsCard {
+    padding: 30px 24px;
   }
 }

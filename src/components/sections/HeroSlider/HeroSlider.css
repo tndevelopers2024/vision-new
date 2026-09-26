@@ -15,25 +15,27 @@
   background-color: var(--c-navy-deep);
 }
 
-.heroSlider__viewport {
-  display: grid;
-  grid-template-areas: 'slide';
+/* Background Crossfade Layer */
+.heroSlider__bgLayer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
 }
 
-.heroSlide {
-  grid-area: slide;
-  min-width: 0;
-  position: relative;
+.heroSlideBg {
+  position: absolute;
+  inset: 0;
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 700ms ease-out, visibility 0s linear 700ms;
+  transition: opacity 800ms ease-out, visibility 0s linear 800ms;
 }
 
 /* Dark cinematic overlay for rich contrast and readable white typography */
-.heroSlide::before {
+.heroSlideBg::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -42,12 +44,13 @@
   pointer-events: none;
 }
 
-.heroSlide.is-active {
+.heroSlideBg.is-active {
   opacity: 1;
   visibility: visible;
-  transition: opacity 700ms ease-out;
+  transition: opacity 800ms ease-out;
 }
 
+/* Foreground Centered Content */
 .heroSlide__inner {
   position: relative;
   z-index: 2;
@@ -71,18 +74,32 @@
   margin: 0 auto;
 }
 
-/* Subtitle / Eyebrow (e.g. "Your Gateway To Business Setup In Dubai") */
+/* Subtitle / Eyebrow */
 .heroSlide__super {
   font-family: var(--font-base);
   font-size: clamp(1.05rem, 1.6vw, 1.25rem);
   font-weight: 400;
   color: rgba(255, 255, 255, 0.92);
   letter-spacing: 0.02em;
+  min-height: 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: 0 0 0.85rem;
   text-transform: none;
+  animation: heroTextFade 400ms cubic-bezier(0.16, 1, 0.3, 1) backwards;
 }
 
-/* Main Heading (e.g. "Vision Business Setup") */
+/* Main Heading Container — strictly locked height so buttons NEVER jump */
+.heroSlide__titleBox {
+  min-height: clamp(6.5rem, 14vw, 10.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2.2rem;
+  width: 100%;
+}
+
 .heroSlide__title {
   font-family: var(--font-heading), sans-serif;
   font-size: clamp(2.75rem, 6vw, 4.5rem);
@@ -90,7 +107,9 @@
   line-height: 1.15;
   color: #ffffff;
   letter-spacing: -0.01em;
-  margin: 0 0 2.2rem;
+  margin: 0;
+  text-align: center;
+  animation: heroTextFade 450ms cubic-bezier(0.16, 1, 0.3, 1) backwards;
 }
 
 .heroSlide__sub {
@@ -100,6 +119,18 @@
   color: rgba(255, 255, 255, 0.85);
   max-width: 38em;
   margin: -1rem auto 2rem;
+  animation: heroTextFade 400ms cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
+@keyframes heroTextFade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* --- Action Buttons (Centered Dual Outline Buttons) ------------------- */
@@ -112,7 +143,9 @@
   gap: 1.25rem;
 }
 
-.heroButton {
+.heroButton,
+.heroButton:link,
+.heroButton:visited {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -122,19 +155,22 @@
   font-size: 0.95rem;
   font-weight: 500;
   line-height: 1.2;
-  color: #ffffff;
+  color: #ffffff !important;
   background-color: transparent;
   border: 1px solid #ffffff;
   border-radius: 0;
-  text-decoration: none;
+  text-decoration: none !important;
   cursor: pointer;
+  box-sizing: border-box;
   transition: background-color 250ms ease, color 250ms ease, border-color 250ms ease;
 }
 
-.heroButton:hover {
-  background-color: #ffffff;
-  color: #000000;
-  border-color: #ffffff;
+.heroButton:hover,
+.heroButton:focus,
+.heroButton:active {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border-color: #ffffff !important;
 }
 
 /* --- Slide Indicators (Bottom Centered) -------------------------------- */
@@ -200,6 +236,9 @@
 
   .heroSlide__title {
     font-size: clamp(2.2rem, 8vw, 3rem);
+  }
+
+  .heroSlide__titleBox {
     margin-bottom: 1.75rem;
   }
 

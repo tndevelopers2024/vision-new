@@ -13,12 +13,12 @@ export default function Home() {
     <>
       <HeroSlider />       {/* 1  hero: "Every Business starts with Vision" */}
       <BusinessSetup />    {/* 2  Mainland / Free Zone / Offshore           */}
-      <OurStory />         {/* 3  Why Vision / Our Story (est. 2015)        */}
-      <WhoWeWorkWith />    {/* 4  five industries                          */}
-      <OurServices />      {/* 5  Licence / Visa / Finance & Banking        */}
-      <CoreValues />       {/* 6  seven core values                        */}
-      <Testimonials />     {/* 7  client testimonials slider               */}
-      <MinimalContact />   {/* 8  minimal callback form                    */}
+      <OurServices />      {/* 3  Licence / Visa / Finance & Banking        */}
+      <OurStory />         {/* 4  About Us / Why Vision (est. 2015)         */}
+      <MinimalContact />   {/* 5  Every Business starts with Vision form    */}
+      <WhoWeWorkWith />    {/* 6  five industries                           */}
+      <CoreValues />       {/* 7  seven core values                         */}
+      <Testimonials />     {/* 8  client testimonials slider                */}
     </>
   )
 }

@@ -215,11 +215,11 @@ export const heroSlides = [
     "buttons": [
       {
         "label": "About Us",
-        "href": "#our-story"
+        "href": "/about"
       },
       {
         "label": "Contact Us",
-        "href": "#request-callback"
+        "href": "/contact"
       }
     ]
   },
@@ -229,12 +229,12 @@ export const heroSlides = [
     "image": "banner-palm-jumeirah.jpg",
     "buttons": [
       {
-        "label": "Business Setup",
-        "href": "#business-setup"
+        "label": "About Us",
+        "href": "/about"
       },
       {
         "label": "Contact Us",
-        "href": "#request-callback"
+        "href": "/contact"
       }
     ]
   },
@@ -244,12 +244,12 @@ export const heroSlides = [
     "image": "banner-atlantis.webp",
     "buttons": [
       {
-        "label": "Our Services",
-        "href": "/services"
+        "label": "About Us",
+        "href": "/about"
       },
       {
         "label": "Contact Us",
-        "href": "#request-callback"
+        "href": "/contact"
       }
     ]
   }
