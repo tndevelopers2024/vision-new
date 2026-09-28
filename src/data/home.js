@@ -185,6 +185,7 @@ export const founder = {
   "name": "Viekram Sadwani",
   "role": "Vision Business Setup",
   "initials": "VS",
+  "image": "/about-us/viekram_pic.jpg",
   "quote": "He believes that successful businesses are built on strong relationships, clear understanding, and a commitment to solving real challenges.",
   "paragraphs": [
     {

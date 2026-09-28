@@ -1,39 +1,46 @@
 import { founder } from '../../../data/home.js'
-import Icon from '../../ui/Icon.jsx'
+import viekramPic from '../../../assets/images/about/viekram_pic.jpg'
 import './Founder.css'
 
 /**
  * Section 8 — Our Founder.
  *
- * No approved founder photograph exists in the project, so the portrait slot
- * is a clean navy monogram card carrying the name, role and a pull-quote.
+ * Full-length executive portrait of Viekram Sadwani on the left,
+ * with his name, leadership title, and narrative on the right.
  */
 export default function Founder() {
-  const { super: eyebrow, name, role, initials, quote, paragraphs } = founder
+  const { super: eyebrow, name, role, initials, image, paragraphs } = founder
+  const photoSrc = image || viekramPic
 
   return (
     <section className="founder" id="founder">
       <div className="founder__cell">
         <div className="founder__grid">
-          <figure className="founderCard">
-            <span className="founderCard__monogram" aria-hidden="true">{initials}</span>
-            <figcaption>
-              <span className="founderCard__name">{name}</span>
-              <span className="founderCard__role">{role}</span>
-            </figcaption>
-            <blockquote className="founderCard__quote">
-              <span className="founderCard__quoteMark" aria-hidden="true">
-                <Icon name="quote" />
-              </span>
-              {quote}
-            </blockquote>
-          </figure>
+          {photoSrc ? (
+            <div className="founder__media">
+              <img
+                src={photoSrc}
+                alt={`${name} — ${role}`}
+                className="founder__image"
+                loading="lazy"
+              />
+            </div>
+          ) : (
+            <div className="founder__monogramCard">
+              <span className="founder__monogram" aria-hidden="true">{initials}</span>
+            </div>
+          )}
 
           <div className="founder__content">
-            <span className="founder__super">{eyebrow}</span>
+            {eyebrow && <span className="founder__super">{eyebrow}</span>}
             <h2 className="founder__title">
               Our <strong>Founder</strong>
             </h2>
+
+            <div className="founder__identity">
+              <span className="founder__name">{name}</span>
+              <span className="founder__role">{role}</span>
+            </div>
 
             {paragraphs.map((p) => (
               <div className="founder__block" key={p.text.slice(0, 24)}>
