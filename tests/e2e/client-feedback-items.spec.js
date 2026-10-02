@@ -45,7 +45,7 @@ test.describe('Client Feedback Verification — Items 1, 2, 3', () => {
     await expect(phoneBtn).toBeVisible()
 
     const phoneText = await phoneBtn.innerText()
-    expect(phoneText.trim()).toContain('050 545 9247')
+    expect(phoneText.trim()).toContain('+971 50 545 9247')
     expect(phoneText.trim()).not.toBe('050')
 
     // Verify tel link

@@ -206,7 +206,7 @@ export default function MainNav({ onOpenMobile, mobile, isLight = false, _isStic
               >
                 <Icon name="phone" size="small" />
                 <span className="navPhoneBtn__full">{phone.display}</span>
-                <span className="navPhoneBtn__short">{phone.shortDisplay || phone.display}</span>
+                
               </a>
             ),
           )}
