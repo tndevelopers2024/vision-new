@@ -711,6 +711,11 @@
   padding-bottom: 0.55em;
 }
 
+.btMobilePanel nav ul ul li.view-all-mobile > a {
+  font-weight: 600;
+  color: var(--c-nav-gold);
+}
+
 .btMobilePanel nav li > a:hover,
 .btMobilePanel nav li.current-menu-item > a {
   color: var(--c-nav-gold);

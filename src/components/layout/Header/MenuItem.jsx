@@ -55,16 +55,6 @@ export default function MenuItem({
   const handleLinkClick = (e, targetHref) => {
     const href = targetHref || item.href
 
-    // On mobile: tapping an item with children toggles the accordion
-    if (isMobile && hasChildren && (!targetHref || targetHref === item.href)) {
-      if (e) {
-        e.preventDefault()
-        e.stopPropagation()
-      }
-      setOpen((v) => !v)
-      return
-    }
-
     if (onNavigate) onNavigate()
     if (onCloseAll) {
       onCloseAll()
@@ -285,6 +275,19 @@ export default function MenuItem({
               id={id}
               className="sub-menu"
             >
+              {isMobile && item.href && item.href !== '#' && (
+                <li key="view-all-mobile" className="view-all-mobile">
+                  {isRouterLink ? (
+                    <Link to={item.href} onClick={(e) => handleLinkClick(e, item.href)}>
+                      View All {item.label} &rarr;
+                    </Link>
+                  ) : (
+                    <a href={item.href} onClick={(e) => handleLinkClick(e, item.href)}>
+                      View All {item.label} &rarr;
+                    </a>
+                  )}
+                </li>
+              )}
               {item.children.map((child) => (
                 <MenuItem
                   key={child.label}
