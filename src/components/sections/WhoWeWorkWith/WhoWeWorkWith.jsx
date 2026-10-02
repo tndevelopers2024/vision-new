@@ -34,7 +34,6 @@ export default function WhoWeWorkWith() {
   const trackRef = useRef(null)
   const [canScrollLeft, setCanScrollLeft] = useState(false)
   const [canScrollRight, setCanScrollRight] = useState(true)
-  const [activeIndex, setActiveIndex] = useState(0)
   const [progress, setProgress] = useState((1 / items.length) * 100)
 
   const checkScroll = useCallback(() => {
@@ -46,15 +45,11 @@ export default function WhoWeWorkWith() {
     setCanScrollRight(scrollLeft < maxScroll - 6)
 
     if (maxScroll <= 0) {
-      setActiveIndex(0)
       setProgress(100)
       return
     }
 
     const ratio = Math.min(1, Math.max(0, scrollLeft / maxScroll))
-    const idx = Math.min(items.length - 1, Math.max(0, Math.round(ratio * (items.length - 1))))
-    setActiveIndex(idx)
-
     const minPercent = (1 / items.length) * 100
     const progressWidth = minPercent + ratio * (100 - minPercent)
     setProgress(progressWidth)
@@ -246,9 +241,6 @@ export default function WhoWeWorkWith() {
               }}
             />
           </div>
-          <span className="whoWork__counter">
-            0{activeIndex + 1} / 0{items.length}
-          </span>
         </div>
       </div>
     </section>

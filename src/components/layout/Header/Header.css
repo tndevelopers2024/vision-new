@@ -11,9 +11,7 @@
 :root {
   --header-row: 76px;
   --menu-gap: 36px;
-  /* Nav accent — hover / current page. Monochrome: it is the contrast step
-     against the header's own ground, so the dark header resolves it to white
-     and the light header overrides it to black (see `.mainHeader--light`). */
+  /* Nav accent — hover / current page (white against luxury navy gradient ground) */
   --c-nav-gold: #ffffff;
 }
 
@@ -836,26 +834,43 @@
     display: inline;
     font-size: 0.82rem;
     font-weight: 600;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
   }
 
   .navPhoneBtn {
     padding: 0.45em 0.75em;
     min-width: auto;
+    min-height: 38px;
     gap: 6px;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
 
   .navRight {
     gap: 8px;
+    flex-shrink: 0;
   }
 }
 
 @media (max-width: 380px) {
   .navPhoneBtn__short {
+    font-size: 0.76rem;
+  }
+
+  .navPhoneBtn {
+    padding: 0.4em 0.6em;
+    gap: 5px;
+  }
+}
+
+@media (max-width: 320px) {
+  .navPhoneBtn__short {
     display: none;
   }
 
   .navPhoneBtn {
-    padding: 0.45em 0.6em;
+    padding: 0.45em 0.65em;
   }
 }
 
@@ -879,90 +894,7 @@
   .navCtaBtn {
     padding: 0.45em 0.85em;
     font-size: 0.8rem;
-  }
 }
 
-/* --------------------------------------------------------------------------
-   Light Header Mode (for clean white background pages e.g. /contact)
-   -------------------------------------------------------------------------- */
 
-.mainHeader--light {
-  /* The light variant swaps in the dark logo and black link colours, so it
-     needs its own white ground — without it the header inherited
-     `.mainHeader`'s black background and rendered black-on-black. */
-  background-color: #ffffff;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  /* Nav accent flips to black against this ground. */
-  --c-nav-gold: #000000;
-}
-
-.mainHeader--light.mainHeader--sticky {
-  background-color: rgba(255, 255, 255, 0.96);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-}
-
-.mainHeader--light .navBrandLink,
-.mainHeader--light .navBrandLink:hover,
-.mainHeader--light .navBrandLink:focus,
-.mainHeader--light .navBrandLink:active,
-.mainHeader--light .navBrandLink:visited {
-  text-decoration: none !important;
-}
-
-.mainHeader--light .navBrandTagline {
-  color: #8c734b;
-  text-decoration: none !important;
-}
-
-.mainHeader--light .navBrandLink:hover .navBrandTagline,
-.mainHeader--light .navBrandLink:focus .navBrandTagline,
-.mainHeader--light .navBrandLink:active .navBrandTagline {
-  color: #1c3b5f;
-  text-decoration: none !important;
-}
-
-.mainHeader--light .navCenter ul.menu > li > a {
-  color: rgba(0, 0, 0, 0.65);
-}
-
-.mainHeader--light .navCenter ul.menu > li > a:hover,
-.mainHeader--light .navCenter ul.menu > li.current-menu-item > a {
-  color: var(--c-nav-gold);
-}
-
-.mainHeader--light .navPhoneBtn {
-  color: #1c3b5f;
-  background-color: rgba(28, 59, 95, 0.05);
-  border-color: rgba(28, 59, 95, 0.3);
-}
-
-.mainHeader--light .navPhoneBtn .btIcon {
-  color: #1c3b5f;
-}
-
-.mainHeader--light .navPhoneBtn:hover {
-  background-color: #1c3b5f;
-  color: #ffffff;
-  border-color: #1c3b5f;
-}
-
-.mainHeader--light .navPhoneBtn:hover .btIcon {
-  color: #ffffff;
-}
-
-.mainHeader--light .navCtaBtn {
-  color: #000000;
-  border-color: #1c3b5f;
-}
-
-.mainHeader--light .navCtaBtn:hover {
-  background-color: #1c3b5f;
-  color: #ffffff;
-  border-color: #1c3b5f;
-}
-
-.mainHeader--light .btHorizontalMenuTrigger {
-  color: #000000;
-}
 

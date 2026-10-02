@@ -402,13 +402,14 @@
   }
 }
 
-/* Slider Progress Bar & Counter (Exact Match to Reference Screenshot) */
+/* Slider Progress Bar (Exact Match to Reference Screenshot) */
 .svcSliderPagination {
   display: flex;
   align-items: center;
   gap: 20px;
   margin-top: 36px;
   padding: 0 4px;
+  max-width: 420px;
 }
 
 .svcSliderProgressTrack {
@@ -434,15 +435,6 @@
   border-radius: 0;
   transition: width 200ms ease-out;
   pointer-events: none;
-}
-
-.svcSliderCounter {
-  font-family: var(--font-base);
-  font-size: 0.88rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  color: #111111;
-  flex-shrink: 0;
 }
 
 /* Card — 3 Column Layout */

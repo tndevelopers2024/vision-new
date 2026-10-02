@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import PageHero from '../components/layout/PageHero/PageHero.jsx'
 import Icon from '../components/ui/Icon.jsx'
 import { callbackForm, ctaBanner } from '../data/home.js'
@@ -36,21 +37,57 @@ const CONTACT_LINES = [
  *   2. Contact desk — direct lines (left) beside the callback form (right)
  *   3. Office map with a floating location card
  *
- * The form is frontend-only: submitting logs the payload and shows a
- * confirmation. Wire `handleSubmit` to a real endpoint when one exists.
+ * Fully integrated with enterprise SMTP API, honeypot spam protection,
+ * and asynchronous loading and alert states.
  */
 export default function Contact() {
-  const [sent, setSent] = useState(false)
+  const [searchParams] = useSearchParams()
+  const isUrlSuccess = searchParams.get('status') === 'success'
+  const [submitted, setSubmitted] = useState(false)
+  const [dismissedUrlSuccess, setDismissedUrlSuccess] = useState(false)
+  const sent = (isUrlSuccess && !dismissedUrlSuccess) || submitted
+
+  const [loading, setLoading] = useState(false)
+  const [errorMessage, setErrorMessage] = useState(
+    searchParams.get('status') === 'error'
+      ? searchParams.get('msg') || 'Failed to submit request. Please try again.'
+      : ''
+  )
   const { title, accent, text, points, fields, submitLabel } = callbackForm
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault()
-    const data = Object.fromEntries(new FormData(event.currentTarget).entries())
-    // TODO: replace with a real submission (API route / form service).
-    // eslint-disable-next-line no-console
-    console.info('[Contact] callback request', data)
-    event.currentTarget.reset()
-    setSent(true)
+    setErrorMessage('')
+    setLoading(true)
+
+    const form = event.currentTarget
+    const formData = new FormData(form)
+    const payload = Object.fromEntries(formData.entries())
+    payload.source = 'Contact Page'
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify(payload),
+      })
+
+      const data = await response.json().catch(() => ({}))
+
+      if (!response.ok || !data.success) {
+        throw new Error(data.error || 'Failed to send inquiry. Please try again.')
+      }
+
+      form.reset()
+      setSubmitted(true)
+    } catch (err) {
+      setErrorMessage(err.message || 'An error occurred while submitting your message.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -129,7 +166,13 @@ export default function Contact() {
                     ? `call us on ${contact.phoneDisplay}${contact.secondaryPhoneDisplay ? ` or ${contact.secondaryPhoneDisplay}` : ''}.`
                     : 'message us on WhatsApp.'}
                 </p>
-                <button type="button" onClick={() => setSent(false)}>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSubmitted(false)
+                    setDismissedUrlSuccess(true)
+                  }}
+                >
                   Send another request
                 </button>
               </div>
@@ -142,7 +185,26 @@ export default function Contact() {
                   <p className="contactCard__text">{text}</p>
                 </header>
 
-                <form className="contactForm" onSubmit={handleSubmit} noValidate>
+                {errorMessage && (
+                  <div className="is-error" role="alert" aria-live="assertive">
+                    <Icon name="close" size="small" />
+                    <span>{errorMessage}</span>
+                  </div>
+                )}
+
+                <form className="contactForm" onSubmit={handleSubmit} action="/api/contact" method="POST" noValidate>
+                  {/* Honeypot field for bot suppression */}
+                  <div className="is-honeypot" aria-hidden="true">
+                    <label htmlFor="contact-gotcha">Do not fill this field</label>
+                    <input
+                      id="contact-gotcha"
+                      type="text"
+                      name="_gotcha"
+                      tabIndex={-1}
+                      autoComplete="off"
+                    />
+                  </div>
+
                   {fields.map((field) => {
                     const id = `contact-${field.name}`
                     const full = field.type === 'textarea' || field.type === 'email'
@@ -159,6 +221,7 @@ export default function Contact() {
                             rows="5"
                             placeholder={field.placeholder}
                             required={field.required}
+                            disabled={loading}
                           />
                         ) : (
                           <input
@@ -168,15 +231,16 @@ export default function Contact() {
                             placeholder={field.placeholder}
                             autoComplete={field.autoComplete}
                             required={field.required}
+                            disabled={loading}
                           />
                         )}
                       </div>
                     )
                   })}
 
-                  <button type="submit" className="contactForm__submit">
-                    <span>{submitLabel}</span>
-                    <Icon name="arrow-right" size="small" />
+                  <button type="submit" className="contactForm__submit" disabled={loading}>
+                    <span>{loading ? 'Sending...' : submitLabel}</span>
+                    <Icon name={loading ? 'sync' : 'arrow-right'} size="small" />
                   </button>
 
                   <p className="contactForm__note">

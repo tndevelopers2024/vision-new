@@ -12,6 +12,8 @@ export default function ServiceDetail() {
 
   const [activeFaq, setActiveFaq] = useState(null)
   const [formSubmitted, setFormSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
 
   if (!service) {
     return (
@@ -33,13 +35,39 @@ export default function ServiceDetail() {
     )
   }
 
-  function handleFormSubmit(e) {
+  async function handleFormSubmit(e) {
     e.preventDefault()
-    const data = Object.fromEntries(new FormData(e.currentTarget).entries())
-    // eslint-disable-next-line no-console
-    console.info(`[ServiceDetail:${service.id}] Consultation request:`, data)
-    e.currentTarget.reset()
-    setFormSubmitted(true)
+    setErrorMessage('')
+    setIsSubmitting(true)
+
+    const form = e.currentTarget
+    const formData = new FormData(form)
+    const data = Object.fromEntries(formData.entries())
+    data.source = `Service Detail: ${service.title}`
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+
+      const result = await response.json().catch(() => ({}))
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.error || 'Failed to submit inquiry. Please try again.')
+      }
+
+      form.reset()
+      setFormSubmitted(true)
+    } catch (err) {
+      setErrorMessage(err.message || 'An error occurred while sending your inquiry.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const encodedWhatsAppMessage = encodeURIComponent(
@@ -453,6 +481,13 @@ export default function ServiceDetail() {
                 </p>
               </div>
 
+              {errorMessage && (
+                <div className="is-error" role="alert" aria-live="assertive">
+                  <Icon name="close" size="small" />
+                  <span>{errorMessage}</span>
+                </div>
+              )}
+
               {formSubmitted ? (
                 <div className="sdFormSuccess">
                   <span className="sdFormSuccess__icon">
@@ -471,7 +506,19 @@ export default function ServiceDetail() {
                   </button>
                 </div>
               ) : (
-                <form className="sdForm" onSubmit={handleFormSubmit}>
+                <form className="sdForm" onSubmit={handleFormSubmit} action="/api/contact" method="POST" noValidate>
+                  {/* Honeypot field for bot suppression */}
+                  <div className="is-honeypot" aria-hidden="true">
+                    <label htmlFor="sd-gotcha">Do not fill this field</label>
+                    <input
+                      id="sd-gotcha"
+                      type="text"
+                      name="_gotcha"
+                      tabIndex={-1}
+                      autoComplete="off"
+                    />
+                  </div>
+
                   <div className="sdForm__field">
                     <label htmlFor="sd-name" className="sdForm__label">Your Full Name *</label>
                     <input
@@ -480,6 +527,7 @@ export default function ServiceDetail() {
                       name="name"
                       required
                       placeholder="Your full name"
+                      disabled={isSubmitting}
                       className="sdForm__input"
                     />
                   </div>
@@ -492,6 +540,7 @@ export default function ServiceDetail() {
                       name="email"
                       required
                       placeholder="Your email address"
+                      disabled={isSubmitting}
                       className="sdForm__input"
                     />
                   </div>
@@ -504,6 +553,7 @@ export default function ServiceDetail() {
                       name="phone"
                       required
                       placeholder="Your phone number"
+                      disabled={isSubmitting}
                       className="sdForm__input"
                     />
                   </div>
@@ -527,13 +577,14 @@ export default function ServiceDetail() {
                       name="notes"
                       rows="3"
                       placeholder="Brief details or questions..."
+                      disabled={isSubmitting}
                       className="sdForm__textarea"
                     />
                   </div>
 
-                  <button type="submit" className="sdBtn sdBtn--primary sdBtn--block">
-                    <span>Submit Service Inquiry</span>
-                    <Icon name="arrow-right" size="small" />
+                  <button type="submit" className="sdBtn sdBtn--primary sdBtn--block" disabled={isSubmitting}>
+                    <span>{isSubmitting ? 'Sending...' : 'Submit Service Inquiry'}</span>
+                    <Icon name={isSubmitting ? 'sync' : 'arrow-right'} size="small" />
                   </button>
                 </form>
               )}

@@ -30,7 +30,7 @@ export const contact = {
     {
       display: '+971 50 545 9247',
       href: 'tel:+971505459247',
-      shortDisplay: '050',
+      shortDisplay: '050 545 9247',
       raw: '050 545 9247',
     },
   ],

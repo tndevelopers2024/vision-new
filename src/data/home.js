@@ -120,49 +120,42 @@ export const coreValues = {
   "subtitle": "",
   "items": [
     {
-      "num": "01",
       "icon": "shield",
       "title": "Trust",
       "text": "We build long-term relationships through honesty, reliability, and consistency.",
       "image": "trust.jpg"
     },
     {
-      "num": "02",
       "icon": "shield",
       "title": "Transparency",
       "text": "Clear communication and straightforward processes are at the heart of how we operate.",
       "image": "transparency.jpg"
     },
     {
-      "num": "03",
       "icon": "chat",
       "title": "Understanding",
       "text": "We listen before we advise—ensuring every solution is aligned with your unique needs.",
       "image": "understanding.jpg"
     },
     {
-      "num": "04",
       "icon": "puzzle",
       "title": "Tailored Solutions",
       "text": "No two businesses are the same. Our approach reflects that in every recommendation we make.",
       "image": "tailored-solutions.jpg"
     },
     {
-      "num": "05",
       "icon": "star",
       "title": "Quality Service",
       "text": "We maintain high standards in every interaction, every process, and every outcome.",
       "image": "quality-service.jpg"
     },
     {
-      "num": "06",
       "icon": "sync",
       "title": "Reliability & Consistency",
       "text": "Our clients depend on us—and we deliver, every time.",
       "image": "reliability.jpg"
     },
     {
-      "num": "07",
       "icon": "route",
       "title": "End-to-End Support",
       "text": "From initial idea to operational launch, we stay with you at every step",
@@ -314,7 +307,6 @@ export const ourServices = {
 export const ourStory = {
   "badge": "About Us",
   "title": "Our Story",
-  "checklist": [],
   "buttonText": "About Us",
   "buttonHref": "/about",
   "lead": [

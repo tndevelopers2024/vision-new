@@ -5,7 +5,7 @@ import { headerPhone, headerPhones, mainMenu, topBar } from '../../../data/site.
 import { whatsappLink } from '../../../config/contact.js'
 import MenuItem from './MenuItem.jsx'
 
-const logo = `${import.meta.env.BASE_URL}logo-lockup.png`
+const logo = `${import.meta.env.BASE_URL}logo-lockup-light.png`
 
 /**
  * MobileMenu — off-canvas panel behind the hamburger.

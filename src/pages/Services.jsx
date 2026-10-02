@@ -4,7 +4,6 @@ import PageHero from '../components/layout/PageHero/PageHero.jsx'
 import Icon from '../components/ui/Icon.jsx'
 import {
   servicesHero,
-  servicesStats,
   serviceCategories,
   categoryBanners,
 } from '../data/services.js'
@@ -16,7 +15,6 @@ function ServiceCategorySlider({ category, catIndex, handleEnquireClick }) {
   const items = category.services
   const [canScrollLeft, setCanScrollLeft] = useState(false)
   const [canScrollRight, setCanScrollRight] = useState(items.length > 3)
-  const [activeIndex, setActiveIndex] = useState(0)
   const [progress, setProgress] = useState((1 / items.length) * 100)
 
   const checkScroll = useCallback(() => {
@@ -28,15 +26,11 @@ function ServiceCategorySlider({ category, catIndex, handleEnquireClick }) {
     setCanScrollRight(scrollLeft < maxScroll - 6)
 
     if (maxScroll <= 0) {
-      setActiveIndex(0)
       setProgress(100)
       return
     }
 
     const ratio = Math.min(1, Math.max(0, scrollLeft / maxScroll))
-    const idx = Math.min(items.length - 1, Math.max(0, Math.round(ratio * (items.length - 1))))
-    setActiveIndex(idx)
-
     const minPercent = (1 / items.length) * 100
     const progressWidth = minPercent + ratio * (100 - minPercent)
     setProgress(progressWidth)
@@ -196,7 +190,7 @@ function ServiceCategorySlider({ category, catIndex, handleEnquireClick }) {
           </div>
         </div>
 
-        {/* Progress Bar & Counter (Exact Match to Reference Screenshot) */}
+        {/* Progress Bar (Exact Match to Reference Screenshot) */}
         <div className="svcSliderPagination">
           <div
             className="svcSliderProgressTrack"
@@ -208,9 +202,6 @@ function ServiceCategorySlider({ category, catIndex, handleEnquireClick }) {
             aria-label="Services carousel progress"
           >
             <div className="svcSliderProgressBar" style={{ width: `${progress}%` }} />
-          </div>
-          <div className="svcSliderCounter">
-            {String(activeIndex + 1).padStart(2, '0')} / {String(items.length).padStart(2, '0')}
           </div>
         </div>
       </div>
@@ -234,11 +225,6 @@ export default function Services() {
     }
   }
 
-  // Flatten all services for count
-  const allServicesList = serviceCategories.flatMap((cat) =>
-    cat.services.map((s) => ({ id: s.id, title: s.title, category: cat.shortTitle }))
-  )
-
   function handleEnquireClick() {
     navigate('/contact')
   }
@@ -259,22 +245,7 @@ export default function Services() {
         image={imgHero}
       />
 
-      {/* 2 — Key Metrics Strip */}
-      <section className="svcMetrics">
-        <div className="svcMetrics__container">
-          <div className="svcMetrics__grid">
-            {servicesStats.map((stat) => (
-              <div className="svcMetricCard" key={stat.label}>
-                <div className="svcMetricCard__value">{stat.value}</div>
-                <div className="svcMetricCard__label">{stat.label}</div>
-                <div className="svcMetricCard__desc">{stat.desc}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 3 — Category Filter Tabs Bar */}
+      {/* 2 — Category Filter Tabs Bar */}
       <nav className="svcNav" aria-label="Service categories filter">
         <div className="svcNav__container">
           <div className="svcNav__list">
@@ -287,7 +258,6 @@ export default function Services() {
               }}
             >
               <span className="svcNav__label">All Services</span>
-              <span className="svcNav__badge">{allServicesList.length}</span>
             </button>
 
             {serviceCategories.map((cat) => (
@@ -306,7 +276,6 @@ export default function Services() {
                   <Icon name={cat.icon} size="small" />
                 </span>
                 <span className="svcNav__label">{cat.title}</span>
-                <span className="svcNav__badge">{cat.services.length}</span>
               </button>
             ))}
 

@@ -12,6 +12,11 @@ dist
 dist-ssr
 *.local
 
+# Environment variables (strict isolation)
+.env
+.env.*
+!.env.example
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
@@ -27,3 +32,10 @@ dist-ssr
 scratch/
 scratch*
 *.patch
+scripts/*.png
+
+# Test results and reports
+test-results/
+playwright-report/
+blob-report/
+

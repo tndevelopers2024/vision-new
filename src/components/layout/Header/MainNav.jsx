@@ -195,7 +195,7 @@ export default function MainNav({ onOpenMobile, mobile, isLight = false, _isStic
 
         {/* Right: Phone Number CTAs + Mobile hamburger trigger */}
         <div className="navRight" onMouseEnter={handleImmediateClose}>
-          {(contact.phones || [{ display: contact.phoneDisplay, href: contact.phoneHref, shortDisplay: 'Call' }]).map(
+          {(contact.phones || [{ display: contact.phoneDisplay, href: contact.phoneHref, shortDisplay: '050 545 9247' }]).map(
             (phone, idx) => (
               <a
                 key={phone.href || idx}

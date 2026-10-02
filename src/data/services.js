@@ -1,11 +1,11 @@
 /**
  * Data for Our Services hub (/services) and individual dedicated service pages (/services/:slug).
  *
- * Sourced directly from Decisive Zone (https://www.decisivezone.ae/)
- * tailored for Vision Business Setup:
+ * Tailored exclusively for Vision Business Setup:
  *   1. Licence Services (Renewal, Modification, Cancellation, Freezing)
- *   2. Visa Solutions (Residence, Golden, Dependent, Remote Work, Freelance)
+ *   2. Visa Solutions (Residence, Golden, Dependent, Remote Work, Freelance, Domestic Worker)
  *   3. Finance & Banking (Bank Account Opening, Corporate Tax Guide, Bookkeeping & VAT)
+ *   4. Corporate & Executive Support (VIP Medical & Emirates ID, Customs, Office Spaces)
  */
 
 import heroLicence from '../assets/images/banner-night.jpg'
@@ -1526,7 +1526,7 @@ export const allServices = serviceCategories.flatMap((category) =>
   }))
 )
 
-// Map by slug (service.id) and supported URL aliases (such as Decisive Zone permalinks)
+// Map by slug (service.id) and supported URL aliases
 const serviceSlugAliases = {
   'freeze-trade-license': 'license-freezing',
   'trade-license-renewal-uae': 'license-renewal',
@@ -1535,7 +1535,6 @@ const serviceSlugAliases = {
   'uae-residence-visa': 'residence-visa',
   'dependent-visa-uae': 'dependent-visa',
   'remote-work-visa-uae': 'remote-work-visa',
-  'golden-visa-in-dubai-uae-decisive-zone': 'golden-visa',
   'freelancer-visa-uae': 'freelance-visa',
   'vat-registration-bookkeeping': 'bookkeeping-vat',
   'corporate-tax': 'corporate-tax-guide',
@@ -1595,22 +1594,18 @@ export const servicesProcess = {
     'Our structured four-stage engagement framework ensures complete accuracy, transparent timelines, and guaranteed regulatory approvals at every step.',
   steps: [
     {
-      num: '01',
       title: 'Consultation & Assessment',
       text: 'We review your business structure, specific requirements, and timeline to recommend the most cost-efficient and compliant pathway.',
     },
     {
-      num: '02',
       title: 'Document Preparation',
       text: 'Our legal and PRO specialists prepare, review, and legally translate all necessary documentation to prevent rejections or delays.',
     },
     {
-      num: '03',
       title: 'Government Liaison',
       text: 'Our dedicated corporate PROs submit and expedite filings across DET, MOHRE, GDRFA, Dubai Courts, and the Federal Tax Authority.',
     },
     {
-      num: '04',
       title: 'Issuance & Continuous Support',
       text: 'We deliver your approved licenses, residency cards, or certificates, tracking renewal dates proactively so your operations never stop.',
     },

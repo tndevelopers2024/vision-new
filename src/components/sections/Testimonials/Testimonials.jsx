@@ -39,7 +39,6 @@ export default function Testimonials() {
   const trackRef = useRef(null)
   const [canScrollLeft, setCanScrollLeft] = useState(false)
   const [canScrollRight, setCanScrollRight] = useState(true)
-  const [activeIndex, setActiveIndex] = useState(0)
   const [progress, setProgress] = useState((1 / (items.length || 1)) * 100)
 
   const checkScroll = useCallback(() => {
@@ -51,15 +50,11 @@ export default function Testimonials() {
     setCanScrollRight(scrollLeft < maxScroll - 6)
 
     if (maxScroll <= 0) {
-      setActiveIndex(0)
       setProgress(100)
       return
     }
 
     const ratio = Math.min(1, Math.max(0, scrollLeft / maxScroll))
-    const idx = Math.min(items.length - 1, Math.max(0, Math.round(ratio * (items.length - 1))))
-    setActiveIndex(idx)
-
     const minPercent = (1 / items.length) * 100
     const progressWidth = minPercent + ratio * (100 - minPercent)
     setProgress(progressWidth)
@@ -235,7 +230,7 @@ export default function Testimonials() {
           </div>
         </div>
 
-        {/* Bottom Progress Bar & Slide Counter */}
+        {/* Bottom Progress Bar */}
         <div className="testimonials__pagination">
           <div
             className="testimonials__progressTrack"
@@ -251,9 +246,6 @@ export default function Testimonials() {
               style={{ width: `${progress}%` }}
             />
           </div>
-          <span className="testimonials__counter">
-            0{activeIndex + 1} / 0{items.length}
-          </span>
         </div>
 
 
